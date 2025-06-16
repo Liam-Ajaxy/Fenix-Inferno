@@ -1,0 +1,1222 @@
+/* ==== FENIX RESPONSIVE - #home Section ======================================================================= */
+
+/* Global section padding adjustment */
+@media (max-width: 767px) {
+  #home {
+    padding: 4rem 1.5rem !important;
+  }
+}
+
+/* Intro wrapper responsive */
+@media (max-width: 767px) {
+  #home .intro-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  #home .img-wrapper-left {
+    width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  #home .intro-text {
+    width: 100%;
+  }
+
+  /* Partner button */
+  #home .partner-btn {
+    display: inline-block;
+    width: auto;
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Ratings Grid static - Safe columns */
+@media (max-width: 576px) {
+  .ratings-grid.static-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+  .ratings-grid.static-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .ratings-grid.static-grid .rating-card {
+    flex: 0 0 45%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ratings-grid.static-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .ratings-grid.static-grid .rating-card {
+    flex: 0 0 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ratings-grid.static-grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .ratings-grid.static-grid .rating-card {
+    flex: 0 0 22%;
+  }
+}
+
+/* Ratings Carousel - Safe behavior */
+@media (max-width: 767px) {
+  .ratings-carousel-wrapper {
+    overflow-x: auto;
+  }
+
+  .ratings-carousel {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .ratings-carousel .rating-card {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+  }
+}
+
+@media (min-width: 768px) {
+  .ratings-carousel-wrapper {
+    overflow: hidden;
+  }
+
+  .ratings-carousel {
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+  }
+
+  .ratings-carousel .rating-card {
+    flex: 0 0 250px;
+  }
+}
+
+/* Ratings Text alignment */
+@media (max-width: 767px) {
+  #ratings .ratings-intro,
+  #ratings h2 {
+    text-align: left;
+  }
+}
+
+
+/* =============================================================================================================== */
+
+/* Force section #projects padding reset on small screens */
+@media (max-width: 767px) {
+  #projects {
+    padding: 3rem 1rem !important; /* Reduce from 8rem */
+  }
+}
+
+/* Base project-grid */
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* fallback */
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Phones ≤ 576px */
+@media (max-width: 576px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .project-block {
+    grid-column: 1 / -1 !important; /* force full row */
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+  }
+}
+
+/* Small tablets 577px – 767px */
+@media (min-width: 577px) and (max-width: 767px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .project-block {
+    grid-column: 1 / -1 !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
+  }
+}
+
+/* Tablets 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .project-block {
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Laptops 1024px – 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .project-block {
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Large desktops ≥ 1440px */
+@media (min-width: 1440px) {
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .project-block {
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
+/* ==== FENIX Responsive Buttons - STRONG - Full width on phone - Left aligned ==== */
+
+/* Partner-btn */
+@media (max-width: 767px) {
+  .partner-btn {
+    display: block !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    margin: 1rem auto !important;
+    text-align: left !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Phantom-btn */
+@media (max-width: 767px) {
+  .phantom-btn {
+    display: block !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    margin: 1rem auto !important;
+    text-align: left !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Phantom-btn-stack */
+@media (max-width: 767px) {
+  .phantom-btn-stack {
+    display: block !important;
+    width: 90% !important;
+    max-width: 90% !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
+    margin: 1rem auto !important;
+    text-align: left !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
+
+/* ============================================================================================================= */
+/* ==== FENIX Responsive #partners Section ==== */
+
+/* Base partner-logos layout */
+.partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Partner logo link */
+.partner-logos a {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 120px;
+  max-height: 80px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Partner logo image */
+.partner-logos img {
+  max-width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+/* Section padding reduce on mobile */
+@media (max-width: 767px) {
+  #partners {
+    padding: 3rem 1rem !important;
+  }
+
+  .partner-logos {
+    gap: 1rem;
+  }
+
+  .partner-logos a {
+    max-width: 100px;
+    max-height: 70px;
+  }
+
+  .partner-logos img {
+    max-height: 50px;
+  }
+}
+
+
+
+/* =========================================================================================================== */
+/* ==== FENIX Responsive #feed Section ==== */
+
+/* Base articles-grid layout */
+.articles-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* fallback */
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Phones ≤ 576px */
+@media (max-width: 576px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .article-card {
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Small tablets 577px – 767px */
+@media (min-width: 577px) and (max-width: 767px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .article-card {
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Tablets 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .article-card {
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Laptops 1024px – 1439px */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .articles-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .article-card {
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Large desktops ≥ 1440px */
+@media (min-width: 1440px) {
+  .articles-grid {
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .article-card {
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Quotes responsive */
+.quotes {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 576px) {
+  .quotes h3 {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .quotes blockquote {
+    font-size: 0.95rem;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1023px) {
+  .quotes h3 {
+    font-size: 1.4rem;
+    text-align: left;
+  }
+
+  .quotes blockquote {
+    font-size: 1rem;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .quotes h3 {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .quotes blockquote {
+    font-size: 1.1rem;
+    text-align: left;
+    padding-left: 0;
+  }
+}
+
+
+
+/* ============================================================================================================= */
+/* ==== FENIX Responsive #tools Section ==== */
+
+/* Tools section intro */
+.tools-intro {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+/* Tool block layout */
+.tool-block {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+/* Inputs and textareas */
+.tool-block input[type="password"],
+.tool-block textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.tool-block button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #fff;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+
+/* Results paragraph */
+.tool-block p {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+/* Responsive adjustments */
+
+/* Phones ≤ 576px */
+@media (max-width: 576px) {
+  #tools {
+    padding: 3rem 1rem !important;
+  }
+
+  .tool-block {
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+  }
+
+  .tools-intro {
+    font-size: 1rem;
+  }
+
+  .tool-block button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Small tablets 577px – 767px */
+@media (min-width: 577px) and (max-width: 767px) {
+  #tools {
+    padding: 3rem 1.5rem !important;
+  }
+
+  .tool-block {
+    padding: 1.75rem;
+    margin: 2rem auto;
+  }
+
+  .tools-intro {
+    font-size: 1rem;
+  }
+
+  .tool-block button {
+    width: auto;
+  }
+}
+
+/* Tablets ≥ 768px */
+@media (min-width: 768px) {
+  #tools {
+    padding: 4rem 2rem !important;
+  }
+
+  .tool-block {
+    padding: 2rem;
+    margin: 2rem auto;
+  }
+
+  .tools-intro {
+    font-size: 1.1rem;
+  }
+
+  .tool-block button {
+    width: auto;
+  }
+}
+
+
+
+/* ======================================================================================================== */
+
+/* Section padding */
+#about {
+  padding: 5rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Intro wrapper layout */
+#about .intro-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Intro text */
+#about .intro-text {
+  flex: 1 1 400px;
+  max-width: 600px;
+  text-align: left;
+}
+
+#about .intro-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Image wrapper */
+#about .img-wrapper {
+  flex: 1 1 300px;
+  max-width: 400px;
+  text-align: center;
+}
+
+#about .img-wrapper .block-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Button */
+#about .img-wrapper .button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+
+/* Responsive adjustments */
+
+/* Phones ≤ 576px */
+@media (max-width: 576px) {
+  #about {
+    padding: 3rem 1rem !important;
+  }
+
+  #about .intro-wrapper {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+  }
+
+  #about .intro-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  #about .img-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #about .img-wrapper .button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #4f46e5;
+    padding: 0.75rem;
+    margin: 0 auto;
+  }
+}
+
+/* Small tablets 577px – 767px */
+@media (min-width: 577px) and (max-width: 767px) {
+  #about {
+    padding: 3.5rem 1.5rem !important;
+  }
+
+  #about .intro-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: left;
+  }
+
+  #about .intro-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  #about .img-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #about .img-wrapper .button {
+    display: block;
+    width: auto;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/* Tablets ≥ 768px */
+@media (min-width: 768px) {
+  #about {
+    padding: 5rem 6rem !important;
+  }
+
+  #about .intro-wrapper {
+    flex-direction: row;
+    gap: 3rem;
+    text-align: left;
+  }
+
+  #about .intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  #about .img-wrapper .button {
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
+  }
+  #about .img-wrapper .button:hover {
+    background: linear-gradient(135deg, #003cff, #4f72ff);
+  }
+}
+
+
+
+/* ============================================================================================================ */
+/* ==== FENIX Responsive #stacks Section ==== */
+
+/* Base stack-logos layout */
+.stack-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Stack logo link */
+.stack-logos a {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 120px;
+  max-height: 80px;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+/* Stack logo image */
+.stack-logos img {
+  max-width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+/* Section padding reduce on mobile */
+@media (max-width: 767px) {
+  #stacks {
+    padding: 3rem 1rem !important;
+  }
+
+  .stack-logos {
+    gap: 1rem;
+  }
+
+  .stack-logos a {
+    max-width: 100px;
+    max-height: 70px;
+  }
+
+  .stack-logos img {
+    max-height: 50px;
+  }
+}
+
+
+/* ========================================================================================================== */
+/* Optional Responsive Tuning for #skills Section */
+
+@media (max-width: 576px) {
+  #skills {
+    padding: 3rem 1rem !important;
+  }
+
+  .skills-grid {
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1023px) {
+  .skill-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skill-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+
+
+/* ================================================================================================================= */
+@media (max-width: 576px) {
+  #settings {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .settings-tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tab-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .setting-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .setting-item label {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  .setting-item select,
+  .setting-item input[type="text"],
+  .setting-item input[type="email"],
+  .setting-item textarea {
+    width: 100%;
+  }
+
+  .setting-item input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+  }
+
+  .settings-actions {
+    flex-direction: column;
+  }
+
+  .settings-actions .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* ============================================================================================================ */
+/* ===== FENIX Responsive Contact Section ===== */
+
+#contact {
+  padding: 6rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#contact h2 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.35rem;
+  font-size: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  color: #111;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+#contact-form .button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50rem;
+  border: none;
+  cursor: pointer;
+  background: var(--accent-color, #3b82f6);
+  color: white;
+  transition: background 0.3s;
+}
+
+#contact-form .button:hover {
+  background: #352ba7;
+}
+
+/* Phones ≤ 576px */
+@media (max-width: 576px) {
+  #contact {
+    padding: 3rem 1rem !important;
+  }
+
+  #contact h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #contact-form {
+    gap: 1.25rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.95rem;
+    padding: 0.65rem;
+  }
+
+  #contact-form .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* =========================================================================================================== */
+/* ===== FENIX Responsive Footer ===== */
+
+.footer {
+  padding: 3rem 2rem 2rem 2rem;
+}
+
+.footer-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.footer-column {
+  flex: 1 1 180px;
+  min-width: 150px;
+}
+
+.footer-column h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-column ul li a {
+  color: #7f7f7f;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 0.8rem;
+}
+
+.footer-column ul li a:hover {
+  color: #3b82f6;
+}
+
+/* Footer logo */
+.footer .logo {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  margin-bottom: 1rem;
+}
+
+.footer .logo img {
+  height: 8rem;
+  width: auto;
+}
+
+/* Footer social and copyright */
+.footer-social-hr {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.footer-social {
+  margin-bottom: 1rem;
+}
+
+.footer-social a {
+  margin: 0 0.5rem;
+  font-size: 1.25rem;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.footer-social-hr p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.footer-developer {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.footer-developer a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.footer-developer a:hover {
+  text-decoration: underline;
+}
+
+/* Phones ≤ 576px */
+@media (max-width: 576px) {
+  .footer-sections {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-column {
+    flex: 1 1 100%;
+  }
+
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-social a {
+    margin: 0.4rem;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+/* =========================================================================================================== */
+/* ===== FENIX Scroll to Top Button ===== */
+
+#scrollTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50%;
+  background-color: #3b83f69a;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  opacity: 0.7;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#scrollTop:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Phones ≤ 576px → smaller button */
+@media (max-width: 576px) {
+  #scrollTop {
+    opacity: 0;
+    bottom: 1rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
+
+/* ===== FENIX Global Toast Container ===== */
+
+#global-toast-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none; /* allows clicks to pass through */
+}
+
+/* Toast message style */
+#global-toast-container .toast {
+  min-width: 220px;
+  max-width: 320px;
+  padding: 0.75rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-size: 0.95rem;
+  opacity: 0.95;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Phones ≤ 576px → adjust toast position */
+@media (max-width: 576px) {
+  #global-toast-container {
+    position: fixed;
+    top: 3.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+  #global-toast-container .toast {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.75rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 0.95rem;
+    opacity: 0.95;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: auto;
+  }
+}
+
+
+.floating-auth-links {
+  position: fixed;
+  top: 6rem; /* adjust based on your header height */
+  right: 2rem;
+  display: flex;
+  gap: 0.1rem;
+  z-index: 999;
+}
+
+.floating-auth-links a {
+  padding: 0.2rem 0.5rem;
+  background: #4f46e5;
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.6rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+.floating-auth-links a:hover {
+  background: #3730a3;
+}
+
+/* Phones ≤ 576px → make auth links readable + touch friendly */
+@media (max-width: 576px) {
+  .floating-auth-links {
+    top: 7.5rem; /* move lower to avoid nav / settings */
+    right: 1rem;
+    gap: 0.5rem; /* more space between buttons */
+  }
+
+  .floating-auth-links a {
+    padding: 0.5rem 1rem; /* safe finger size */
+    font-size: 0.85rem; /* readable on phone */
+  }
+}

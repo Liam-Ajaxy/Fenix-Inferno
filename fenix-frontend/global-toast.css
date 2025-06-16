@@ -1,0 +1,40 @@
+#global-toast-container {
+  position: fixed;
+  top: 2rem; /* Change from bottom to top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center; /* Center toasts */
+  z-index: 9999;
+  pointer-events: none; /* container itself doesn't block clicks */
+}
+
+
+.global-toast {
+  background-color: #323232;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  font-size: 0.95rem;
+  font-family: 'Segoe UI', sans-serif;
+  white-space: nowrap;
+  max-width: 90vw;
+  pointer-events: auto; /* each toast can be hovered/closed */
+}
+
+.global-toast.show-toast {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 600px) {
+  #global-toast-container {
+    top: 1rem;
+  }
+}

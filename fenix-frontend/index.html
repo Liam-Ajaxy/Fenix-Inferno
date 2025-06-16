@@ -1,0 +1,853 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="global-toast.css">
+  <link rel="stylesheet" href="advanced-tools.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="login-popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <button id="hamburger" aria-label="Menu">
+  ☰
+</button>
+
+    <nav>
+     <div class="logo">
+    <img src="fenixLogoOfficial.png">
+   </div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#feed">Feed</a></li>
+    <li><a href="#about">About</a></li>
+    <li class="dropdown">
+      <a href="#tools" class="dropbtn">Tools ▼
+        <div class="dropdown-content">
+          <a href="#tool-password">🔒 Password Strength Checker</a>
+          <a href="#tool-cipher">🗝️ Cipher Decoder</a>
+          <a href="#tool-morse">·− Morse Code Generator</a>
+          <a href="#tool-passwordgen">🔑 Random Password Generator</a>
+        </div>
+      </a>
+    </li>
+        <li class="dropdown">
+      <a href="#skills" class="dropbtn">More ▼
+        <div class="dropdown-content">
+          <a href="#skills">🧠  Skills</a>
+          <a href="#contact">📞 Contact</a>
+          <a href="#partners">🤝 Partners</a>
+          <a href="#stacks">💻  Stacks</a>
+          <a href="#footer">📚  Webpages</a>
+        </div>
+      </a>
+    </li>
+    <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings"><i class="fas fa-cog"></i></a>
+</li>
+<li>
+    <div class="profile-wrapper">
+      <button id="profile-btn" aria-label="Profile">👤</button>
+      <div id="profile-panel" class="profile-panel hidden">
+        <p><strong>User:</strong> <span id="profile-username"></span></p>
+        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+</li>
+</ul>
+</nav>
+</header>
+<div class="floating-auth-links reveal">
+  <a href="login.html" style="background: #f4f2f2; border: 1px solid #4f46e5; color: #4f46e5;" target="_blank">Login</a>
+  <a href="signup.html" target="_blank">Sign Up</a>
+</div>
+
+    <section id="search-section" class="search-bar-container">
+      <input type="text" id="search-bar" placeholder="Search intelligence..." />
+    </section>
+
+<section id="search-results" class="hidden"></section>
+<p id="exit-hint" class="hidden">🔍 Click ESC to exit search.</p>
+<p id="no-results" class="hidden">No results found. <br>Click <b>Esc</b> to Exit </p>
+
+  <main id="main-content">
+
+<section id="home">
+  <div class="intro-wrapper">
+    <div class="intro-text">
+      <h2>Welcome!</h2>
+      <h1 class="typing-header">Fenix builds secure, intelligent, and beautifully designed systems. As a developement and ethical hacking, it crafts interfaces that think, adapt, and defend.</h1>
+      <h5 class="typing-rotator"></h5>
+      <a href="#partners" class="partner-btn">🤝 Connect to Our Partners</a>
+    </div>
+    <div class="img-wrapper-left">
+      <img src="fenixLogoOfficial.png" alt="Frank U-Cracker" class="block-image">
+    </div>
+  </div>
+
+  <div id="ratings" class="reveal">
+  <h2>Users</h2>
+<p class="ratings-intro">
+  Endorsed by field operatives and digital intelligence experts.
+</p>
+
+  <div class="ratings-grid">
+     <div class="ratings-grid static-grid">
+    <!-- Rating block -->
+    <div class="rating-card">
+      <img src="default-avatar.png" alt="User profile picture" class="rating-avatar" />
+      <h3 class="rating-username">Agent Phoenix</h3>
+      <p class="rating-message">Outstanding intelligence platform. The FENIX tools are precise and professional.</p>
+      <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+    </div>
+
+    <!-- Example with no profile picture -->
+    <div class="rating-card">
+      <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+      <h3 class="rating-username">Cyber Owl</h3>
+      <p class="rating-message">Excellent UI and highly useful for operational workflows.</p>
+      <div class="rating-stars">⭐⭐⭐⭐</div>
+    </div>
+
+    <div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Shadow Hawk</h3>
+  <p class="rating-message">FENIX offers a clean and highly usable interface. The tools are reliable even under high-pressure environments.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+
+
+<div class="ratings-carousel-wrapper">
+<div class="ratings-carousel">
+<div class="rating-card">
+  <img src="user2.jpg" alt="User profile picture" class="rating-avatar" />
+  <h3 class="rating-username">Agent Zero</h3>
+  <p class="rating-message">A solid collection of intelligence tools. The site performance is exceptional and the design is minimal and professional.</p>
+  <div class="rating-stars">⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Cipher Wolf</h3>
+  <p class="rating-message">Great experience overall. The Password Strength Checker and Cipher Decoder are very useful for field agents.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Dark Raven</h3>
+  <p class="rating-message">Impressive site. Navigation is intuitive and the intelligence tools are practical and efficient.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Data Phantom</h3>
+  <p class="rating-message">FENIX helps streamline our secure data workflows. Very polished experience.</p>
+  <div class="rating-stars">⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Quantum Blade</h3>
+  <p class="rating-message">Love the minimal design and speed of the tools. Exactly what agents need.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Ghost Fox</h3>
+  <p class="rating-message">One of the best intelligence UX/UI I’ve seen. FENIX is a serious toolkit.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Sentinel Eye</h3>
+  <p class="rating-message">Responsive, fast, and highly usable across all devices. Great work on the platform.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Neural Warden</h3>
+  <p class="rating-message">Using FENIX daily now. The tools help reduce our manual workload significantly.</p>
+  <div class="rating-stars">⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Silent Falcon</h3>
+  <p class="rating-message">Brilliant interface, love the flow and responsiveness. Recommended.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Vector Ghost</h3>
+  <p class="rating-message">Superb attention to detail. Everything from contact form to tools is elegant.</p>
+  <div class="rating-stars">⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">ZeroTrace Operative</h3>
+  <p class="rating-message">Security-first mindset clearly visible here. The site feels professional and solid.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Echo Specter</h3>
+  <p class="rating-message">The settings section is top-notch. Appreciate the attention to accessibility too.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Nova Striker</h3>
+  <p class="rating-message">Very intuitive platform, FENIX sets a new standard for intelligence UI design.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Orion Shade</h3>
+  <p class="rating-message">FENIX delivers beyond expectations. Tools are useful and extremely stable.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Black Ice Operative</h3>
+  <p class="rating-message">Great platform for agents needing quick access to intelligence tools.</p>
+  <div class="rating-stars">⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="Default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Delta Phantom</h3>
+  <p class="rating-message">Fantastic UX — clean and sharp interface. Great performance on mobile.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+
+<div class="rating-card">
+  <img src="default-avatar.png" alt="default avatar" class="rating-avatar" />
+  <h3 class="rating-username">Crimson Pulse</h3>
+  <p class="rating-message">FENIX is one of the most practical and well designed tools we’ve used in ops.</p>
+  <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+</div>
+</div>
+</div>
+  </div>
+  </div>
+
+
+</section>
+
+    <section id="projects" class="reveal">
+  <h2>Projects</h2> 
+
+  <div class="project-block">
+    <div class="intro-wrapper">
+    <div class="intro-text">
+      <h3>1. EMPyrean Breach Simulation</h3>
+    <p>EMPyrean Breach involved penetration testing on airborne networks during simulated EMP attacks. FPI conducted the exercise using EM-shielded payload containers with quantum-tolerant encryption. This revealed vulnerabilities in outdated aircraft systems, prompting aviation security overhauls globally. The project redefined airborne network resilience protocols.
+    </p>
+    </div>
+     <div class="img-wrapper">
+      <img src="jonathan-xu-vJbK24RGPRg.jpg" alt="Botnet Tracking Image" class="block-image">
+    </div>
+  </div>
+  </div>
+  
+  <div class="project-block">
+    <div class="intro-wrapper">
+    <div class="intro-text">
+    <h3>2. Phantom Recon</h3>
+    <p>
+      Phantom Recon was a reconnaissance training module for agents in Kali Linux environments. It focused on passive information gathering using tools like Nmap, DNSenum, and theHarvester. FPI operatives simulated nation-state surveillance, emphasizing stealth and data fidelity. The project trained over 150 operatives.
+    </p>
+    <a href="mailto:user74251224.us@gmail.com?subject=Training%20Inquiry&body=Hello%2C%20I%E2%80%99m%20interested%20in%20becoming%20a%20Phantom%20Recom." class="phantom-btn partner-btn requires-login">Train</a>
+    </div>
+    <div class="img-wrapper">
+      <img src="bermix-studio-bCrM2e1M0a4.jpg" alt="Botnet Tracking Image" class="block-image">
+    </div>
+  </div>
+  </div> 
+
+  <div class="project-block">
+     <div class="intro-wrapper">
+    <div class="intro-text">
+    <h3>3. Data Phantom Protocol</h3>
+    <p>
+      Data Phantom Protocol secured classified documents in compromised environments by mimicking corrupted file structures. When accessed by unauthorized entities, decoy code initiated silent lockdown routines. FPI used it to protect offshore client data centers, establishing its credibility for deception-based cyber defense.
+    </p>
+    </div>
+    <div class="img-wrapper">
+      <img src="markus-spiske-iar-afB0QQw.jpg" alt="Botnet Tracking Image" class="block-image">
+    </div>
+  </div>
+  <a href="projects.html" class="button requires-login">
+    <i class="fas fa-arrow-circle-right"></i>   View more projects</a>
+  </div>
+  </div>
+  <a href="#stacks" class="phantom-btn phantom-btn-stack partner-btn"></a>
+</section>
+
+
+<section id="partners" class="reveal requires-login">
+  <h2>Our Partners</h2>
+  <div class="partner-logos">
+<a href="https://vercel.com" target="_blank">
+  <img src="https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png" alt="Vercel Logo">
+</a>
+<a href="https://www.netlify.com" target="_blank">
+  <img src="https://seeklogo.com/images/N/netlify-logo-758722CDF4-seeklogo.com.png" alt="Netlify Logo">
+</a>
+<a href="https://firebase.google.com" target="_blank">
+  <img src="https://firebase.google.com/static/downloads/brand-guidelines/PNG/logo-vertical.png" alt="Firebase Logo">
+</a>
+<a href="https://figma.com" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma Logo">
+</a>
+<a href="https://notion.so" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion Logo">
+</a>
+<a href="https://supabase.com" target="_blank">
+  <img src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4" alt="Supabase Logo">
+</a>
+<a href="https://slack.com" target="_blank">
+  <img src="https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" alt="Slack Logo">
+</a>
+<a href="https://digitalocean.com" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/DigitalOcean_logo.svg" alt="DigitalOcean Logo">
+</a>
+<a href="https://intel.com" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/5968/5968344.png" alt="Intel Logo">
+</a>
+<a href="https://zoom.us" target="_blank">
+  <img src="https://img.icons8.com/ios-filled/100/000000/zoom.png" alt="Zoom Logo">
+</a>
+<a href="https://wordpress.com" target="_blank">
+  <img src="https://s.w.org/style/images/about/WordPress-logotype-wmark.png" alt="WordPress Logo">
+</a>
+<a href="https://heroku.com" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg" alt="Heroku Logo">
+</a>
+<a href="https://stackoverflow.com" target="_blank">
+  <img src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-logo.png" alt="Stack Overflow Logo">
+</a>
+  <a href="https://openai.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg" alt="OpenAI">
+  </a>
+</div>
+</section>
+
+    
+<section id="feed" class="feed-section">
+  <h2>Feed</h2>
+  <div class="articles-grid reveal">
+
+    <article class="article-card">
+      <div class="icon"><i class="fas fa-user-secret"></i></div>
+      <h3>1. Human Instinct vs. Artificial Calculation</h3>
+      <p>This article explores the irreplaceable role of human instinct in intelligence work, even in an age dominated by artificial intelligence...</p>
+      <button class="read-more" onclick="toggleExpand(this)">Read more ▼</button>
+      <div class="full-content hidden">
+        <p>The author reflects on real-world experience, highlighting a 2024 case where human agents noticed emotional and tonal shifts that AI missed. While machine learning excels in speed and pattern recognition, it still lacks the nuance, empathy, and foresight that define human perception. The future, the author suggests, lies not in choosing between humans or AI — but in augmenting human instinct with AI's speed to create a more powerful, adaptive intelligence partnership.</p>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <div class="icon"><i class="fas fa-brain"></i></div>
+      <h3>2. The Cognitive Code: Mapping the Mind Through Machines</h3>
+      <p>This reflection examines the intersection of AI and human cognition, questioning whether machines can replicate human intuition...</p>
+      <button class="read-more" onclick="toggleExpand(this)">Read more ▼</button>
+      <div class="full-content hidden">
+        <p>Through research comparing neural networks to brainwave simulations, the author identifies a critical difference: AI can recognize patterns, but it lacks emotional context. The piece emphasizes that true intelligence involves not just processing data, but understanding it within a living, emotional, and ethical framework. As AI advances, the author argues, empathy and responsibility must be built into its foundation—not just speed and accuracy.</p>
+      </div>
+    </article>
+
+    <article class="article-card">
+      <div class="icon"><i class="fas fa-eye"></i></div>
+      <h3>3. Digital Shadows: Identity in the Age of Surveillance</h3>
+      <p>This article explores the growing tension between surveillance technology and personal privacy...</p>
+      <button class="read-more" onclick="toggleExpand(this)">Read more ▼</button>
+      <div class="full-content hidden">
+        <p>Drawing from firsthand experience in monitoring metadata across public and private systems, the author highlights how deeply our digital behaviors expose us—often without our awareness. While pattern recognition offers powerful insights for intelligence, it also raises ethical concerns. The piece emphasizes that in today’s world, digital literacy is not optional but essential. It advocates for a future where technology protects as much as it empowers, calling for encrypted communication, transparent surveillance practices, and greater user control over personal data.</p>
+      </div>
+    </article>
+
+    <a href="feed.html" class="button requires-login">
+      <i class="fas fa-arrow-circle-right"></i>  View more Feeds</a>
+  </div>
+<div class="quotes reveal">
+  <h3><i class="fas fa-lightbulb"></i> Principles That Drive Action</h3>
+
+  <blockquote>
+    <i class="fas fa-play-circle quote-icon"></i>
+    “The best way to get started is to quit talking and begin doing.”
+  </blockquote>
+
+  <blockquote>
+    <i class="fas fa-forward quote-icon"></i>
+    “Don’t let yesterday take up too much of today.”
+  </blockquote>
+
+  <blockquote>
+    <i class="fas fa-arrow-up quote-icon"></i>
+    “It’s not whether you get knocked down, it’s whether you get up.”
+  </blockquote>
+
+  <blockquote>
+    <i class="fas fa-globe quote-icon"></i>
+    “People who are crazy enough to think they can change the world, are the ones who do.”
+  </blockquote>
+
+  <blockquote>
+    <i class="fas fa-fire quote-icon"></i>
+    “Failure will never overtake me if my determination to succeed is strong enough.”
+  </blockquote>
+</div>
+
+</section>
+
+
+<section id="tools" class="reveal">
+  <h2>Tools</h2>
+  <p class="tools-intro">
+    The FENIX intelligence suite provides a set of practical tools for enhancing operational security, analysis, and communication. Use these utilities responsibly to support your digital intelligence workflows.
+  </p>
+  <!-- Password Strength Checker -->
+  <div id="tool-password" class="tool-block">
+    <h3>🔒 Password Strength Checker</h3>
+    <input type="password" id="passwordInput" placeholder="Enter password to check" required/>
+    <button onclick="checkPasswordStrength()">Check Strength</button>
+    <p id="passwordStrengthResult"></p>
+  </div>
+
+  <!-- Cipher Decoder -->
+  <div id="tool-cipher" class="tool-block requires-login">
+    <h3>🗝️ Cipher Decoder (ROT13)</h3>
+    <textarea id="cipherInput" placeholder="Enter text to decode"></textarea>
+    <button onclick="decodeCipher()">Decode</button>
+    <p id="cipherResult"></p>
+  </div>
+
+  <!-- Morse Code Generator -->
+  <div id="tool-morse" class="tool-block requires-login">
+    <h3>·− Morse Code Generator</h3>
+    <textarea id="morseInput" placeholder="Enter text to convert to Morse"></textarea>
+    <button onclick="generateMorse()">Generate Morse</button>
+    <p id="morseResult"></p>
+  </div>
+
+  <!-- Random Password Generator -->
+  <div id="tool-passwordgen" class="tool-block">
+    <h3>🔑 Random Password Generator</h3>
+    <button onclick="generateRandomPassword()">Generate Password</button>
+    <p id="randomPasswordResult"></p>
+  </div>
+</section>
+
+      
+<section id="about" class="reveal">
+    <h2>About</h2>
+     <div class="intro-wrapper">
+    <div class="intro-text">
+    <h3>About Frank CO7</h3>
+    <p>Frank CO7 is the architect behind Siany and Open UI, and Chief of General Staff at Intersa. His ascent in strategic intelligence blends cyber-espionage expertise, diplomatic skill, and innovation in AI-driven security. Renowned for his work in cryptographic and quantum-resilient systems, Frank’s doctrine of Observational Supremacy has shaped modern counter-intelligence through predictive forensics and autonomous defense. Under his leadership, Intersa evolved into a global surveillance force, uniting silent reconnaissance with algorithmic enforcement. Frank CO7 remains a strategist and shadow general within the unseen realms of intelligence.</p>
+ </div>
+  <div class="img-wrapper">
+      <img src="amirhossein-hasani-I0Oa6QM5vfE.jpg" alt="Botnet Tracking Image" class="block-image">
+       <a href="#skills" class="button">Developer's Skills</a>
+    </div>
+  </div>
+ </section>
+
+ <section id="stacks" class="reveal requires-login">
+  <h2>Our Stack</h2>
+ <div class="stack-logos">
+  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5">
+  </a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3">
+  </a>
+  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript">
+  </a>
+  <a href="https://react.dev/" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
+  </a>
+  <a href="https://tailwindcss.com" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/67109815?s=200&v=4" alt="Tailwind CSS">
+  </a>
+  <a href="https://figma.com" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma">
+  </a>
+<a href="https://git-scm.com" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+</a>
+<a href="https://code.visualstudio.com" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code">
+</a>
+  <a href="https://vercel.com" target="_blank">
+    <img src="https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png" alt="Vercel">
+  </a>
+  <a href="https://netlify.com" target="_blank">
+    <img src="https://www.netlify.com/v3/img/components/logomark.png" alt="Netlify">
+  </a>
+  <a href="https://firebase.google.com" target="_blank">
+    <img src="https://firebase.google.com/static/downloads/brand-guidelines/PNG/logo-vertical.png" alt="Firebase">
+  </a>
+  <a href="https://supabase.com" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/54469796?s=200&v=4" alt="Supabase">
+  </a>
+  <a href="https://github.com" target="_blank">
+    <img src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg" alt="GitHub">
+  </a>
+    <a href="https://nodejs.org" target="_blank">
+    <img src="https://nodejs.org/static/images/logo.svg" alt="Node.js">
+  </a>
+  <a href="https://nextjs.org" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" alt="Next.js">
+  </a>
+</div>
+
+</section>
+
+<section id="skills" class="reveal">
+  <h2>Skills</h2>
+
+<div class="skills-grid reveal">
+    <div class="skill-card">
+      <h3><i class="fas fa-user-ninja intel"></i> Strategic Counter-Insurgency Planning</h3>
+      <p>Expertise in crafting proactive response frameworks against clandestine threats.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-globe cyber"></i> Geo-Cyber Diplomacy</h3>
+      <p>Orchestrating global cyber-political alliances and digital treaties.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-network-wired intel"></i> National Intelligence Coordination</h3>
+      <p>Leading multi-agency data fusion centers under high-alert operations.</p>
+    </div>
+
+  <a href="skills.html" class="button view-more-btn requires-login">
+    <i class="fas fa-arrow-circle-right"></i> View more Skills
+  </a>
+</div>
+</section>
+
+
+  <hr>  
+
+<div id="settings-wrapper">
+  <section id="settings">
+    <div class="settings-header">
+      <h2>Settings</h2>
+      <button id="close-settings" class="settings-close-btn" aria-label="Close Settings">✖</button>
+    </div>
+
+    <div class="settings-tabs">
+      <button class="tab-button active" data-tab="general">General</button>
+      <button class="tab-button" data-tab="advanced">Advanced</button>
+    </div>
+
+    <div class="settings-content">
+
+      <!-- GENERAL TAB -->
+      <div class="settings-tab-content" id="tab-general">
+        <p>Personalize your interface and secure your operational environment.</p>
+
+        <div class="setting-item">
+          <label for="colorMode">Enable Dark Mode</label>
+          <input type="checkbox" id="colorMode" onchange="toggleColorMode(this.checked ? 'dark' : 'light')">
+        </div>
+
+        <div class="setting-item">
+          <label for="language">Language:</label>
+          <select id="language" onchange="saveSetting('language', this.value)">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="rw">Kinyarwanda</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label for="fontSize">Font Size:</label>
+          <select id="fontSize" onchange="saveSetting('fontSize', this.value)">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+
+        <div class="setting-item role-only admin-only">
+          <label for="secureMode">Secure Mode:</label>
+          <input type="checkbox" id="secureMode" onchange="saveSetting('secureMode', this.checked)">
+        </div>
+      </div>
+
+      <!-- ADVANCED TAB -->
+      <div class="settings-tab-content hidden" id="tab-advanced">
+        <div class="setting-item">
+          <label>Interface Density:</label>
+          <select>
+            <option>Compact</option>
+            <option>Comfortable</option>
+            <option>Expanded</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>AI Assistant Mode:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Color Vision Accessibility:</label>
+          <select>
+            <option>Default</option>
+            <option>Protanopia</option>
+            <option>Deuteranopia</option>
+            <option>Tritanopia</option>
+            <option>Achromatopsia</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>Sound Feedback:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Reduced Motion:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Realtime Sync:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Language Style:</label>
+          <select>
+            <option>Formal</option>
+            <option>Casual</option>
+            <option>Technical</option>
+            <option>Minimal</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>Display Mode:</label>
+          <select>
+            <option>Default</option>
+            <option>Holographic UI</option>
+            <option>Minimal</option>
+            <option>Terminal Mode</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>Energy Saver Mode:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Stealth Mode (Privacy):</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Gesture & Voice Commands:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Environment Context Awareness:</label>
+          <input type="checkbox">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action Buttons -->
+    <div class="settings-actions">
+      <button class="button secondary" onclick="resetSettings()">Reset</button>
+      <button class="button" onclick="saveAllSettings()">Save Changes</button>
+    </div>
+  </section>
+</div>
+
+
+<section id="contact" class="reveal requires-login">
+  <h2>Contact Us</h2>
+  <form id="contact-form">
+    <div class="form-group">
+      <input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Your Name" />
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Your Email" />
+    </div>
+    <div class="form-group">
+      <textarea id="message" name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+    </div>
+    <button type="submit" class="button">Send</button>
+  </form>
+</section>
+
+
+  </main>
+
+ <footer id="footer" class="footer">
+
+  <div class="footer-info">
+    <div class="logo">
+    <img src="subLogoOfficial.png" alt="Open Universal Intelligence Logo">
+   </div>
+     <div class="footer-sections">
+    <div class="footer-column">
+      <h4>Sitemap</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#feed">Feed</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#settings">Settings</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#terms">Terms of Use</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#documentation">Documentation</a></li>
+        <li><a href="#api-reference">API Reference</a></li>
+        <li><a href="#developer-tools">Developer Tools</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#career">Careers</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#help-center">Help Center</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#community-forum">Community Forum</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>News</h4>
+      <ul>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#press">Press</a></li>
+        <li><a href="#announcement">Announcements</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li>Support Service: <a href="mailto:user74251224.us@gmail.com">user74251224.us@gmail.com</a></li>
+        <li><label>Phone:</label> <a href="tel:+250794359825">+250794359825</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Français</a></li>
+        <li><a href="#">Kinyarwanda</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Community</h4>
+      <ul>
+        <li><a href="#">Contributors</a></li>
+        <li><a href="#">Open Source</a></li>
+        <li><a href="#">Ambassadors</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-info">
+  </div>
+  </div>
+  <hr> <br>
+  <div class="footer-social-hr">
+   <div class="footer-social">
+    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://gitlab.com" target="_blank" aria-label="GitLab"><i class="fab fa-gitlab"></i></a>
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://twitter.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div><p>&copy; 2025 Fenix Inferno. All rights reserved.</p></div>
+  <div class="footer-developer"><a href="#about"> Senior Developer Frank</a></div>
+</div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+<div id="login-required" class="login-popup hidden">
+  <div class="login-popup-content">
+    <p>🔒 You need to log in to access this feature.</p>
+    <button id="close-login-popup" class="close-btn">Cancel</button>
+    <a href="login.html" class="button">Log In</a>
+  </div>
+</div>
+<!-- Include this audio element in your HTML -->
+<audio id="alert-sound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script src="script.js"></script>
+<script src="account.js"></script>
+<script src="advanced-tools.js"></script>
+<script src="login-popup.js"></script>
+
+<div id="global-toast-container"></div>
+
+</body>
+</html>
