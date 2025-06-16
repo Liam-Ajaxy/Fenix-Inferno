@@ -1,0 +1,94 @@
+/* STools section */
+#tools {
+    padding-top: 8rem;
+}
+/* Tools section title */
+#tools h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Tool block */
+.tool-block {
+  background: rgba(255, 255, 255, 0.05); /* subtle glass */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.295);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-margin-top: 100px; /* adjust to match your header height */
+}
+
+/* Tool block hover effect */
+.tool-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Tool block title */
+.tool-block h3 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #1f2937; /* adjust to match your header text color */
+}
+
+/* Inputs / textarea / button inside tool-block */
+.tool-block input,
+.tool-block textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #1f2937;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.tool-block textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.tool-block button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tool-block button:hover {
+  background-color: #059669;
+}
+
+/* Result paragraph */
+.tool-block p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #514f6d;
+  word-break: break-word; /* in case of long Morse or Cipher output */
+  white-space: pre-wrap; /* preserves formatting */
+}
+
+
+/* Tools Intro Block */
+.tools-intro {
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #979797; /* adjust if light mode */
+  text-align: center;
+  font-style: italic;
+  opacity: 0.9;
+}

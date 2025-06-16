@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="global-toast.css">
+  <link rel="stylesheet" href="advanced-tools.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+            <button id="hamburger" aria-label="Menu">☰</button>
+        <nav>
+        <div class="logo"><img src="fenixLogoOfficial.png"></div>
+        <ul>
+            <li><a href="index.html" class="back-home">← Home</a></li>
+            <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings">
+            <i class="fas fa-cog"></i>
+        </a>
+        </ul>
+        </nav>
+    </header>
+
+    <section style="background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d); padding: 16rem 5rem; display: flex; align-items: center; justify-content: center;">
+        <h1 style="font-size: 3rem;">Our Skills in Actions</h1>
+    </section>
+
+    
+<section id="skills" class="reveal">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <h3><i class="fas fa-user-ninja intel"></i> Strategic Counter-Insurgency Planning</h3>
+      <p>Expertise in crafting proactive response frameworks against clandestine threats.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-globe cyber"></i> Geo-Cyber Diplomacy</h3>
+      <p>Orchestrating global cyber-political alliances and digital treaties.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-network-wired intel"></i> National Intelligence Coordination</h3>
+      <p>Leading multi-agency data fusion centers under high-alert operations.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-user-shield intel"></i> Insider Threat Mitigation</h3>
+      <p>Architect of behavioral surveillance models to detect internal compromise.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-user-secret intel"></i> Covert Political Warfare</h3>
+      <p>Mastery of disinformation campaigns, black operations, and media manipulations.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-scale-balanced law"></i> Cyber Law Manipulation</h3>
+      <p>Deep understanding of jurisdictional loopholes and legal ambiguity in data warfare.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-bug cyber"></i> Advanced Exploitation Engineering</h3>
+      <p>Specialist in exploit development, reverse engineering, and obfuscation.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-mask cyber"></i> Stealth Network Infiltration</h3>
+      <p>Veteran in zero-trace penetration methods using custom-coded toolkits.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-brain ai"></i> AI-Powered Threat Modeling</h3>
+      <p>Designs threat anticipation models using real-time adaptive intelligence.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-shield-alt quantum"></i> Quantum Cryptography Integration</h3>
+      <p>Innovates post-quantum cryptosystems for future-proof defense.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-laptop-code dev"></i> Full-Stack Web Development</h3>
+      <p>Proficient in building intelligence interfaces with secure Node.js and Vue.js ecosystems.</p>
+    </div>
+
+    <div class="skill-card">
+      <h3><i class="fas fa-search-location intel"></i> Open-Source Intelligence (OSINT)</h3>
+      <p>Skilled in leveraging open data for situational awareness and adversary profiling.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<div id="settings-wrapper">
+  <section id="settings">
+    <div class="settings-header">
+      <h2>Settings</h2>
+      <button id="close-settings" class="settings-close-btn" aria-label="Close Settings">✖</button>
+    </div>
+
+    <div class="settings-tabs">
+      <button class="tab-button active" data-tab="general">General</button>
+      <button class="tab-button" data-tab="advanced">Advanced</button>
+    </div>
+
+    <div class="settings-content">
+
+      <!-- GENERAL TAB -->
+      <div class="settings-tab-content" id="tab-general">
+        <p>Personalize your interface and secure your operational environment.</p>
+
+        <div class="setting-item">
+          <label for="colorMode">Enable Dark Mode</label>
+          <input type="checkbox" id="colorMode" onchange="toggleColorMode(this.checked ? 'dark' : 'light')">
+        </div>
+
+        <div class="setting-item">
+          <label for="language">Language:</label>
+          <select id="language" onchange="saveSetting('language', this.value)">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="rw">Kinyarwanda</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label for="fontSize">Font Size:</label>
+          <select id="fontSize" onchange="saveSetting('fontSize', this.value)">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+
+        <div class="setting-item role-only admin-only">
+          <label for="secureMode">Secure Mode:</label>
+          <input type="checkbox" id="secureMode" onchange="saveSetting('secureMode', this.checked)">
+        </div>
+      </div>
+
+      <!-- ADVANCED TAB -->
+      <div class="settings-tab-content hidden" id="tab-advanced">
+        <div class="setting-item">
+          <label>Interface Density:</label>
+          <select>
+            <option>Compact</option>
+            <option>Comfortable</option>
+            <option>Expanded</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>AI Assistant Mode:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Color Vision Accessibility:</label>
+          <select>
+            <option>Default</option>
+            <option>Protanopia</option>
+            <option>Deuteranopia</option>
+            <option>Tritanopia</option>
+            <option>Achromatopsia</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>Sound Feedback:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Reduced Motion:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Realtime Sync:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Language Style:</label>
+          <select>
+            <option>Formal</option>
+            <option>Casual</option>
+            <option>Technical</option>
+            <option>Minimal</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>Display Mode:</label>
+          <select>
+            <option>Default</option>
+            <option>Holographic UI</option>
+            <option>Minimal</option>
+            <option>Terminal Mode</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label>Energy Saver Mode:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Stealth Mode (Privacy):</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Gesture & Voice Commands:</label>
+          <input type="checkbox">
+        </div>
+
+        <div class="setting-item">
+          <label>Environment Context Awareness:</label>
+          <input type="checkbox">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Action Buttons -->
+    <div class="settings-actions">
+      <button class="button secondary" onclick="resetSettings()">Reset</button>
+      <button class="button" onclick="saveAllSettings()">Save Changes</button>
+    </div>
+  </section>
+</div>
+
+
+<section id="contact" class="reveal">
+  <h2>Contact Us</h2>
+  <form id="contact-form">
+    <div class="form-group">
+      <input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Your Name" />
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Your Email" />
+    </div>
+    <div class="form-group">
+      <textarea id="message" name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+    </div>
+    <button type="submit" class="button">Send</button>
+  </form>
+</section>
+
+
+  </main>
+
+ <footer class="footer">
+
+  <div class="footer-info">
+    <div class="logo">
+    <img src="subLogoOfficial.png" alt="Open Universal Intelligence Logo">
+   </div>
+     <div class="footer-sections">
+    <div class="footer-column">
+      <h4>Sitemap</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#feed">Feed</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#terms">Terms of Use</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#cookie-policy">Cookie Policy</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#documentation">Documentation</a></li>
+        <li><a href="#api-reference">API Reference</a></li>
+        <li><a href="#developer-tools">Developer Tools</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#career">Careers</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#help-center">Help Center</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#community-forum">Community Forum</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>News</h4>
+      <ul>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#press">Press</a></li>
+        <li><a href="#announcement">Announcements</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Contact</h4>
+      <ul>
+        <li>Developer's email: <a href="mailto:user74251224.us@gmail.com">user74251224.us@gmail.com</a></li>
+        <li>HL-Email: <a href="mailto:fenix.support@gmail.com">fenix.support.us@gmail.com</a></li>
+        <li><label>Phone:</label> <a href="tel:+250794359825">+250794359825</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Languages</h4>
+      <ul>
+        <li><a href="#">English</a></li>
+        <li><a href="#">Français</a></li>
+        <li><a href="#">Kinyarwanda</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h4>Community</h4>
+      <ul>
+        <li><a href="#">Contributors</a></li>
+        <li><a href="#">Open Source</a></li>
+        <li><a href="#">Ambassadors</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-info">
+  </div>
+  </div>
+  <hr> <br>
+  <div class="footer-social-hr">
+   <div class="footer-social">
+    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://gitlab.com" target="_blank" aria-label="GitLab"><i class="fab fa-gitlab"></i></a>
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://twitter.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <div><p>&copy; 2025 Fenix Inferno. All rights reserved.</p></div>
+  <div class="footer-developer"><a href="#about"> Senior Developer Frank</a></div>
+</div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+<script src="script.js"></script>
+<script src="account.js"></script>
+<script src="advanced-tools.js"></script>
+<script src="crud.js"></script>
+
+<div id="global-toast-container"></div>
+
+</body>
+</html>
