@@ -7,10 +7,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'SiaBgdBw10/H4ck3r_db.sql',
-  database: 'fenixdb'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 };
 
 
