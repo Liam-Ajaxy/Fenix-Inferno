@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,9 @@ const dbConfig = {
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
 };
+
+// === Serve Frontend from ../public ===
+app.use(express.static(path.join(__dirname, '../public')));
 
 // === CONTACT FORM API ===
 app.post('/api/contact', async (req, res) => {
