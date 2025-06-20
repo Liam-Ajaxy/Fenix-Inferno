@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FENIX Legal Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: #f5f5f5;
+      text-align: center;
+      padding: 20px 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 {
+      color: #007acc;
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1rem;
+      color: #555;
+    }
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #007acc;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.2s ease;
+    }
+    nav a:hover, nav a.active {
+      background-color: #e6f3ff;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+    .section {
+      display: none;
+      background: #fdfdfd;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.3s ease;
+    }
+    .section.active {
+      display: block;
+    }
+    .section h2 {
+      color: #007acc;
+      margin-bottom: 15px;
+    }
+    .section ul {
+      padding-left: 20px;
+    }
+    .section li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .section li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: #00b894;
+    }
+    footer {
+      background: #f0f0f0;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+    }
+    footer img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    footer p {
+      color: #444;
+      font-size: 0.9rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FENIX Legal Center</h1>
+    <p>Your rights. Your data. Our responsibility.</p>
+  </header>
+
+  <nav>
+    <ul>
+        <li><a href="index.html" title="Back to FENIX"><i class="fas fa-arrow-left"></i></a></li>
+      <li><a href="#terms" class="nav-link" data-section="terms">Terms</a></li>
+      <li><a href="#privacy" class="nav-link" data-section="privacy">Privacy</a></li>
+      <li><a href="#cookies" class="nav-link" data-section="cookies">Cookies</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="terms" class="section active">
+      <h2>Terms of Use</h2>
+      <ul>
+        <li><strong>Authorized Use:</strong> Use responsibly and legally.</li>
+        <li><strong>Ownership:</strong> All content is property of FENIX unless noted.</li>
+        <li><strong>Security:</strong> Users are responsible for their access.</li>
+        <li><strong>Updates:</strong> Terms may change without prior notice.</li>
+      </ul>
+    </section>
+
+    <section id="privacy" class="section">
+      <h2>Privacy Policy</h2>
+      <ul>
+        <li><strong>Minimal Collection:</strong> We only collect what's necessary.</li>
+        <li><strong>Data Safety:</strong> AES-256 encryption protects your data.</li>
+        <li><strong>No Sale:</strong> We don’t sell or trade personal info.</li>
+        <li><strong>User Rights:</strong> You may request, update, or delete your data.</li>
+      </ul>
+    </section>
+
+    <section id="cookies" class="section">
+      <h2>Cookie Policy</h2>
+      <ul>
+        <li><strong>Purpose:</strong> For login, preferences, and security.</li>
+        <li><strong>Analytics:</strong> Anonymous usage tracking for improvements.</li>
+        <li><strong>Control:</strong> You can disable cookies anytime via browser.</li>
+        <li><strong>Expiration:</strong> Based on session or purpose, automatically cleared.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <img src="lightFenixLogo.png" alt="FENIX Logo" />
+    <p>&copy; 2025 FENIX Intelligence. All rights reserved.</p>
+  </footer>
+
+ <script>
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const hash = window.location.hash.substring(1); // e.g. "privacy"
+
+  if (hash) {
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+      if (sec.id === hash) sec.classList.add('active');
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.section === hash);
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.dataset.section;
+      history.replaceState(null, "", `#${targetId}`);
+
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      sections.forEach(sec => {
+        sec.classList.remove('active');
+        if (sec.id === targetId) sec.classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

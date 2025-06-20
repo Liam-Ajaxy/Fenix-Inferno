@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FENIX Support</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f9f9f9;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: #0077cc; }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #0077cc;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+
+    section { padding: 2rem; }
+
+    /* Help Center */
+    #help input {
+      width: 100%; max-width: 600px;
+      display: block; margin: 1rem auto;
+      padding: 0.8rem; font-size: 1rem;
+      border: 1px solid #ccc; border-radius: 4px;
+    }
+    .help-cards {
+      display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 2rem;
+    }
+    .help-card {
+      background: #fff; border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem; text-align: center;
+    }
+    .help-card h3 { margin-bottom: 0.5rem; color: #0077cc; }
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #0077cc; color: #fff;
+      border-radius: 5px; text-decoration: none;
+    }
+    .btn.outline {
+      background: none;
+      color: #0077cc;
+      border: 2px solid #0077cc;
+    }
+
+    /* FAQ */
+    #faqs .faq-item {
+      max-width: 700px; margin: auto;
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 0;
+    }
+    .faq-item h4 {
+      cursor: pointer; margin: 0;
+      font-size: 1.1rem; color: #0077cc;
+    }
+    .faq-answer {
+      display: none; margin-top: 0.5rem;
+      color: #333; font-size: 0.95rem;
+    }
+
+    /* Forum */
+    #forum ul {
+      list-style: none; padding: 0;
+      max-width: 700px; margin: 2rem auto;
+    }
+    #forum li {
+      border-bottom: 1px solid #ddd;
+      padding: 0.8rem 0;
+    }
+    #forum a { font-weight: 500; color: #0077cc; }
+    #forum span {
+      display: block;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      nav a { display: block; margin: 0.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">FENIX</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#help">Help Center</a>
+      <a href="#faqs">FAQs</a>
+      <a href="#forum">Community Forum</a>
+      <a href="explore.html">Explore</a>
+    </nav>
+  </header>
+
+  <!-- HELP CENTER -->
+  <section id="help">
+    <h2>Help Center</h2>
+    <input type="search" placeholder="Search help articles…" />
+    <div class="help-cards">
+      <div class="help-card">
+        <h3>Getting Started</h3>
+        <p>How to set up and use your FENIX profile.</p>
+        <a href="#" class="btn">Explore</a>
+      </div>
+      <div class="help-card">
+        <h3>Account Settings</h3>
+        <p>Update email, change password, and control privacy.</p>
+        <a href="#" class="btn">Explore</a>
+      </div>
+      <div class="help-card">
+        <h3>Integrations</h3>
+        <p>Connect FENIX to third-party tools and platforms.</p>
+        <a href="#" class="btn">Explore</a>
+      </div>
+      <div class="help-card">
+        <h3>Troubleshooting</h3>
+        <p>Resolve common issues and technical errors.</p>
+        <a href="#" class="btn">Explore</a>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="#" class="btn outline">Contact Support</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faqs">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h4>What is FENIX?</h4>
+      <div class="faq-answer">FENIX is an intelligence-focused web ecosystem featuring AI, open UI standards, and user-centered tools.</div>
+    </div>
+    <div class="faq-item">
+      <h4>Can I customize my dashboard?</h4>
+      <div class="faq-answer">Yes! Visit your Settings > Layouts to personalize your dashboard experience.</div>
+    </div>
+    <div class="faq-item">
+      <h4>Is there a mobile version?</h4>
+      <div class="faq-answer">FENIX is fully responsive and works on all modern mobile browsers.</div>
+    </div>
+    <div class="faq-item">
+      <h4>How can I report a bug?</h4>
+      <div class="faq-answer">You can contact support or post in the Community Forum under “Bug Reports”.</div>
+    </div>
+  </section>
+
+  <!-- FORUM -->
+  <section id="forum">
+    <h2>Community Forum</h2>
+    <ul>
+      <li>
+        <a href="#">🔧 Feature request: FENIX Analytics dashboard</a>
+        <span>14 replies • Last active 2h ago</span>
+      </li>
+      <li>
+        <a href="#">❓ How to embed Sora output inside FENIX UI</a>
+        <span>6 replies • Last active 4h ago</span>
+      </li>
+      <li>
+        <a href="#">🐞 Login issues on legacy browsers</a>
+        <span>3 replies • Last active 1d ago</span>
+      </li>
+    </ul>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="#" class="btn outline">Browse All Topics</a>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.faq-item h4').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

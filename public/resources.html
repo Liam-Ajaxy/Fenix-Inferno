@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FENIX Resources</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #fff; color: #222; line-height: 1.6; }
+
+    header {
+      background: #f5f5f5;
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 { color: #007acc; font-size: 2rem; }
+    header p { color: #555; font-size: 1rem; }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #007acc;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+    nav a:hover, nav a.active { background: #e6f3ff; }
+
+    main {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .section {
+      display: none;
+      padding: 30px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fdfdfd;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.3s ease;
+    }
+    .section.active { display: block; }
+    .section h2 {
+      color: #007acc;
+      margin-bottom: 15px;
+    }
+    .section p { margin-bottom: 20px; }
+
+    footer {
+      background: #f0f0f0;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+    }
+    footer img { width: 100px; margin-bottom: 10px; }
+    footer p { color: #444; font-size: 0.9rem; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      nav a { display: block; margin: 6px auto; }
+      .section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FENIX Resources</h1>
+    <p>Access technical references, integration guides, and developer tools</p>
+  </header>
+
+  <nav>
+    <a href="index.html" title="Back to FENIX"><i class="fas fa-arrow-left"></i></a>
+    <a href="#" class="nav-link active" data-section="documentation">Documentation</a>
+    <a href="#" class="nav-link" data-section="api">API Reference</a>
+    <a href="#" class="nav-link" data-section="devtools">Developer Tools</a>
+  </nav>
+
+  <main>
+    <section id="documentation" class="section active">
+      <h2>Documentation</h2>
+      <p>
+        Get started with detailed technical documentation covering FENIX modules, setup steps, best practices, and troubleshooting tips. Our guides help developers, analysts, and admins alike.
+      </p>
+      <p>
+        Whether you're deploying tools, customizing UIs, or managing data securely — you’ll find guidance here.
+      </p>
+    </section>
+
+    <section id="api" class="section">
+      <h2>API Reference</h2>
+      <p>
+        Integrate FENIX intelligence tools into your own systems using our secure, well-documented API. Learn about endpoints, authentication, rate limits, and sample payloads.
+      </p>
+      <p>
+        Every request is encrypted, and access is role-controlled for both internal and external agents.
+      </p>
+    </section>
+
+    <section id="devtools" class="section">
+      <h2>Developer Tools</h2>
+      <p>
+        Discover essential utilities that power FENIX: CLI tools, UI components, SDKs, and extensions for VS Code, Postman, and browser integration.
+      </p>
+      <p>
+        These tools are built for speed, clarity, and compatibility across development environments.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <img src="lightFenixLogo.png" alt="FENIX Logo" />
+    <p>&copy; 2025 FENIX Intelligence. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+    const hash = window.location.hash.substring(1);
+
+    function activateSection(sectionId) {
+      sections.forEach(sec => {
+        sec.classList.remove('active');
+        if (sec.id === sectionId) sec.classList.add('active');
+      });
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.dataset.section === sectionId);
+      });
+    }
+
+    if (hash) activateSection(hash);
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const sectionId = link.dataset.section;
+        history.replaceState(null, '', `#${sectionId}`);
+        activateSection(sectionId);
+      });
+    });
+  </script>
+
+</body>
+</html>

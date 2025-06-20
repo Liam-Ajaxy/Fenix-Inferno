@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FENIX – Explore & Support</title>
+  <style>
+    /* ====== BASIC RESET ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #0077cc;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      position: relative;
+      padding: 0.5rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #0077cc;
+    }
+
+    /* ====== SECTIONS ====== */
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    section {
+      padding: 2rem;
+    }
+
+    /* ====== RESOURCES ====== */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .resource-item {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .resource-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .resource-item h3 {
+      margin: 0.8rem 0 0.2rem;
+    }
+
+    .resource-item p {
+      padding: 0 1rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* ====== SUPPORT ====== */
+    #support {
+      background: #fff;
+    }
+
+    .faq {
+      margin: 1rem auto;
+      max-width: 700px;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item h4 {
+      cursor: pointer;
+      margin: 0;
+      font-size: 1.1rem;
+      color: #0077cc;
+    }
+
+    .faq-answer {
+      display: none;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .support-links {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .support-links a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.8rem 1.2rem;
+      background: #0077cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+
+    /* ====== ABOUT ====== */
+    #about {
+      background: #eef2f5;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .about-section h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .about-section p {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .resource-item img {
+        height: 160px;
+      }
+
+      .faq-answer {
+        font-size: 0.9rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .support-links a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">FENIX</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#resources">Resources</a>
+      <a href="#support">Support</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <h2>Resources</h2>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <a href="https://openai.com/sora" target="_blank">
+          <img src="https://img.youtube.com/vi/2fAPgOCjToA/0.jpg" alt="Astronaut in desert">
+        </a>
+        <h3>Cinematic Astronaut</h3>
+        <p>A movie-trailer style astronaut walking through a desert with cinematic lighting.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://openai.com/sora" target="_blank">
+          <img src="https://img.youtube.com/vi/HK6y8DAPN_0/0.jpg" alt="Big Sur coastline">
+        </a>
+        <h3>Big Sur Coast</h3>
+        <p>Drone cam waves crashing on cliffs—Sora captures nature with realism.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://openai.com/sora" target="_blank">
+          <img src="https://img.youtube.com/vi/uyl66jmRmsA/0.jpg" alt="Mammoths in snow">
+        </a>
+        <h3>Mammoths in Snow</h3>
+        <p>Woolly mammoths walking through snowy landscapes—full physics-aware generation.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://openai.com/sora" target="_blank">
+          <img src="https://img.youtube.com/vi/0twMaQy_aL4/0.jpg" alt="Tokyo Neon Walk">
+        </a>
+        <h3>Tokyo Neon Walk</h3>
+        <p>Neon-lit Tokyo street scene with reflective puddles and pedestrian motion.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://openai.com/sora" target="_blank">
+          <img src="https://img.youtube.com/vi/54n9DAKnTmk/0.jpg" alt="Undersea papercraft">
+        </a>
+        <h3>Undersea Papercraft</h3>
+        <p>Surreal coral reef in paper-craft style—a creative and illustrative showcase.</p>
+      </div>
+      <div class="resource-item">
+        <a href="https://openai.com/sora" target="_blank">
+          <img src="https://img.youtube.com/vi/J7u443icu1m/0.jpg" alt="Golden Retriever Clip">
+        </a>
+        <h3>Golden Retriever Clip</h3>
+        <p>Playful golden retriever in motion—demonstrating detailed animal animation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section id="support">
+    <h2>Support</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>What is FENIX?</h4>
+        <div class="faq-answer">FENIX is a futuristic platform focusing on ethical intelligence, open UI, and universal digital accessibility.</div>
+      </div>
+      <div class="faq-item">
+        <h4>How do I contribute to FENIX?</h4>
+        <div class="faq-answer">You can contribute via GitHub, join our community forum, or participate in our feedback campaigns.</div>
+      </div>
+      <div class="faq-item">
+        <h4>Is Sora integrated into FENIX?</h4>
+        <div class="faq-answer">Not directly, but we showcase Sora's capabilities as part of our future-focused inspiration suite.</div>
+      </div>
+      <div class="faq-item">
+        <h4>Is my data safe?</h4>
+        <div class="faq-answer">We follow strict privacy policies and cookie protections to ensure your data stays private and secure.</div>
+      </div>
+      <div class="faq-item">
+        <h4>Can I join the FENIX team?</h4>
+        <div class="faq-answer">Yes, visit our Careers section to find open roles and join the intelligence revolution.</div>
+      </div>
+    </div>
+
+    <div class="support-links">
+      <a href="center.html">Visit Help Center</a>
+      <a href="center.html">Join Community Forum</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-section">
+      <h3>Our Mission</h3>
+      <p>FENIX is building Open Universal Intelligence, driven by ethics, clarity, and global access to AI solutions for every human.</p>
+    </div>
+    <div class="about-section">
+      <h3>Team</h3>
+      <p>Our team combines developers, philosophers, and futurists shaping the next generation of digital intelligence.</p>
+    </div>
+    <div class="about-section">
+      <h3>Careers</h3>
+      <p>Work on real-world impactful problems. Find your purpose with FENIX. Browse roles in engineering, design, and strategy.</p>
+    </div>
+  </section>
+
+  <script>
+    // Toggle FAQ dropdowns
+    document.querySelectorAll('.faq-item h4').forEach((question) => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  </script>
+</body>
+</html>

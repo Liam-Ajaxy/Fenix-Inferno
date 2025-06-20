@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FENIX Language Support</title>
+  <style>
+    /* ... your existing styles ... */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: #f5f5f5;
+      text-align: center;
+      padding: 20px 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 {
+      color: #007acc;
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1rem;
+      color: #555;
+    }
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #007acc;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.2s ease;
+    }
+    nav a:hover, nav a.active {
+      background-color: #e6f3ff;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+    .section {
+      background: #fdfdfd;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.3s ease;
+    }
+    .section h2 {
+      color: #007acc;
+      margin-bottom: 15px;
+    }
+    .section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .section li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    .section li:hover {
+        background: #f7f7f7;
+        color: #007acc;
+        cursor: pointer;
+    }
+    .flag {
+      width: 28px;
+      height: 18px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    }
+    footer {
+      background: #f0f0f0;
+      text-align: center;
+      padding: 30px 20px;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+    }
+    footer img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    footer p {
+      color: #444;
+      font-size: 0.9rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FENIX Language Support</h1>
+    <p>Explore supported languages for your region.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html" title="Back to FENIX">&#8592; Back to Fenix</a></li>
+      <li><a href="languages.html" class="active">Languages</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="section">
+      <h2>Available Languages</h2>
+      <ul>
+  <li><img src="https://flagcdn.com/us.svg" alt="English Flag" class="flag" /> English (Default)</li>
+  <li><img src="https://flagcdn.com/es.svg" alt="Spanish Flag" class="flag" /> Español (Coming Soon)</li>
+  <li><img src="https://flagcdn.com/cn.svg" alt="Chinese Flag" class="flag" /> 中文 (Coming Soon)</li>
+  <li><img src="https://flagcdn.com/fr.svg" alt="French Flag" class="flag" /> Français (Coming Soon)</li>
+  <li><img src="https://flagcdn.com/de.svg" alt="German Flag" class="flag" /> Deutsch (Coming Soon)</li>
+  <li><img src="https://flagcdn.com/ar.svg" alt="Arabic Flag" class="flag" /> العربية (Coming Soon)</li>
+  <li><img src="https://flagcdn.com/pt.svg" alt="Portuguese Flag" class="flag" /> Português (Coming Soon)</li>
+  <li><img src="https://flagcdn.com/ru.svg" alt="Russian Flag" class="flag" /> Русский (Coming Soon)</li>
+      </ul>
+    </section>
+
+    <section class="section" style="margin-top: 30px;">
+      <h2>Note</h2>
+      <p>Auto-detection and translation support is under development. For now, content is available in English only. You can still navigate the site freely.</p>
+    </section>
+  </main>
+
+  <footer>
+    <img src="lightFenixLogo.png" alt="FENIX Logo" />
+    <p>&copy; 2025 FENIX Intelligence. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
