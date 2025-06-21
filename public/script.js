@@ -378,8 +378,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
 // =============== Req to Backend =====================
+
+// Auto-switch base API URL depending on environment
+const API_BASE = location.hostname === 'localhost'
+  ? 'http://localhost:10000'
+  : 'https://fenix-inferno-1.onrender.com'; // Replace with your actual backend subdomain
+
 // Handle contact form submission
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM fully loaded');
@@ -390,35 +395,27 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', function(event) {
       event.preventDefault();
 
-      // Get field values
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
 
-      // Debug logs
-      console.log('Name value:', name);
-
-      // Name validation regex: only letters, spaces, hyphens, apostrophes
       const nameRegex = /^[a-zA-Z\s'-]+$/;
-      console.log('Regex valid:', nameRegex.test(name));
-
       if (!nameRegex.test(name)) {
         showToast(toastIcons.error, 'Invalid name', toastColors.error);
-        return; // Stop sending the form!
+        return;
       }
 
       console.log('Sending:', { name, email, message });
 
-      // Send to backend
-      fetch('http://localhost:10000/api/contact', {
+      fetch(`${API_BASE}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message })
       })
         .then(response => {
           if (response.ok) {
-            showToast(toastIcons.success , 'Message sent', toastColors.success);
-            contactForm.reset(); // Reset form
+            showToast(toastIcons.success, 'Message sent', toastColors.success);
+            contactForm.reset();
           } else {
             throw new Error('Failed to send message.');
           }
@@ -432,8 +429,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Contact form not found!');
   }
 });
-
-
 
 
 // ===============AOS Header Effects=======================

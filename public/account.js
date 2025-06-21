@@ -1,5 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', function () {
+  const API_BASE = location.hostname === 'localhost'
+    ? 'http://localhost:10000'
+    : 'https://fenix-inferno-1.onrender.com'; // <-- Replace with your deployed backend URL
+
   console.log('DOM fully loaded');
 
   // --- Load user info ---
@@ -74,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const password = document.getElementById('login-password').value;
 
       try {
-        const response = await fetch('http://localhost:10000/api/login', {
+        const response = await fetch(`${API_BASE}/api/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, password })
@@ -112,14 +115,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const password = document.getElementById('signup-password').value;
       const confirmPassword = document.getElementById('signup-confirm-password').value;
 
-
       if (password !== confirmPassword) {
-        alert("Passwords do not match!",);
+        alert("Passwords do not match!");
         return;
       }
 
       try {
-        const response = await fetch('http://localhost:10000/api/signup', {
+        const response = await fetch(`${API_BASE}/api/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name, email, password })
