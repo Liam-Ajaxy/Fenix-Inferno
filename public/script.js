@@ -382,8 +382,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Auto-switch base API URL depending on environment
 const API_BASE = location.hostname === 'localhost'
-  ? 'http://localhost:10000'
-  : 'https://fenix-inferno-1.onrender.com'; // Replace with your actual backend subdomain
+  ? 'http://localhost:3000'
+  : 'https://fenix-inferno-1.onrender.com';
 
 // Handle contact form submission
 document.addEventListener('DOMContentLoaded', () => {
