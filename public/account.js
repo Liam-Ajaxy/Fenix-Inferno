@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const API_BASE = location.hostname === 'localhost'
-    ? 'http://localhost:3000'
-    : 'https://fenix-inferno-1.onrender.com';
+const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname) || location.protocol === 'file:';
+const API_BASE = isLocal
+  ? 'http://localhost:3000'
+  : 'https://fenix-inferno-1.onrender.com';
 
   console.log('DOM fully loaded');
 
@@ -61,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.removeItem('userEmail');
 
       showToast(toastIcons.warning, "You've been logged out.", toastColors.warning);
-      window.location.href = 'login.html';
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 3000);
+      
     });
   }
 

@@ -381,9 +381,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // =============== Req to Backend =====================
 
 // Auto-switch base API URL depending on environment
-const API_BASE = location.hostname === 'localhost'
+const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname) || location.protocol === 'file:';
+const API_BASE = isLocal
   ? 'http://localhost:3000'
   : 'https://fenix-inferno-1.onrender.com';
+
 
 // Handle contact form submission
 document.addEventListener('DOMContentLoaded', () => {
@@ -422,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
           console.error('Error:', error);
-          showToast(toastIcons.error, "System failed to send", toastColors.error);
+          showToast(toastIcons.error, "An error occurred during contact", toastColors.error);
         });
     });
   } else {
