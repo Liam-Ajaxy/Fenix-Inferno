@@ -134,19 +134,25 @@ body.lock-scroll {
       display: flex;
       gap: 1rem;
     }
-    nav li a {
-      font-weight: 600;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      transition: 0.3s;
-    }
-    nav li a:hover {
-      background: #e0e7ff;
-      color: #4f46e5;
-    }
-    nav li a:focus {
-      color: #4f46e5;
-    }
+nav li a {
+  font-weight: 600;
+  margin: 0.5rem;
+  position: relative;
+  padding-bottom: 4px;
+  background-image: linear-gradient(to right, blue 100%);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  transition: background-size 0.3s ease, color 0.3s;
+}
+
+nav li a:not(.dropbtn):hover {
+  background-size: 100% 2px;
+}
+nav li a:not(.dropbtn):focus {
+  color: #4f46e5;
+}
+
 
     /* Dropdown */
 .dropdown .dropdown-content {
@@ -325,7 +331,7 @@ body.lock-scroll {
 
 .partner-btn:hover {
   background: #3730a3;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.457);
 }
 
 /* Pause shimmer on hover */

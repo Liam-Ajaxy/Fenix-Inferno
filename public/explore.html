@@ -46,18 +46,25 @@
       display: flex;
       gap: 1.5rem;
     }
+nav a {
+  font-weight: 600;
+  margin: 0.5rem;
+  position: relative;
+  padding-bottom: 4px;
+  background-image: linear-gradient(to right, blue 100%);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  transition: background-size 0.3s ease, color 0.3s;
+}
 
-    nav a {
-      position: relative;
-      padding: 0.5rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover {
-      color: #0077cc;
-    }
-
+nav a:hover {
+  background-size: 100% 2px;
+}
+nav a:focus {
+  background-size: 100% 2px;
+  color: #4f46e5;
+}
     /* ====== SECTIONS ====== */
     h2 {
       font-size: 2rem;
