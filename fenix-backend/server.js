@@ -69,6 +69,7 @@ app.post('/api/login', async (req, res) => {
 
   try {
     const connection = await mysql.createConnection(dbConfig);
+    console.log('✅ DB connected on Render');
     const [rows] = await connection.execute('SELECT * FROM users WHERE email = ?', [email]);
     await connection.end();
 
@@ -85,6 +86,7 @@ app.post('/api/login', async (req, res) => {
 
     res.json({ success: true, token, userName: user.name, email: user.email });
   } catch (err) {
+    console.error('❌ DB connection failed:', err.message);
     console.error(err);
     res.status(500).json({ message: 'Internal server error' });
   }
@@ -169,6 +171,21 @@ app.post('/api/settings', (req, res) => {
   console.log('Settings updated:', settings);
   res.json({ message: 'Settings updated successfully' });
 });
+
+// === TEST DB CONNECTION ===
+app.get('/api/test-db', async (req, res) => {
+  try {
+    const connection = await mysql.createConnection(dbConfig);
+    const [rows] = await connection.execute('SELECT NOW() AS server_time');
+    await connection.end();
+
+    res.json({ success: true, message: '✅ DB connection successful', serverTime: rows[0].server_time });
+  } catch (error) {
+    console.error('❌ DB connection test failed:', error.message);
+    res.status(500).json({ success: false, message: '❌ Failed to connect to DB', error: error.message });
+  }
+});
+
 
 // === START SERVER ===
 app.listen(PORT, () => {
