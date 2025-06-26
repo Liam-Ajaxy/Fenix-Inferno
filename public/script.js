@@ -167,69 +167,124 @@ tabButtons.forEach(button => {
   });
 });
 
-  // ==============Search functionality===============
-  const searchInput = document.getElementById("search-bar");
+const searchInput = document.getElementById("search-bar");
+const searchWrapper = document.querySelector(".search-wrapper");
+const searchButton = document.getElementById("search-btn");
+const closeSearchBtn = document.getElementById("close-search-btn");
 const resultsContainer = document.getElementById("search-results");
 const noResults = document.getElementById("no-results");
 const exitHint = document.getElementById("exit-hint");
+const googleFallback = document.getElementById("google-fallback");
+const googleLink = document.getElementById("google-link");
 const mainContent = document.getElementById("main-content");
+
 const allSearchables = document.querySelectorAll(
-  "article, h2, h3, .project-block, .quote-block, .setting-item, .skills-grid div, .quotes blockquote, #contact"
+  "article, .project-block, .quote-block, .setting-item, .skills-grid div, .quotes blockquote, #contact"
 );
 
-let searchTimeout;
+// === Expand on focus ===
+searchInput.addEventListener("focus", () => {
+  searchWrapper.classList.add("active");
+});
 
-searchInput.addEventListener("input", () => {
-  clearTimeout(searchTimeout); // Clear previous delay
-
-  searchTimeout = setTimeout(() => {
-    const query = searchInput.value.trim().toLowerCase();
-    const queryWords = query.split(/\s+/).filter(w => w.length > 1);
-
-    // If search is empty, reset everything
-    if (!query) {
-      document.body.classList.remove("search-mode");
-      resultsContainer.classList.add("hidden");
-      noResults.classList.remove("show");
-      exitHint.classList.remove("show");
-      mainContent.classList.remove("hidden");
-      return;
+// === Shrink on blur only if input is empty ===
+searchInput.addEventListener("blur", () => {
+  setTimeout(() => {
+    if (!searchInput.value.trim()) {
+      searchWrapper.classList.remove("active");
     }
+  }, 100); // small delay to allow click events to fire first
+});
 
-    // Activate search mode
-    document.body.classList.add("search-mode");
-    resultsContainer.innerHTML = "";
-    mainContent.classList.add("hidden");
-
-    let foundAny = false;
-
-    allSearchables.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      const match = queryWords.some(word =>
-        new RegExp(`\\b${word}\\b`).test(text)
-      );
-
-     if (match) {
-    const clone = item.cloneNode(true);
-    clone.classList.add("search-result-item"); // Add this class
-    resultsContainer.appendChild(clone);
-    foundAny = true;
+// === Run search on Enter key ===
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    triggerSearch();
   }
 });
 
-
-    // Show/hide based on foundAny
-    if (foundAny) {
-      resultsContainer.classList.remove("hidden");
-      noResults.classList.remove("show");
-      exitHint.classList.add("show"); // Show ESC hint
-    } else {
-      resultsContainer.classList.add("hidden");
-      noResults.classList.add("show");
-      exitHint.classList.remove("show"); // Hide ESC hint
-    }
-  }, 300); // Delay in ms
+// === Run search on icon button (mousedown prevents layout jump) ===
+searchButton.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  triggerSearch();
 });
+
+// === Close search on button click (mousedown avoids blur glitch) ===
+closeSearchBtn.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  resetSearch();
+});
+
+// === Exit search with ESC key ===
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    resetSearch();
+  }
+});
+
+// === Main trigger ===
+function triggerSearch() {
+  const query = searchInput.value.trim().toLowerCase();
+  if (!query) {
+    resetSearch();
+    return;
+  }
+  runSearch(query);
+}
+
+// === Search logic ===
+function runSearch(query) {
+  const queryWords = query.split(/\s+/).filter(w => w.length > 1);
+  document.body.classList.add("search-mode");
+  closeSearchBtn.classList.remove("hidden");
+  resultsContainer.innerHTML = "";
+  mainContent?.classList?.add("hidden");
+
+  let foundAny = false;
+
+  allSearchables.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const match = queryWords.some(word =>
+      new RegExp(`\\b${word}\\b`).test(text)
+    );
+
+    if (match) {
+      const clone = item.cloneNode(true);
+      clone.classList.add("search-result-item");
+      resultsContainer.appendChild(clone);
+      foundAny = true;
+    }
+  });
+
+  if (foundAny) {
+    resultsContainer.classList.remove("hidden");
+    noResults.classList.remove("show");
+    exitHint.classList.add("show");
+    googleFallback.classList.add("hidden");
+  } else {
+    resultsContainer.classList.add("hidden");
+    noResults.classList.add("show");
+    exitHint.classList.remove("show");
+
+    // Update fallback link
+    googleLink.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    googleFallback.classList.remove("hidden");
+  }
+}
+
+// === Reset everything ===
+function resetSearch() {
+  searchInput.value = "";
+  document.body.classList.remove("search-mode");
+  searchWrapper.classList.remove("active");
+  resultsContainer.classList.add("hidden");
+  noResults.classList.remove("show");
+  exitHint.classList.remove("show");
+  googleFallback.classList.add("hidden");
+  closeSearchBtn.classList.add("hidden");
+  mainContent?.classList?.remove("hidden");
+}
 
 // ESC key → Exit search mode
 window.addEventListener("keydown", (e) => {
@@ -289,13 +344,13 @@ function showToast(icon, message, background = toastColors.default) {
     toast.classList.add("show-toast");
   });
 
-  // Auto remove after 2.5s
+  // Auto remove after 6s
   setTimeout(() => {
     toast.classList.remove("show-toast");
     setTimeout(() => {
       toast.remove();
     }, 500); // match transition duration
-  }, 4000);
+  }, 6000);
 }
 showToast("Test Toast!", toastColors.info);
 
@@ -550,7 +605,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   } else {
     console.warn('🔒 Not logged in');
-    showToast(toastIcons.warning, "You are not logged in. limited access!", toastColors.warning);
+    setTimeout(() => {
+      showToast(toastIcons.info, "You need to login to access some features.", toastColors.info);
+    }, 3000);
   }
 });
 
@@ -589,7 +646,7 @@ document.addEventListener("DOMContentLoaded", () => {
         entry.target.classList.add("visible");
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.1 });
 
   elements.forEach(el => observer.observe(el));
 });

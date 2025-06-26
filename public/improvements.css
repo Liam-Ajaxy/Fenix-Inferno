@@ -1,0 +1,48 @@
+@media (max-width: 768px) {
+  .dropdown-content {
+    display: none;
+  }
+  .dropdown.open .dropdown-content {
+    display: block;
+  }
+}
+
+.Classified {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.classified {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 1rem;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  border: solid rgb(68, 0, 0);
+  color: rgb(68, 0, 0);
+  background: rgba(255, 0, 0, 0.103);
+  max-width: 400px;
+  cursor: not-allowed;
+}
+
+.IQ-spot {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 1rem;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+  color: rgba(0, 0, 0, 0.662);
+  max-width: 500px;
+  font-size: medium;
+  background-color: rgba(225, 225, 225, 0.363);
+}
+
+.IQ-spot a {
+  color: rgb(0, 0, 171);
+}
+.IQ-spot a:hover {
+  color: rgb(0, 0, 113);
+  text-decoration: underline;
+  transition: underline 2s ease-in-out;
+}

@@ -188,19 +188,103 @@ nav li a:not(.dropbtn):focus {
   display: flex;
 }
 
-    #search-section {
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      padding-top: 6rem;
-      background: #f0f2f5;
-    }
-    #search-bar {
-      padding: 0.75rem 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      width: 80%;
-    }
+#search-section {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  padding-top: 6rem;
+  background: #f0f2f5;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  padding: 0.25rem 0.5rem;
+  width: 180px;
+  max-width: 100%;
+  transition: all 0.3s ease;
+}
+
+.search-wrapper {
+  width: 100%;
+  max-width: 180px;
+}
+
+.search-wrapper.active {
+  max-width: 600px;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px #4f46e511;
+}
+
+
+#search-bar {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  background: transparent;
+}
+
+#search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+  color: #4f46e5;
+  transition: transform 0.2s ease;
+}
+
+#search-btn:hover {
+  transform: scale(1.15);
+}
+
+#google-fallback {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#google-fallback a {
+  display: inline-block;
+  background-color: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#google-fallback a:hover {
+  background-color: #3730a3;
+}
+
+#close-search-btn {
+  margin-left: 1rem;
+  font-size: 1rem;
+  background: #e5e7eb;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#close-search-btn:hover {
+  background: #d1d5db;
+}
+
+@media (max-width: 600px) {
+  #close-search-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+
 
     /* MAIN SECTIONS */
     section {
@@ -736,7 +820,6 @@ nav li a:not(.dropbtn):focus {
       gap: 2rem;
       flex-wrap: wrap;
       padding: 2rem;
-      border-radius: 2rem;
     }
     .partner-logos img {
       width: 80px;
@@ -746,14 +829,12 @@ nav li a:not(.dropbtn):focus {
     .partner-logos a:hover img {
       transform: scale(1.2);
       background: white;
-      color: white;
     }
     .stack-logos {
       display: flex;
       gap: 2rem;
       flex-wrap: wrap;
       padding: 2rem 1rem;
-      border-radius: 1rem;
     }
     .stack-logos img {
       width: 80px;
@@ -1231,7 +1312,9 @@ button:hover {
 
 /* ----------searches----------------- */
 body.search-mode {
-  background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
+  background: url('jeremy-bishop-8xznAGy4HcY-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 }
 body.search-mode #main-content,
@@ -1272,7 +1355,7 @@ body.search-mode #search-section {
   display: none;
   text-align: center;
   font-size: 1.2rem;
-  margin: 15rem auto;
+  margin-top: 15rem;
   color: #f0f6fc;
 }
 

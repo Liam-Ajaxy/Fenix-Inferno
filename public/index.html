@@ -5,12 +5,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fenix Website</title>
+  <!-- SEO: Title & Description -->
+<title>Fenix</title>
+<meta name="description" content="Explore FENIX: tools for ethical hacking, secure AI, and advanced web projects.">
+<meta name="keywords" content="FENIX, Intelligence, Hacking, AI, Tools, Projects, Security, Developer Portfolio">
+<meta name="author" content="Frank CO7">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:title" content="Fenix" />
+<meta property="og:description" content="Projects, tools, and skills for secure development." />
+<meta property="og:image" content="https://frankfenix.onrender.com/preview.png" />
+<meta property="og:url" content="https://frankfenix.onrender.com" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fenix">
+<meta name="twitter:description" content="Explore tools and projects for ethical AI and secure development.">
+<meta name="twitter:image" content="https://frankfenix.onrender.com/preview.png">
+
+<!-- Optional: Mobile browser theme -->
+<meta name="theme-color" content="#4f46e5">
+
+
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="global-toast.css">
   <link rel="stylesheet" href="advanced-tools.css">
   <link rel="stylesheet" href="responsive.css">
   <link rel="stylesheet" href="login-popup.css">
+  <link rel="stylesheet" href="improvements.css">
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
@@ -22,8 +46,8 @@
 
     <nav>
      <div class="logo">
-    <img src="fenixLogoOfficial.png">
-   </div>
+      <img src="fenixLogoOfficial.png">
+    </div>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="explore.html" id="explore-btn">Explore</a></li>
@@ -50,7 +74,7 @@
         </div>
       </a>
     </li>
-    <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings"><i class="fas fa-cog"></i></a>
+    <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings" title="Settings"><i class="fas fa-cog"></i></a>
 </li>
 <li>
     <div class="profile-wrapper">
@@ -70,13 +94,28 @@
   <a href="signup.html" target="_blank">Sign Up</a>
 </div>
 
-    <section id="search-section" class="search-bar-container">
-      <input type="text" id="search-bar" placeholder="Search intelligence..." />
-    </section>
+<section id="search-section" class="search-bar-container">
+  <div class="search-wrapper">
+    <input type="text" id="search-bar" placeholder="Search intelligence..." />
+    <button id="search-btn" title="Search"><span>🔍</span></button>
+  </div>
+  <button id="close-search-btn" class="hidden" title="Close Search">✖</button>
+</section>
 
 <section id="search-results" class="hidden"></section>
+
 <p id="exit-hint" class="hidden">🔍 Click ESC to exit search.</p>
-<p id="no-results" class="hidden">No results found. <br>Click <b>Esc</b> to Exit </p>
+
+<p id="no-results" class="hidden">
+  No results found. <br><br>Click <b>Esc</b> to Exit.
+</p>
+
+<div id="google-fallback" class="hidden">
+  <a id="google-link" href="#" target="_blank" rel="noopener noreferrer">
+    🔍 Search on Google
+  </a>
+</div>
+
 
   <main id="main-content">
 
@@ -308,8 +347,7 @@
     <div class="img-wrapper">
       <img src="markus-spiske-iar-afB0QQw.jpg" alt="Botnet Tracking Image" class="block-image">
     </div>
-  </div>
-  <a href="projects.html" class="button requires-login" target="_blank">
+    <a href="projects.html" class="button requires-login" target="_blank">
     <i class="fas fa-arrow-circle-right"></i>   View more projects</a>
   </div>
   </div>
@@ -485,6 +523,13 @@
        <a href="#skills" class="about-btn button">Developer's Skills</a>
        <a href="about.html" class="button">About Fenix</a>
     </div>
+  </div>
+  <div class="Classified">
+  <span class="classified">
+    <p>⚠️ Intersa is <b>Classified Agency</b></p>
+  </span>
+  <span class="IQ-spot"><p>Any qustion about <b>Intersa</b> and its allies <b>Siany</b> and <b>Open UI</b> click <a href="https://mail.google.com/mail/?view=cm&fs=1&to=user74251224.us@gmail.com&su=High%20Security%20Agencies%20-%20Classified%20Agency&body=Sir%20Chief%20of%20General%20Staff%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well.%20I%27m%20reaching%20out%20to%20express%20my%20keen%20interest%20in%20joining%20the%20Intersa%20Direct%20Response%20and%20Feedback%20offered%20by%20Intersa%20General%20Staff.%20The%20mission%20of%20FENIX%20and%20its%20approach%20to%20intelligence%2C%20ethical%20systems%2C%20and%20cyber%20operations%20greatly%20aligns%20with%20my%20personal%20goals.%0A%0AI%20would%20be%20grateful%20if%20you%20could%20guide%20me%20through%20the%20enrollment%20process%2C%20schedule%2C%20and%20any%20prerequisites%20needed%20to%20get%20started.%20I%27m%20highly%20motivated%20to%20learn%20from%20your%20expertise%20and%20contribute%20to%20the%20FENIX%20community.%0A%0AThank%20you%20for%20your%20time%20and%20support.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" class="IQ-btn" target="_blank"><i>here</i>
+    </a></p></span>
   </div>
  </section>
 
@@ -863,6 +908,7 @@
 <script src="account.js"></script>
 <script src="advanced-tools.js"></script>
 <script src="login-popup.js"></script>
+<script src="improvements.js"></script>
 
 <div id="global-toast-container"></div>
 

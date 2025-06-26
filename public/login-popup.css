@@ -64,7 +64,7 @@ body.no-scroll {
 }
 
 @keyframes blink-red {
-  0% { box-shadow: 0 0 0 4px red; }
+  0% { box-shadow: 0 0 0 1px red; }
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
