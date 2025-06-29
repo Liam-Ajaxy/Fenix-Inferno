@@ -32,3 +32,16 @@ document.addEventListener('keydown', (e) => {
     document.querySelectorAll('.dropdown.open').forEach(drop => drop.classList.remove('open'));
   }
 });
+
+// Load the contents when DOM is ready
+window.addEventListener("load", () => {
+  const loader = document.getElementById("fenix-loader");
+
+  // Wait at least 600ms before hiding
+  setTimeout(() => {
+    loader.classList.add("fade-out");
+    setTimeout(() => {
+      loader.style.display = "none";
+    }, 500); // matches fade duration
+  }, 600);
+});

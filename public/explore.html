@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FENIX – Explore & Support</title>
+  <link rel="stylesheet" href="improvements.css">
   <style>
     /* ====== BASIC RESET ====== */
     * {
@@ -299,6 +300,17 @@ nav a:focus {
     </div>
   </section>
 
+  <div id="fenix-loader">
+  <div class="fenix-spinner animated-core">
+    <svg class="fenix-ring" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="20" />
+    </svg>
+    <div class="core"></div>
+    <p class="loader-text">Loading Intelligence...</p>
+  </div>
+</div>
+
+
   <script>
     // Toggle FAQ dropdowns
     document.querySelectorAll('.faq-item h4').forEach((question) => {
@@ -308,5 +320,7 @@ nav a:focus {
       });
     });
   </script>
+
+  <script src="improvements.js"></script>
 </body>
 </html>

@@ -743,7 +743,6 @@ nav li a:not(.dropbtn):focus {
     /* FOOTER */
     .footer {
       background: #f8f9fa;
-   
       padding: 1rem 8rem;
       font-size: small;
       padding-top: 6rem;
@@ -820,6 +819,7 @@ nav li a:not(.dropbtn):focus {
       gap: 2rem;
       flex-wrap: wrap;
       padding: 2rem;
+      border-radius: 1rem;
     }
     .partner-logos img {
       width: 80px;
@@ -835,6 +835,7 @@ nav li a:not(.dropbtn):focus {
       gap: 2rem;
       flex-wrap: wrap;
       padding: 2rem 1rem;
+      border-radius: 1rem;
     }
     .stack-logos img {
       width: 80px;
@@ -919,8 +920,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-section:not(#home), .project-block, .article-card, .quotes blockquote, .setting-advanced, #ratings .rating-card, #tools .tool-block,
- .skill-card, .stack-logos, .partner-logos, #settings-panel, #search-section, header, #about .intro-wrapper, #profile-panel {
+section:not(#home), .project-block, .article-card, .quotes blockquote, .setting-advanced, #ratings .rating-card, #tools .tool-block, .search-result-item,
+ .skill-card, .stack-logos, .partner-logos, #settings-panel, #search-section, header, #about .intro-wrapper, #profile-panel, .search-wrapper, #footer {
   background: var(--panel-color);
   color: var(--text-color);
   transition: background 0.3s ease, color 0.3s ease;
@@ -937,7 +938,9 @@ section:not(#home), .project-block, .article-card, .quotes blockquote, .setting-
 [data-theme="dark"] #settings,
 [data-theme="dark"] #contact,
 [data-theme="dark"] #tools,
-[data-theme="dark"] #ratings-section {
+[data-theme="dark"] #ratings-section,
+[data-theme="dark"] #search-section,
+[data-theme="dark"] #search-results .search-result-item{
   background: black;
 }
 [data-theme="dark"] footer{

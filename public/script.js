@@ -1,3 +1,10 @@
+
+document.getElementById("secureBtn").addEventListener("click", function () {
+  // Open 'securereq.html' in a new tab
+  window.open("securereq.html", "_blank");
+});
+
+ 
  //=================Rotating-typing anime===============
   const lines = [
     "Frank CO7 Developer. Ethical Hacker. Designer of adaptive interfaces.",
@@ -352,7 +359,6 @@ function showToast(icon, message, background = toastColors.default) {
     }, 500); // match transition duration
   }, 6000);
 }
-showToast("Test Toast!", toastColors.info);
 
 
 // ==============Settings save changes ================

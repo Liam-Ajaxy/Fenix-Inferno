@@ -1,132 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing</title>
-</head>
-
-<style>
-    * {
-        margin: 5px;
-    }
+  <meta charset="UTF-8" />
+  <title>Signal Trace + AI Threat Monitor</title>
+  <style>
     body {
-        background: url('jeremy-bishop-8xznAGy4HcY-unsplash.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        max-width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+      user-select: none;
     }
-    .spin {
-        padding: 2rem;
-        width: 20%;
-        height: 15%;
-        border: 1px solid wheat;
-        border-radius: 1rem;
-        background: rgba(0, 0, 0, 0.123);
+    #terminal {
+      white-space: pre-wrap;
+      line-height: 1.4em;
     }
-    input {
-        background-color: rgba(0, 0, 0, 0.265);
-        color: wheat;
-        padding: 0.2rem 2rem;
-        border-radius: 2rem;
-        border: none;
+    .log-line {
+      display: block;
     }
-    ::placeholder {
-        color: black;
+    .flicker {
+      animation: flicker 0.2s infinite alternate;
     }
-    p {
-        color: wheat;
+    @keyframes flicker {
+      0% { opacity: 1; }
+      100% { opacity: 0.3; }
     }
-/* Spinner added to any button */
-    .button-spinner {
-      width: 16px;
-      height: 16px;
-      margin-left: 8px;
-      border: 2px solid white;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-      display: inline-block;
-      vertical-align: middle;
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+
+    const lines = [
+      "↪ [TRACE] Initiating signal tunnel handshake...",
+      "↪ [NODE-01] Relay secured | Latency: 18ms",
+      "↪ [NODE-02] Signal jump complete | Latency: 27ms",
+      "↪ [NODE-03] Ping deviation detected | Re-routing...",
+      "↪ [NODE-04] Established | Encrypted AES-4096",
+      "↪ [AI-MODULE] Anomaly scanner engaged...",
+      "↪ [THREATSCAN] Monitoring packets...",
+      "↪ [ECHO LOOP] Signal reflection pattern detected",
+      "↪ [ALERT] Suspicious MAC address detected: DC:A6:32:44...",
+      "↪ [THREAT RATING] Evolving...",
+      "↪ [THREAT RATING] CRITICAL LEVEL RAISED",
+      "↪ [RESPONSE] Auto-containment activated...",
+      "↪ [CONFIRM] AI Response sealed threat vectors.",
+      "↪ [LOGOUT] Signal trace terminated. Session locked."
+    ];
+
+    const dynamicLines = {
+      9: ["↪ [THREAT RATING] Low...", "↪ [THREAT RATING] Medium...", "↪ [THREAT RATING] CRITICAL LEVEL RAISED"],
+      5: ["↪ [AI-MODULE] Scanning headers...", "↪ [AI-MODULE] Analyzing entropy...", "↪ [AI-MODULE] Anomaly scanner engaged..."],
+      7: ["↪ [ECHO LOOP] Trace repeating...", "↪ [ECHO LOOP] Signal reflection pattern detected", "↪ [ECHO LOOP] Confirmed ghost echo"]
+    };
+
+    let i = 0;
+
+    function printLine(index) {
+      const line = document.createElement('span');
+      line.className = 'log-line';
+      line.textContent = lines[index];
+      terminal.appendChild(line);
+
+      // Animate content swap if it's a dynamic line
+      if (dynamicLines[index]) {
+        let variant = 1;
+        const swaps = dynamicLines[index];
+        const updateInterval = setInterval(() => {
+          if (variant >= swaps.length) return clearInterval(updateInterval);
+          line.textContent = swaps[variant];
+          variant++;
+        }, 1000 + Math.random() * 800);
+      }
+
+      terminal.scrollTop = terminal.scrollHeight;
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+    function startSimulation() {
+      if (i < lines.length) {
+        printLine(i);
+        i++;
+        setTimeout(startSimulation, 500 + Math.random() * 1000);
       }
     }
-    button {
-        color: wheat;
-        padding: 0.5rem 6rem;
-        border-radius: 2rem;
-        background: black;
-        border: none;
-        cursor: pointer;
-    }
-    button:hover{
-        background: rgba(0, 0, 0, 0.872);
-        color: white;
-    }
 
-    .spinning {
-        width: 15px;
-        height: 15px;
-        position: absolute;
-        border: solid wheat;
-        border-top-color: black;
-        border-radius: 50%;
-        animation: spin 500ms linear infinite;
-    }
-    @keyframes spin {
-        to {transform: rotate(360deg);}
-    }
-
-    .teaser {
-        display: none;
-    }
-</style>
-<body>
-    <div class="spin tea">
-        <h2>CRUD</h2>
-        <p>Practice spinning button Great UI</p>
-        <input type="text" name="text" id="names" placeholder="Enter you names" required>
-        <input type="email" name="email" id="email" placeholder="Enter your email" required>
-        <button onclick="submit()" class="btn-spin">Submit</button>
-        <p id="results">Users</p>
-    </div>
-
-    <script>
-        function submit() {
-            const names = document.getElementById('names').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const results = document.getElementById('results');
-            const spin = document.querySelector('.btn-spin');
-            
-            if (spin) {
-            spin.innerHTML = `
-            <span>Generating </span>
-            <span class="button-spinner"></span>
-            `;
-            }
-           
-
-            setTimeout(() => {
-            results.innerHTML += `
-            <h4>${names}</h4>
-            <h5>${email}</h5>
-            <button onclick="edit()">Edit</button>
-            <button onclick="delete()">Delete</button>
-            `;
-
-            }, 3000);
-
-            console.log(`Submit trigerred. User: ${names}, ${email}`);
-        }
-        
-    </script>
+    startSimulation();
+  </script>
 </body>
 </html>

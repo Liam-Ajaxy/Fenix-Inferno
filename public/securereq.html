@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classified Terminal Simulation</title>
+  <style>
+    body, #terminal, button {
+      user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      line-height: 1.5em;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    input, textarea {
+      background: black;
+      color: #00ff00;
+      border: none;
+      font-family: monospace;
+      font-size: 1em;
+      outline: none;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      display: none;
+    }
+    button {
+      display: none;
+      margin-top: 10px;
+      padding: 5px 10px;
+      font-family: monospace;
+      background-color: #111;
+      color: #00ff00;
+      border: 1px solid #00ff00;
+      cursor: pointer;
+    }
+    #startBtn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 6px 14px;
+      font-size: 1em;
+      background: black;
+      border: 1px solid #00ff00;
+      color: #00ff00;
+      cursor: pointer;
+    }
+    .log-info { color: #00ff00; }
+    .log-error { color: darkred; font-weight: bold; }
+    .log-security { color: red; font-weight: bold; text-transform: uppercase; }
+    .log-warning { color: orange; }
+    .log-secure { color: #00ccff; font-weight: bold; }
+    #log-panel { border-top: 1px solid #00ff00; margin-top: 30px; padding-top: 10px; max-height: 200px; overflow-y: auto; }
+    #log-panel h3 { color: #00ff00; margin-bottom: 5px; }
+
+    #watermark-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .watermark {
+      position: absolute;
+      color: rgba(255, 0, 0, 0.1);
+      font-size: 14px;
+      font-family: monospace;
+      user-select: none;
+    }
+
+    .watermark.top-left { top: 5px; left: 10px; }
+    .watermark.top-right { top: 5px; right: 10px; }
+    .watermark.bottom-left { bottom: 5px; left: 10px; }
+    .watermark.bottom-right { bottom: 5px; right: 10px; }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <input id="input" style="display:none;" autofocus />
+  <textarea id="reportField" placeholder="Enter report to agency..." autofocus></textarea>
+  <button id="sendReport">Submit Report</button>
+  <button id="startBtn">Acknowledge & Start Authentication</button>
+  <div id="log-panel">
+    <h3>Session Log</h3>
+    <div id="log-output"></div>
+  </div>
+  <div id="watermark-container"></div>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('input');
+    const logOutput = document.getElementById('log-output');
+    const reportField = document.getElementById('reportField');
+    const sendReport = document.getElementById('sendReport');
+    const startBtn = document.getElementById('startBtn');
+
+    const prompts = [
+      'Enter Secure Agent ID:',
+      'Insert Smart Card: [CONFIRM]',
+      'Biometric Verification [FINGERPRINT TYPE]:',
+      'Enter multi-factor passphrase:',
+      'Enter Decryption Phrase for TS-COMMAND-NETSIG.dmp:'
+    ];
+
+    const expectedResponses = [
+      ['agt-004x', 'agt-91s5', 'agt-co7fpi'],
+      ['confirm', '004x', 'confirm agt-004x'],
+      ['fingerprint', 'o-', 'fingerprint o-'],
+      ['midnight falcon red-6', 'operation midnight hammer', 'mfr6'],
+      ['eaglestrike bravo confirmed', 'esbc confirmed', 'esbc']
+    ];
+
+    let step = 0;
+    let failedAttempts = 0;
+    const maxAttempts = 3;
+    let awaitingConfirmation = false; // 🔐 NEW FLAG
+
+    const log = (text, type = 'info') => {
+      let className = 'log-info';
+      if (type === 'error') className = 'log-error';
+      else if (type === 'security') className = 'log-security';
+      else if (type === 'warning') className = 'log-warning';
+      else if (type === 'secure') className = 'log-secure';
+      const formatted = `\n<span class="${className}">${text}</span>`;
+      terminal.innerHTML += formatted;
+      logOutput.innerHTML += formatted;
+      // Scroll log panel to bottom on new entry
+      // Only auto-scroll if user is near the bottom
+      const isAtBottom = terminal.scrollHeight - terminal.scrollTop <= terminal.clientHeight + 50;
+      if (isAtBottom) {
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    };
+
+    const lockSession = () => {
+      log('Unauthorized Access Attempt Logged', 'security');
+      log('SESSION LOCKED AFTER 3 FAILED ATTEMPTS', 'error');
+      log('ALERT TRIGGERED - SECURITY ADMIN NOTIFIED', 'security');
+      input.disabled = true;
+    };
+
+    const showReportForm = () => {
+      input.style.display = 'none';
+      reportField.style.display = 'block';
+      reportField.focus();
+      sendReport.style.display = 'inline-block';
+      log('\n[INSTRUCTION] Enter your mission report below and submit to Central Command.');
+    };
+
+    function simulateDecryptionSequence() {
+      const chunks = [
+        "[TS-COMMS] Session Key Exchange Initialized...",
+        "[AUTH/ENC] Dual-Factor Verification Hash: --MATCHED",
+        "[NETSIG] Enclave Channel Opened on Node TS-41A",
+        "[CRYPTO-ENGINE] Decryption Sequence Initiated",
+        "[CRYPTO-ENGINE] ECC Curve Negotiation Complete",
+        "[CRYPTO-ENGINE] AES-256 Payload Decryption Passed",
+        "[PAYLOAD] Signature Chain Verified with QVL-89 Trust Token",
+        "[SANDBOX] Executable Contents Isolated & Sanitized",
+        "[SIGINT-PIPE] Metadata Stream Integrity: --100%",
+        "[ACCESS CONTROL] Clearance Level Match: TS/SCI :: AGT-004X",
+        "[SYSTEM] Classified Payload Unlocked. Session Secured.",
+        "[ACCESS GRANTED] Terminal Ready. Awaiting Agent Directive...",
+        "\n\n[DECRYPTED] Hullo Hullo! Welcome agent."
+      ];
+      
+      let i = 0;
+      const interval = setInterval(() => {
+        log(chunks[i], 'secure');
+        i++;
+        if (i >= chunks.length) {
+          clearInterval(interval);
+          showReportForm(); // Show report input after decryption
+        }
+      }, 1500);
+    }
+
+    const nextPrompt = () => {
+      if (step < prompts.length) {
+        log(`\n${prompts[step]}`);
+        input.focus();
+      } else {
+        // Instead of previous direct grant, simulate decryption sequence first
+        simulateDecryptionSequence();
+      }
+    };
+
+    const showWarnings = () => {
+      log('CLASSIFIED ACCESS CONTROL SYSTEM v2.0 [TS/SCI CLEARANCE REQUIRED]');
+      log('--------------------------------------------------------------------------------');
+      log('[WARNING] This terminal is under 24/7 surveillance by the Agency.');
+      log('[NOTICE] Attempting to copy, inspect, print, or tamper with content will result in immediate lockout.');
+      log('[SECURITY] This session enforces clipboard overwrite, visibility detection, devtools prevention, and printscreen lockdown.', 'warning');
+      log('[RESTRICTION] Fullscreen mode is mandatory. Exiting fullscreen may trigger session termination.', 'warning');
+      log('[RESTRICTION] Terminal input is monitored. 3 incorrect responses will auto-lock the session.');
+      log('[RESTRICTION] Mouse interactions are disabled. No selection, dragging, or right-click allowed.');
+      log('[NOTICE] Session watermarking is active. Tampering with overlays will result in immediate termination.');
+      log('[POLICY] Agent identity is temporarily logged and verified. Use of aliases is prohibited.');
+      log('[ACTION] Press the button below to acknowledge warnings and begin identity authentication.');
+      startBtn.style.display = 'inline-block';
+    };
+
+    startBtn.addEventListener('click', () => {
+      // ⛓️ Try to enter fullscreen mode
+      document.documentElement.requestFullscreen().catch(() => {
+        log('[WARNING] Fullscreen mode was denied by the browser.', 'warning');
+      });
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          log('[SECURITY WARNING] Fullscreen mode exited unexpectedly.', 'warning');
+          blockAccess('⚠️ Fullscreen escape attempt detected. Session locked.');
+          log('\n\n Terminal Shutting Down...', 'error');
+          setTimeout(() => window.close(), 4000);
+        }
+      });
+
+      startBtn.style.display = 'none';
+      input.style.display = 'inline-block';
+      input.focus();
+
+      log('\n🛡️ SECURITY CONFIRMATION REQUIRED');
+      log('----------------------------------------');
+      log('[QUESTION] Have you fully read, understood, and agreed to all rules, warnings, and conditions?');
+      log('[REPLY] Type "yes" to confirm or "no" to reject access.');
+      awaitingConfirmation = true;
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const response = input.value.trim().toLowerCase();
+        input.value = '';
+
+        if (awaitingConfirmation) {
+          if (response === 'yes') {
+            awaitingConfirmation = false;
+            log('[CONFIRMED] Agent accepts all terms. Proceeding to authentication...');
+            log('\nSECURE SYSTEM TERMINAL - NODE TS-41A');
+            log('----------------------------------------');
+            nextPrompt();
+          } else {
+            log('[REJECTED] Agent did not accept the security terms.', 'error');
+            blockAccess("Access denied. Agent rejected the classified terminal terms.");
+          }
+          return;
+        }
+
+        if (step < expectedResponses.length) {
+          if (expectedResponses[step].includes(response)) {
+            log(`[AUTH] Step ${step + 1} verified.`);
+            step++;
+            nextPrompt();
+          } else {
+            failedAttempts++;
+            log(`Invalid Input. Attempt (${failedAttempts}/${maxAttempts})`, 'error');
+            if (failedAttempts >= maxAttempts) {
+              lockSession();
+            }
+          }
+        }
+      }
+    });
+
+    sendReport.addEventListener('click', () => {
+      const reportText = reportField.value.trim();
+      if (reportText) {
+          log('\n[REPORT RECEIVED] Preparing to transmit through Secure Quantum Channel...\n');
+          log(`[REPORT SUMMARY]\n${reportText}`);
+          reportField.style.display = 'none';
+          sendReport.style.display = 'none';
+          simulateSecureTransmission(reportText);
+      } else {
+        log('[ERROR] Report field cannot be empty.', 'error');
+      }
+    });
+        // Report sending progress
+        function simulateSecureTransmission(reportContent) {
+  const steps = [
+    "[ENCRYPTION] Initializing payload compression",
+    "[ENCRYPTION] Compressing classified content",
+    "[ENCRYPTION] Applying 8192-bit post-quantum cipher",
+    "[CHANNEL] Establishing SATCOM-9 quantum uplink",
+    "[FIREWALL] Bypassing global intrusion monitors",
+    "[SIGNATURE] Verifying agent digital identity",
+    "[UPLINK] Uploading encrypted payload",
+    "[VERIFICATION] Confirming SHA-512 integrity hash",
+    "[STATUS] Final transmission handshake",
+    "[SUCCESS] Payload delivered to Central Command"
+  ];
+
+  const updatesMap = {
+    1: ["[░░░░░░░░░]", "[████░░░░░]", "[█████████]"],
+    3: ["[•] Connecting...", "[••] Handshaking...", "[✓] Link Active"],
+    6: ["Uploading █░░", "Uploading ████░░", "Upload Complete ✅"],
+    7: ["Verifying...", "Validating Hash...", "✔ Confirmed"],
+    8: ["[WAITING]", "[PROCESSING]", "[✓ COMPLETE]"]
+  };
+
+  log(`\n[REPORT RECEIVED] Preparing to transmit through Secure Quantum Channel...`, 'secure');
+  log(`[REPORT SUMMARY]\n${reportContent}`, 'info');
+
+  // Hide inputs
+  reportField.style.display = 'none';
+  sendReport.style.display = 'none';
+
+  let i = 0;
+  const randomDelay = (min = 500, max = 1500) => Math.floor(Math.random() * (max - min) + min);
+
+  function logToTerminalOnly(text) {
+    const span = document.createElement('div');
+    span.className = 'log-info';
+    span.textContent = text;
+    terminal.appendChild(span);
+    terminal.scrollTop = terminal.scrollHeight;
+  }
+
+  function updateLineInTerminal(lineEl, updates, idx = 0) {
+    if (idx >= updates.length) return;
+    lineEl.textContent = updates[idx];
+    setTimeout(() => updateLineInTerminal(lineEl, updates, idx + 1), randomDelay(300, 800));
+  }
+
+  function logStep() {
+    if (i >= steps.length) {
+      const txId = `TX-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Date.now().toString(36).toUpperCase()}`;
+      logToTerminalOnly(`\n[TRANSMISSION-ID] ${txId}`, "secure");
+      logToTerminalOnly("[MISSION COMPLETE] Your report has been securely transmitted.", "secure");
+      logToTerminalOnly("[SESSION LOCKDOWN] Terminal access will auto-lock shortly.", "warning");
+      setTimeout(() => triggerBlurLock("End of classified session"), 5000 + Math.random() * 3000);
+      return;
+    }
+
+    const base = steps[i];
+    const updates = updatesMap[i];
+
+    if (updates) {
+      const lineEl = document.createElement("div");
+      lineEl.className = "log-info";
+      lineEl.textContent = `${base} ${updates[0]}`;
+      terminal.appendChild(lineEl);
+      terminal.scrollTop = terminal.scrollHeight;
+
+      // Update the content up to 3 times
+      setTimeout(() => {
+        updateLineInTerminal(lineEl, updates, 1);
+      }, randomDelay(300, 600));
+
+      // Proceed to next line
+      setTimeout(() => {
+        i++;
+        logStep();
+      }, randomDelay(1000, 1800));
+    } else {
+      logToTerminalOnly(`${base} ...`);
+      setTimeout(() => {
+        i++;
+        logStep();
+      }, randomDelay(800, 1600));
+    }
+  }
+
+  setTimeout(logStep, randomDelay(800, 1400));
+}
+
+
+    showWarnings();
+
+    function blockAccess(message, level = 'security') {
+      log(`\n[SECURITY NOTICE] ${message}`, level);
+      log('[STATUS] Interface locked due to breach attempt.', 'error');
+      input.disabled = true;
+      input.style.display = 'none';
+      reportField.disabled = true;
+      sendReport.disabled = true;
+    }
+
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      blockAccess("Right-click is disabled on classified systems.");
+    });
+
+    ["mousedown", "selectstart", "dragstart"].forEach(evt => {
+      document.addEventListener(evt, e => e.preventDefault());
+    });
+
+    document.addEventListener("dragstart", e => e.preventDefault());
+
+    document.addEventListener("keydown", function (e) {
+      const key = e.key.toLowerCase();
+      if ((e.ctrlKey && ["c", "u", "s"].includes(key)) || key === "f12") {
+        e.preventDefault();
+        blockAccess("Action blocked by classified system.");
+      }
+      if (
+        (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
+        key === "f12"
+      ) {
+        e.preventDefault();
+        blockAccess("Developer tools shortcut detected.");
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        const startCountdownWhenVisible = () => {
+          if (!document.hidden) {
+            log('\n[SECURITY ALERT] Visibility Change Detected!', 'warning');
+            log('[ACTION] Terminal will lock in 5 seconds due to policy violation.', 'warning');
+
+            let countdown = 5;
+
+            const interval = setInterval(() => {
+              log(`[LOCKDOWN IN] ${countdown}`, 'warning');
+              countdown--;
+
+              if (countdown < 0) {
+                clearInterval(interval);
+                blockAccess("Terminal Locked. Unauthorized visibility change.");
+                log('\n\n [TERMINAL: TS-41A]⚠️ Shutting down...', 'warning');
+                setTimeout(() => {
+                  window.close();
+                }, 6000);
+              }
+
+            }, 1000);
+          } else {
+            requestAnimationFrame(startCountdownWhenVisible);
+          }
+        };
+
+        startCountdownWhenVisible();
+      }
+    });
+
+    function triggerBlurLock(reason = "Suspicious activity") {
+      document.body.innerHTML = `
+        <div style="color:red; font-family:monospace; text-align:center; padding-top:20vh;">
+          <h1>🛑 SECURE TERMINAL SUSPENDED</h1>
+          <p>${reason}<br/>This session is no longer trusted.<br/>Shutting down...</p>
+        </div>
+      `;
+      setTimeout(() => window.close(), 4000);
+    }
+
+    function generateWatermarkText() {
+      const username = "AGTCO7-SIGINT";
+      const terminalID = "TS-41A";
+      const dateTime = new Date().toLocaleString();
+      return `CLASSIFIED - ${username} - ${terminalID} - ${dateTime}`;
+    }
+
+    function createWatermark(text) {
+      const container = document.getElementById('watermark-container');
+      container.innerHTML = '';
+
+      const positions = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
+      positions.forEach(pos => {
+        const div = document.createElement('div');
+        div.className = `watermark ${pos}`;
+        div.textContent = text;
+        container.appendChild(div);
+      });
+    }
+
+    const observer = new MutationObserver(() => {
+      const wm = document.querySelectorAll('.watermark');
+      if (wm.length < 4) {
+        blockAccess("🛑 Watermark Tampering Detected. Session Locked.");
+      }
+    });
+    observer.observe(document.getElementById('watermark-container'), { childList: true, subtree: true });
+
+    setInterval(() => {
+      createWatermark(generateWatermarkText());
+    }, 10000);
+
+    createWatermark(generateWatermarkText());
+  </script>
+</body>
+</html>
