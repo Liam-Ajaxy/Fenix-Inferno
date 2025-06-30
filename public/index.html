@@ -51,7 +51,9 @@
 <body>
   <header>
     <button id="hamburger" aria-label="Menu">
-  ☰
+    <span class="bar top"></span>
+  <span class="bar middle"></span>
+  <span class="bar bottom"></span>
 </button>
 
     <nav>
@@ -64,30 +66,63 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#feed">Feed</a></li>
     <li><a href="#about">About</a></li>
-    <li class="dropdown">
-      <a href="#tools" class="dropbtn">Tools ▾
-        <div class="dropdown-content">
-          <a href="#tool-password">🔒 Password Strength Checker</a>
-          <a href="#tool-cipher">🗝️ Cipher Decoder</a>
-          <a href="#tool-morse">·− Morse Code Generator</a>
-          <a href="#tool-passwordgen">🔑 Random Password Generator</a>
-        </div>
-      </a>
+
+    <li class="dropdown desktop-only">
+      <a href="javascript:void(0);" class="dropbtn" data-target="tools-content">Tools ▾</a>
+      <div class="dropdown-content" id="tools-content">
+        <a href="#tool-password">🔒 Password Strength Checker</a>
+        <a href="#tool-cipher">🗝️ Cipher Decoder</a>
+        <a href="#tool-morse">·− Morse Code Generator</a>
+        <a href="#tool-passwordgen">🔑 Random Password Generator</a>
+      </div>
     </li>
-        <li class="dropdown">
-      <a href="#skills" class="dropbtn">More ▾
-        <div class="dropdown-content">
-          <a href="#skills">🧠  Skills</a>
-          <a href="#contact">📞 Contact</a>
-          <a href="#partners">🤝 Partners</a>
-          <a href="#stacks">💻  Stacks</a>
-        </div>
-      </a>
+
+    <li class="dropdown desktop-only">
+      <a href="javascript:void(0);" class="dropbtn" data-target="more-content">More ▾</a>
+      <div class="dropdown-content" id="more-content">
+        <a href="#skills">🧠 Skills</a>
+        <a href="#contact">📞 Contact</a>
+        <a href="#partners">🤝 Partners</a>
+        <a href="#stacks">💻 Stacks</a>
+      </div>
     </li>
+
+      <!-- Mobile-only Tools dropdown -->
+      <li class="mobile-only mobile-dropdown">
+        <button class="mobile-dropdown-toggle" data-target="tools-menu">Tools ▾</button>
+        <div class="mobile-dropdown-content" id="tools-menu">
+          <a href="#tool-password">Password Strength Checker</a>
+          <a href="#tool-cipher">Cipher Decoder</a>
+          <a href="#tool-morse">Morse Code Generator</a>
+          <a href="#tool-passwordgen">Random Password Generator</a>
+        </div>
+      </li>
+
+      <!-- Mobile-only More dropdown -->
+      <li class="mobile-only mobile-dropdown">
+        <button class="mobile-dropdown-toggle" data-target="more-menu">More ▾</button>
+        <div class="mobile-dropdown-content" id="more-menu">
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a href="#partners">Partners</a>
+          <a href="#stacks">Stacks</a>
+        </div>
+      </li>
+
+      <!-- Mobile-only Account dropdown -->
+      <li class="mobile-only mobile-dropdown">
+        <button class="mobile-dropdown-toggle" data-target="account-menu">Account ▾</button>
+        <div class="mobile-dropdown-content" id="account-menu">
+          <a href="login.html">Login</a>
+          <a href="signup.html">Create Account</a>
+        </div>
+      </li>
+
+
     <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings" title="Settings"><i class="fas fa-cog"></i></a>
 </li>
 <li>
-    <div class="profile-wrapper">
+    <div class="profile-wrapper desktop-only">
       <button id="profile-btn" aria-label="Profile">👤</button>
       <div id="profile-panel" class="profile-panel hidden">
         <p><strong>User:</strong> <span id="profile-username"></span></p>
@@ -97,11 +132,15 @@
     </div>
 </li>
 </ul>
+  <li class="mobile-only horizontal-buttons">
+    <button id="profile-button">👤 Profile</button>
+    <button id="secureBtn">🔐 Secure Request</button>
+  </li>
 </nav>
 </header>
 <div class="floating-auth-links reveal">
   <a href="login.html" style="background: #f4f2f2; border: 1px solid #4f46e5; color: #4f46e5;" target="_blank">Login</a>
-  <a href="signup.html" target="_blank">Sign Up</a>
+  <a href="signup.html" target="_blank">Create Account</a>
 </div>
 
 <section id="search-section" class="search-bar-container">

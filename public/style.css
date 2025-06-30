@@ -24,8 +24,9 @@ body.lock-scroll {
   display: none; /* hidden on desktop */
   background: none;
   border: none;
-  font-size: 1.8rem;
-  color: #0d1117; /* or adjust */
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
   cursor: pointer;
   z-index: 10000;
   position: absolute;
@@ -41,15 +42,17 @@ body.lock-scroll {
 
   nav ul {
     position: absolute;
-    top: 60px; /* adjust to match your header height */
+    top: 100px; /* adjust to match your header height */
     right: 0;
-    background-color: #f3f4f6;
+    background-color: var(--panel-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
     gap: 0.5rem;
-    width: 220px;
+    width: 100%;
+    height: 100vh;
     transform: translateX(100%);
     transition: transform 0.3s ease;
     z-index: 9999;
@@ -58,18 +61,6 @@ body.lock-scroll {
   /* Show menu when active */
   nav ul.show-menu {
     transform: translateX(0);
-  }
-
-  /* Optional: dropdown-content full width on mobile */
-  .dropdown .dropdown-content {
-    position: static;
-    transform: none;
-    background-color: #f8f9fa;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    width: 100%;
   }
 }
 

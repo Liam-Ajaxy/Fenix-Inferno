@@ -45,3 +45,64 @@ window.addEventListener("load", () => {
     }, 500); // matches fade duration
   }, 600);
 });
+
+// Dropdown Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const toggles = document.querySelectorAll(".mobile-dropdown-toggle");
+
+  toggles.forEach(toggle => {
+    const targetId = toggle.getAttribute("data-target");
+    const target = document.getElementById(targetId);
+
+    toggle.addEventListener("click", () => {
+      const isShown = target.classList.contains("show");
+
+      // Hide all
+      document.querySelectorAll(".mobile-dropdown-content").forEach(el =>
+        el.classList.remove("show")
+      );
+
+      // Toggle only this one
+      if (!isShown) {
+        target.classList.add("show");
+      }
+    });
+  });
+
+  // Auto-close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".mobile-dropdown")) {
+      document.querySelectorAll(".mobile-dropdown-content").forEach(el =>
+        el.classList.remove("show")
+      );
+    }
+  });
+});
+
+// Burger body lock-scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const menu = document.querySelector("nav ul");
+  const mobileMaxWidth = 768; // define your mobile breakpoint
+
+  function updateScrollLock() {
+    const isMobile = window.innerWidth <= mobileMaxWidth;
+    const isOpen = menu.classList.contains("show-menu");
+
+    // Lock scroll only if burger menu is open AND screen is mobile size
+    if (isMobile && isOpen) {
+      document.body.classList.add("lock-scroll");
+    } else {
+      document.body.classList.remove("lock-scroll");
+    }
+  }
+
+  // Observe class changes on menu (burger toggle)
+  const classObserver = new MutationObserver(updateScrollLock);
+  classObserver.observe(menu, { attributes: true, attributeFilter: ["class"] });
+
+  // Listen for window resize to detect screen size changes
+  window.addEventListener("resize", updateScrollLock);
+
+  // Initial check on load
+  updateScrollLock();
+});

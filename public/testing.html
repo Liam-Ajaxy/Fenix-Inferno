@@ -2,91 +2,210 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Signal Trace + AI Threat Monitor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FENIX Burger Menu</title>
   <style>
+    /* Base styles */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: black;
-      color: #00ff00;
-      font-family: monospace;
-      padding: 20px;
-      user-select: none;
+      margin: 0;
+      font-family: sans-serif;
     }
-    #terminal {
-      white-space: pre-wrap;
-      line-height: 1.4em;
+
+    body.lock-scroll {
+      overflow: hidden !important;
+      height: 100vh;
     }
-    .log-line {
+
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .dropdown-content {
+      display: none;
+    }
+
+    .dropdown:hover .dropdown-content {
       display: block;
     }
-    .flicker {
-      animation: flicker 0.2s infinite alternate;
+
+    /* Hamburger */
+    #hamburger {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10000;
     }
-    @keyframes flicker {
-      0% { opacity: 1; }
-      100% { opacity: 0.3; }
+
+    /* Mobile menu styles */
+    @media (max-width: 768px) {
+      #hamburger {
+        display: block;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        background: #f9f9f9;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 80%;
+        height: 100vh;
+        padding: 2rem 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+
+      nav ul.show-menu {
+        transform: translateX(0);
+      }
+
+      .dropdown .dropdown-content {
+        display: none;
+        flex-direction: column;
+        background: #ececec;
+        padding: 0.5rem 1rem;
+        margin-top: 0.5rem;
+        border-left: 3px solid #999;
+      }
+
+      .dropdown.open .dropdown-content {
+        display: flex;
+      }
+
+      .dropbtn::after {
+        content: " ▸";
+        float: right;
+      }
+
+      .dropdown.open .dropbtn::after {
+        transform: rotate(90deg);
+      }
     }
   </style>
 </head>
 <body>
-  <div id="terminal"></div>
 
-  <script>
-    const terminal = document.getElementById('terminal');
+<header>
+  <button id="hamburger" aria-label="Menu">☰</button>
+  <nav>
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Fenix_logo.png/600px-Fenix_logo.png" alt="FENIX Logo">
+    </div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="explore.html" id="explore-btn">Explore</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#feed">Feed</a></li>
+      <li><a href="#about">About</a></li>
 
-    const lines = [
-      "↪ [TRACE] Initiating signal tunnel handshake...",
-      "↪ [NODE-01] Relay secured | Latency: 18ms",
-      "↪ [NODE-02] Signal jump complete | Latency: 27ms",
-      "↪ [NODE-03] Ping deviation detected | Re-routing...",
-      "↪ [NODE-04] Established | Encrypted AES-4096",
-      "↪ [AI-MODULE] Anomaly scanner engaged...",
-      "↪ [THREATSCAN] Monitoring packets...",
-      "↪ [ECHO LOOP] Signal reflection pattern detected",
-      "↪ [ALERT] Suspicious MAC address detected: DC:A6:32:44...",
-      "↪ [THREAT RATING] Evolving...",
-      "↪ [THREAT RATING] CRITICAL LEVEL RAISED",
-      "↪ [RESPONSE] Auto-containment activated...",
-      "↪ [CONFIRM] AI Response sealed threat vectors.",
-      "↪ [LOGOUT] Signal trace terminated. Session locked."
-    ];
+      <li class="dropdown">
+        <a href="#tools" class="dropbtn">Tools ▾</a>
+        <div class="dropdown-content">
+          <a href="#tool-password">🔒 Password Strength Checker</a>
+          <a href="#tool-cipher">🗝️ Cipher Decoder</a>
+          <a href="#tool-morse">·− Morse Code Generator</a>
+          <a href="#tool-passwordgen">🔑 Random Password Generator</a>
+        </div>
+      </li>
 
-    const dynamicLines = {
-      9: ["↪ [THREAT RATING] Low...", "↪ [THREAT RATING] Medium...", "↪ [THREAT RATING] CRITICAL LEVEL RAISED"],
-      5: ["↪ [AI-MODULE] Scanning headers...", "↪ [AI-MODULE] Analyzing entropy...", "↪ [AI-MODULE] Anomaly scanner engaged..."],
-      7: ["↪ [ECHO LOOP] Trace repeating...", "↪ [ECHO LOOP] Signal reflection pattern detected", "↪ [ECHO LOOP] Confirmed ghost echo"]
-    };
+      <li class="dropdown">
+        <a href="#skills" class="dropbtn">More ▾</a>
+        <div class="dropdown-content">
+          <a href="#skills">🧠  Skills</a>
+          <a href="#contact">📞 Contact</a>
+          <a href="#partners">🤝 Partners</a>
+          <a href="#stacks">💻  Stacks</a>
+        </div>
+      </li>
 
-    let i = 0;
+      <li><a href="#" id="settings-btn" aria-label="Open Settings" title="Settings">⚙️</a></li>
 
-    function printLine(index) {
-      const line = document.createElement('span');
-      line.className = 'log-line';
-      line.textContent = lines[index];
-      terminal.appendChild(line);
+      <li>
+        <div class="profile-wrapper">
+          <button id="profile-btn" aria-label="Profile">👤</button>
+          <div id="profile-panel" class="profile-panel hidden">
+            <p><strong>User:</strong> <span id="profile-username">admin</span></p>
+            <p><strong>Email:</strong> <span id="profile-email">test@fenix.com</span></p>
+            <button id="logout-btn">Logout</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
 
-      // Animate content swap if it's a dynamic line
-      if (dynamicLines[index]) {
-        let variant = 1;
-        const swaps = dynamicLines[index];
-        const updateInterval = setInterval(() => {
-          if (variant >= swaps.length) return clearInterval(updateInterval);
-          line.textContent = swaps[variant];
-          variant++;
-        }, 1000 + Math.random() * 800);
-      }
+<main style="padding-top: 100px;">
+  <section style="padding: 2rem;">
+    <h1>Test Burger Menu for FENIX</h1>
+    <p>This is your actual header and nav, now working for small screens.</p>
+  </section>
+</main>
 
-      terminal.scrollTop = terminal.scrollHeight;
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.querySelector("nav ul");
+  const dropdowns = document.querySelectorAll(".dropdown");
+
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("show-menu");
+    document.body.classList.toggle("lock-scroll");
+
+    if (!navMenu.classList.contains("show-menu")) {
+      dropdowns.forEach(d => d.classList.remove("open"));
     }
+  });
 
-    function startSimulation() {
-      if (i < lines.length) {
-        printLine(i);
-        i++;
-        setTimeout(startSimulation, 500 + Math.random() * 1000);
-      }
+  dropdowns.forEach(drop => {
+    const btn = drop.querySelector(".dropbtn");
+    if (btn) {
+      btn.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          drop.classList.toggle("open");
+          dropdowns.forEach(other => {
+            if (other !== drop) other.classList.remove("open");
+          });
+        }
+      });
     }
+  });
+});
+</script>
 
-    startSimulation();
-  </script>
 </body>
 </html>

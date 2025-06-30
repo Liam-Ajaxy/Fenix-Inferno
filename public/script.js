@@ -56,7 +56,7 @@ document.getElementById("secureBtn").addEventListener("click", function () {
       const windowHeight = window.innerHeight;
       const elementTop = reveals[i].getBoundingClientRect().top;
 
-      if (elementTop < windowHeight - 50) {
+      if (elementTop < windowHeight - 5) {
         reveals[i].classList.add('visible');
       } else {
         reveals[i].classList.remove('visible'); // remove if you want repeatable animation
@@ -554,16 +554,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
       navMenu.classList.toggle('show-menu');
+      document.body.classList.toggle('menu-open', navMenu.classList.contains('show-menu'));
     });
 
     // Optional: close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('show-menu');
+        document.body.classList.remove('menu-open');
       });
     });
   }
 });
+
 
 
 // =============Floating links ===================================
