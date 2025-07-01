@@ -434,6 +434,9 @@ nav li a:not(.dropbtn):focus {
     .project-block:hover, .project:hover {
       transform: scale(1.02);
     }
+    .project-block .intro-text {
+      text-align: left;
+    }
 
     .phantom-btn {
   position: relative;
