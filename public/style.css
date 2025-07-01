@@ -152,7 +152,7 @@ nav li a:not(.dropbtn):focus {
   top: 70%; /* show below Tools link */
   left: 90%; /* center horizontally */
   transform: translateX(-50%); /* correct centering */
-  background-color: #f0f2f5; /* or your menu bg color */
+  background-color: var(--bg-color);
   min-width: 400px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   z-index: 999;
@@ -163,15 +163,23 @@ nav li a:not(.dropbtn):focus {
 
 .dropdown .dropdown-content a {
   padding: 0.75rem 1rem;
-  color: #1e40af;
+  color: var(--text-color);
   text-decoration: none;
   display: block;
   white-space: nowrap;
   font-size: medium;
 }
 
+/* STOP the nav underline animation on dropdown-content links */
+.dropdown .dropdown-content a {
+  background-image: none !important;
+  background-size: 0% 0 !important;
+  transition: none !important;
+}
+
+
 .dropdown .dropdown-content a:hover {
-  background-color: #e0e7ff;
+  color: var(--accent-color);
 }
 
 /* Show dropdown on hover */
@@ -442,11 +450,13 @@ nav li a:not(.dropbtn):focus {
   position: relative;
   display: inline-block;
   margin-top: 6rem;
-  padding: 0.35rem 10rem;
+  padding: 0.85rem 10rem;
   font-size: 1rem;
-  background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
-  color: transparent;
+  background: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: 0 6px 4px #111827;
   text-decoration: none;
+  border: solid var(--text-color);
   border-radius: 5rem;
   cursor: pointer;
   text-align: center;
@@ -456,9 +466,10 @@ nav li a:not(.dropbtn):focus {
 }
 
 .phantom-btn:hover {
-  background: #3730a3;  /* Darker blue on hover */
-  background: linear-gradient(135deg, #00eeff, #4f72ff);
+  background: var(--accent-color);  /* Darker blue on hover */
   cursor: pointer;
+  border: none;
+  color: white;
 }
 
 .phantom-btn::before {
@@ -474,7 +485,6 @@ nav li a:not(.dropbtn):focus {
   animation: phantomText 7s steps(3) infinite;
   white-space: nowrap;
   pointer-events: none;
-  color: white;
 }
 
 @keyframes phantomText {
@@ -485,7 +495,7 @@ nav li a:not(.dropbtn):focus {
 }
 
 .phantom-btn-stack {
-  padding: 1rem 12rem;
+  padding: 1rem 8rem;
   margin-left: 13rem;
 }
 .phantom-btn-stack::after {
@@ -994,51 +1004,6 @@ button:hover {
   opacity: 0.9;
 }
 
-/* ===================Theme toogle ====================*/
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.2rem;
-}
-
-/* Checkbox hidden, but functional */
-.theme-toggle input[type="checkbox"] {
-  appearance: none;
-  width: 50px;
-  height: 26px;
-  background-color: #ccc;
-  border-radius: 34px;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.4s ease;
-  margin-top: 1.85rem;
-}
-
-/* Knob inside */
-.theme-toggle input[type="checkbox"]::before {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  background: white;
-  border-radius: 50%;
-  top: 2px;
-  left: 2px;
-  transition: transform 0.4s ease;
-}
-
-/* Dark mode ON */
-.theme-toggle input[type="checkbox"]:checked {
-  background-color: #4b6cb7;
-}
-
-.theme-toggle input[type="checkbox"]:checked::before {
-  transform: translateX(24px);
-}
-
-
-
 
 /* ========== SETTINGS PANEL OVERLAY ========== */
 #settings {
@@ -1101,9 +1066,9 @@ button:hover {
   cursor: pointer;
 }
 
-/* ========== TABS ========== */
 .settings-tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* always two equal columns */
   border-bottom: 1px solid var(--accent-color);
   background: inherit;
 }
@@ -1182,12 +1147,14 @@ button:hover {
 
 /* ========== ACTIONS (BOTTOM BUTTONS) ========== */
 .settings-actions {
-  padding: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* always two equal-width buttons */
   gap: 1rem;
+  padding: 1rem;
   border-top: 1px solid #ddd;
   background: inherit;
 }
+
 
 .settings-actions .button {
   flex: 1;
@@ -1274,12 +1241,6 @@ button:hover {
 .setting-item input[type="checkbox"]:checked::before {
   transform: translateX(20px);
 }
-
-/* Optional hover effect */
-.setting-item input[type="checkbox"]:hover {
-  background-color: #777;
-}
-
 
 
 /* ========== DARK MODE SUPPORT ========== */
@@ -1563,7 +1524,7 @@ nav ul li:last-child {
 #profile-btn {
   display: inline-block;
   vertical-align: middle;
-  background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
+  background: var(--bg-color);
   border: none;
   font-size: 1rem;
   cursor: pointer;

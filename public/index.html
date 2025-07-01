@@ -57,7 +57,9 @@
 
     <nav>
      <div class="logo">
-      <img src="fenixofficalicon.png">
+      <a href="https://frankfenix.onrender.com" target="_blank">
+        <img src="fenixofficalicon.png">
+      </a>
       <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" aria-label="Fenix Logo Wordmark" role="img" id="frank-loader">
       <!-- F -->
       <path d="M10 110 L10 20 L70 20 L70 35 L25 35 L25 60 L60 60 L60 75 L25 75 L25 110 Z" />
@@ -77,61 +79,84 @@
     </div>
   <ul>
     <li><a href="#home" class="desktop-only">Home</a></li>
-    <li><a href="explore.html" id="explore-btn">Explore</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#feed">Feed</a></li>
-    <li><a href="#about">About</a></li>
+      <li><a href="explore.html" id="explore-btn">
+        <span class="mobile-icon"><i class="fas fa-compass"></i></span> Explore
+      </a></li>
 
-    <li class="dropdown desktop-only">
-      <a href="javascript:void(0);" class="dropbtn" data-target="tools-content">Tools ▾</a>
-      <div class="dropdown-content" id="tools-content">
-        <a href="#tool-password">🔒 Password Strength Checker</a>
-        <a href="#tool-cipher">🗝️ Cipher Decoder</a>
-        <a href="#tool-morse">·− Morse Code Generator</a>
-        <a href="#tool-passwordgen">🔑 Random Password Generator</a>
-      </div>
-    </li>
+      <li><a href="#projects">
+        <span class="mobile-icon"><i class="fas fa-folder-open"></i></span> Projects
+      </a></li>
 
-    <li class="dropdown desktop-only">
-      <a href="javascript:void(0);" class="dropbtn" data-target="more-content">More ▾</a>
-      <div class="dropdown-content" id="more-content">
-        <a href="#skills">🧠 Skills</a>
-        <a href="#contact">📞 Contact</a>
-        <a href="#partners">🤝 Partners</a>
-        <a href="#stacks">💻 Stacks</a>
-      </div>
-    </li>
+      <li><a href="#feed">
+        <span class="mobile-icon"><i class="fas fa-rss"></i></span> Feed
+      </a></li>
+
+      <li><a href="#about">
+        <span class="mobile-icon"><i class="fas fa-info-circle"></i></span> About
+      </a></li>
+
+
+<!-- Tools Dropdown (Desktop) -->
+<li class="dropdown desktop-only">  
+  <a href="javascript:void(0);" class="dropbtn" data-target="tools-content"> Tools ▾</a>
+  <div class="dropdown-content" id="tools-content">
+    <a href="#tool-password"><i class="fas fa-lock"></i> Password Strength Checker</a>
+    <a href="#tool-cipher"><i class="fas fa-key"></i> Cipher Decoder</a>
+    <a href="#tool-morse"><i class="fas fa-code"></i> Morse Code Generator</a>
+    <a href="#tool-passwordgen"><i class="fas fa-random"></i> Random Password Generator</a>
+  </div>
+</li>
+
+<!-- More Dropdown (Desktop) -->
+<li class="dropdown desktop-only">
+  <a href="javascript:void(0);" class="dropbtn" data-target="more-content"> More ▾</a>
+  <div class="dropdown-content" id="more-content">
+    <a href="#skills"><i class="fas fa-brain"></i> Skills</a>
+    <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+    <a href="#partners"><i class="fas fa-handshake"></i> Partners</a>
+    <a href="#stacks"><i class="fas fa-laptop-code"></i> Stacks</a>
+  </div>
+</li>
+
 
       <!-- Mobile-only Tools dropdown -->
       <li class="mobile-only mobile-dropdown">
-        <button class="mobile-dropdown-toggle" data-target="tools-menu">Tools ▾</button>
+        <button class="mobile-dropdown-toggle" data-target="tools-menu">
+          <i class="fas fa-tools"></i> Tools ▾
+        </button>
         <div class="mobile-dropdown-content" id="tools-menu">
-          <a href="#tool-password">Password Strength Checker</a>
-          <a href="#tool-cipher">Cipher Decoder</a>
-          <a href="#tool-morse">Morse Code Generator</a>
-          <a href="#tool-passwordgen">Random Password Generator</a>
+          <a href="#tool-password"><i class="fas fa-lock"></i> Password Strength Checker</a>
+          <a href="#tool-cipher"><i class="fas fa-key"></i> Cipher Decoder</a>
+          <a href="#tool-morse"><i class="fas fa-code"></i> Morse Code Generator</a>
+          <a href="#tool-passwordgen"><i class="fas fa-random"></i> Random Password Generator</a>
         </div>
       </li>
 
+
       <!-- Mobile-only More dropdown -->
       <li class="mobile-only mobile-dropdown">
-        <button class="mobile-dropdown-toggle" data-target="more-menu">More ▾</button>
+        <button class="mobile-dropdown-toggle" data-target="more-menu">
+          <i class="fas fa-ellipsis-h"></i> More ▾
+        </button>
         <div class="mobile-dropdown-content" id="more-menu">
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <a href="#partners">Partners</a>
-          <a href="#stacks">Stacks</a>
+          <a href="#skills"><i class="fas fa-brain"></i> Skills</a>
+          <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+          <a href="#partners"><i class="fas fa-handshake"></i> Partners</a>
+          <a href="#stacks"><i class="fas fa-laptop-code"></i> Stacks</a>
         </div>
       </li>
 
       <!-- Mobile-only Account dropdown -->
       <li class="mobile-only mobile-dropdown">
-        <button class="mobile-dropdown-toggle" data-target="account-menu">Account ▾</button>
+        <button class="mobile-dropdown-toggle" data-target="account-menu">
+          <i class="fas fa-user-circle"></i> Account ▾
+        </button>
         <div class="mobile-dropdown-content" id="account-menu">
-          <a href="login.html">Login</a>
-          <a href="signup.html">Create Account</a>
+          <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="signup.html"><i class="fas fa-user-plus"></i> Create Account</a>
         </div>
       </li>
+
 
 
     <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings" title="Settings"><i class="fas fa-cog"></i></a>
@@ -147,10 +172,15 @@
     </div>
 </li>
 </ul>
-  <li class="mobile-only horizontal-buttons">
-    <button id="profile-button">👤 Profile</button>
-    <button id="secure-request">🔐 Secure Request</button>
-  </li>
+<li class="mobile-only horizontal-buttons">
+  <button id="profile-button">
+    <i class="fas fa-user"></i> Profile
+  </button>
+  <button id="secure-request">
+    <i class="fas fa-shield-alt"></i> Secure Request
+  </button>
+</li>
+
 </nav>
 </header>
 <div class="floating-auth-links reveal">
@@ -390,7 +420,7 @@
     <p>
       Phantom Recon was a reconnaissance training module for agents in Kali Linux environments. It focused on passive information gathering using tools like Nmap, DNSenum, and theHarvester. FPI operatives simulated nation-state surveillance, emphasizing stealth and data fidelity. The project trained over 150 operatives.
     </p>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=user74251224.us@gmail.com&su=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well.%20I%27m%20reaching%20out%20to%20express%20my%20keen%20interest%20in%20joining%20the%20Phantom%20Course%20offered%20by%20Fenix%20Training%20Center.%20The%20mission%20of%20FENIX%20and%20its%20approach%20to%20intelligence%2C%20ethical%20systems%2C%20and%20cyber%20operations%20greatly%20aligns%20with%20my%20personal%20goals.%0A%0AI%20would%20be%20grateful%20if%20you%20could%20guide%20me%20through%20the%20enrollment%20process%2C%20schedule%2C%20and%20any%20prerequisites%20needed%20to%20get%20started.%20I%27m%20highly%20motivated%20to%20learn%20from%20your%20expertise%20and%20contribute%20to%20the%20FENIX%20community.%0A%0AThank%20you%20for%20your%20time%20and%20support.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" class="phantom-btn partner-btn btn-spin" target="_blank">Train
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=user74251224.us@gmail.com&su=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well.%20I%27m%20reaching%20out%20to%20express%20my%20keen%20interest%20in%20joining%20the%20Phantom%20Course%20offered%20by%20Fenix%20Training%20Center.%20The%20mission%20of%20FENIX%20and%20its%20approach%20to%20intelligence%2C%20ethical%20systems%2C%20and%20cyber%20operations%20greatly%20aligns%20with%20my%20personal%20goals.%0A%0AI%20would%20be%20grateful%20if%20you%20could%20guide%20me%20through%20the%20enrollment%20process%2C%20schedule%2C%20and%20any%20prerequisites%20needed%20to%20get%20started.%20I%27m%20highly%20motivated%20to%20learn%20from%20your%20expertise%20and%20contribute%20to%20the%20FENIX%20community.%0A%0AThank%20you%20for%20your%20time%20and%20support.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" class="phantom-btn partner-btn btn-spin" target="_blank">        
     </a>
 
     </div>
@@ -547,7 +577,10 @@
     <h3>🔒 Password Strength Checker</h3>
     <input type="password" id="passwordInput" placeholder="Enter password to check" required/>
     <button onclick="checkPasswordStrength()">Check Strength</button>
-    <p id="passwordStrengthResult"></p>
+    <p id="passwordStrengthResult">
+      <span class="text"></span>
+    </p>
+
   </div>
 
   <!-- Cipher Decoder -->
@@ -555,7 +588,7 @@
     <h3>🗝️ Cipher Decoder (ROT13)</h3>
     <textarea id="cipherInput" placeholder="Enter text to decode"></textarea>
     <button onclick="decodeCipher()">Decode</button>
-    <p id="cipherResult"></p>
+    <p id="cipherResult"><span class="spinner hidden"></span></p>
   </div>
 
   <!-- Morse Code Generator -->
@@ -563,14 +596,19 @@
     <h3>·− Morse Code Generator</h3>
     <textarea id="morseInput" placeholder="Enter text to convert to Morse"></textarea>
     <button onclick="generateMorse()">Generate Morse</button>
-    <p id="morseResult"></p>
+    <p id="morseResult">
+      <span class="text"> </span>
+      <span class="spinner hidden"></span>
+    </p>
+
+
   </div>
 
   <!-- Random Password Generator -->
   <div id="tool-passwordgen" class="tool-block">
     <h3>🔑 Random Password Generator</h3>
-    <button onclick="generateRandomPassword()">Generate Password</button>
-    <p id="randomPasswordResult"></p>
+    <button onclick="generateRandomPassword()">Generate Password </button>
+    <p id="randomPasswordResult"><span class="spinner hidden"></span></p>
   </div>
 </section>
 
@@ -842,7 +880,9 @@
 
   <div class="footer-info">
     <div class="logo">
-    <img src="fenixofficalicon.png" alt="Open Universal Intelligence Logo" loading="lazy" decoding="async">
+    <a href="https://frankfenix.onrender.com" target="_blank">
+      <img src="fenixofficalicon.png" alt="Open Universal Intelligence Logo" loading="lazy" decoding="async">
+    </a>
    </div>
      <div class="footer-sections">
     <div class="footer-column">

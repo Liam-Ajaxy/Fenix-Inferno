@@ -226,8 +226,8 @@
 @media (max-width: 767px) {
   .partner-btn {
     display: block !important;
-    width: 90% !important;
-    max-width: 90% !important;
+    width: 70% !important;
+    max-width: 70% !important;
     padding: 0.75rem 1rem !important;
     font-size: 1rem !important;
     margin: 1rem auto !important;
@@ -241,8 +241,8 @@
 @media (max-width: 767px) {
   .phantom-btn {
     display: block !important;
-    width: 90% !important;
-    max-width: 90% !important;
+    width: 60% !important;
+    max-width: 60% !important;
     padding: 0.75rem 1rem !important;
     font-size: 1rem !important;
     margin: 1rem auto !important;
@@ -256,8 +256,8 @@
 @media (max-width: 767px) {
   .phantom-btn-stack {
     display: block !important;
-    width: 90% !important;
-    max-width: 90% !important;
+    width: 60% !important;
+    max-width: 60% !important;
     padding: 1rem 1rem !important;
     font-size: 1rem !important;
     margin: 1rem auto !important;
@@ -817,21 +817,11 @@
 /* ================================================================================================================= */
 @media (max-width: 768px) {
   #settings {
-    width: 100vw !important;
+    width: 100vw;
     height: 100vh !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-  }
-
-  .settings-tabs {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .tab-button {
-    width: 100%;
-    text-align: center;
-  }
+  } 
 
   .setting-item {
     flex-direction: column;
@@ -853,15 +843,6 @@
   .setting-item input[type="checkbox"] {
     width: 40px;
     height: 20px;
-  }
-
-  .settings-actions {
-    flex-direction: column;
-  }
-
-  .settings-actions .button {
-    width: 100%;
-    text-align: center;
   }
 }
 

@@ -1,33 +1,75 @@
 // ============== 1️⃣ Password Strength Checker ===============================
 function checkPasswordStrength() {
   const password = document.getElementById('passwordInput').value.trim();
-  let strength = 'Weak';
+  const resultWrapper = document.getElementById('passwordStrengthResult');
+  const textSpan = resultWrapper.querySelector('.text');
 
-  if (password.length >= 8 && /[A-Z]/.test(password) && /\d/.test(password) && /[^A-Za-z0-9]/.test(password)) {
-    strength = 'Strong';
-  } else if (password.length >= 6) {
-    strength = 'Medium';
-  }
+  // Reset UI
+  textSpan.textContent = 'Analyzing...';
+  textSpan.classList.remove('strength-weak', 'strength-medium', 'strength-strong', 'neutral');
 
-  document.getElementById('passwordStrengthResult').textContent = `Strength: ${strength}`;
+  setTimeout(() => {
+    if (password === '') {
+      textSpan.textContent = 'Please enter a password.';
+      textSpan.classList.add('neutral');
+      spinner.classList.add('hidden');
+      return;
+    }
+
+    let strength = 'Weak';
+    let strengthClass = 'strength-weak';
+
+    if (
+      password.length >= 8 &&
+      /[A-Z]/.test(password) &&
+      /\d/.test(password) &&
+      /[^A-Za-z0-9]/.test(password)
+    ) {
+      strength = 'Strong';
+      strengthClass = 'strength-strong';
+    } else if (password.length >= 6) {
+      strength = 'Medium';
+      strengthClass = 'strength-medium';
+    }
+
+    textSpan.textContent = `Strength: ${strength}`;
+    textSpan.classList.add(strengthClass);
+  }, 1000);
 }
+
+
+
 
 
 
 // ============= 2️⃣ Cipher Decoder (ROT13) ====================================
 function decodeCipher() {
   const input = document.getElementById('cipherInput').value;
-  const result = input.replace(/[a-zA-Z]/g, function(c) {
-    return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
-  });
+  const resultEl = document.getElementById('cipherResult');
+  const spinner = resultEl.querySelector('.spinner');
 
-  document.getElementById('cipherResult').textContent = result;
+  resultEl.textContent = 'Decoding...';
+  resultEl.appendChild(spinner);
+  spinner.classList.remove('hidden');
+
+  setTimeout(() => {
+    const result = input.replace(/[a-zA-Z]/g, function(c) {
+      return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+    });
+
+    resultEl.textContent = result;
+    resultEl.appendChild(spinner);
+    spinner.classList.add('hidden');
+  }, 2000);
 }
 
 
 
+
 // ============== 3️⃣ Morse Code Generator ======================================
-const morseCodeMap = {
+function generateMorse() {
+
+  const morseCodeMap = {
   'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
   'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
   'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
@@ -38,20 +80,61 @@ const morseCodeMap = {
   '9': '----.', ' ': '/'
 };
 
-function generateMorse() {
-  const text = document.getElementById('morseInput').value.toUpperCase();
-  const morse = text.split('').map(char => morseCodeMap[char] || '').join(' ');
-  document.getElementById('morseResult').textContent = morse;
+
+
+  const input = document.getElementById('morseInput').value.toUpperCase();
+  const resultWrapper = document.getElementById('morseResult');
+  const textSpan = resultWrapper.querySelector('.text');
+  const spinner = resultWrapper.querySelector('.spinner');
+
+  if (!textSpan || !spinner) {
+    console.error('Missing .text or .spinner inside #morseResult');
+    return;
+  }
+
+  textSpan.textContent = 'Converting...';
+
+  setTimeout(() => {
+    try {
+      const morse = input
+        .split('')
+        .map(char => morseCodeMap[char] || '')
+        .join(' ')
+        .trim();
+
+      textSpan.textContent = morse || '[No valid characters]';
+    } catch (err) {
+      console.error('Morse conversion failed:', err);
+      textSpan.textContent = '[Error generating Morse]';
+    }
+
+    spinner.classList.add('hidden');
+    console.log('Spinner hidden ✅');
+  }, 2000);
 }
+
 
 
 
 // ================= 4️⃣ Random Password Generator ===========================
 function generateRandomPassword() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
-  let password = '';
-  for (let i = 0; i < 12; i++) {
-    password += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  document.getElementById('randomPasswordResult').textContent = `Generated Password: ${password}`;
+  const resultEl = document.getElementById('randomPasswordResult');
+  const spinner = resultEl.querySelector('.spinner');
+
+  resultEl.textContent = 'Generating...';
+  resultEl.appendChild(spinner);
+  spinner.classList.remove('hidden');
+
+  setTimeout(() => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
+    let password = '';
+    for (let i = 0; i < 12; i++) {
+      password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    resultEl.textContent = `Generated Password: ${password}`;
+    resultEl.appendChild(spinner);
+    spinner.classList.add('hidden');
+  }, 1000);
 }
+

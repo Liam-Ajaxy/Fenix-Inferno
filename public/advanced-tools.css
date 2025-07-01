@@ -44,8 +44,8 @@
   margin-bottom: 1rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #1f2937;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-size: 1rem;
   font-family: inherit;
 }
@@ -59,7 +59,7 @@
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 6px;
-  background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
+  background: var(--accent-color);
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
@@ -110,4 +110,45 @@
       to {
         transform: rotate(360deg);
       }
+    }
+
+
+    /* Tools execution spinner */
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #ccc;
+      border-top-color: var(--accent-color, #2563eb);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Password strength colors */
+    .strength-weak {
+      color: #dc2626; /* red-600 */
+    }
+
+    .strength-medium {
+      color: #f97316; /* orange-500 */
+    }
+
+    .strength-strong {
+      color: #16a34a; /* green-600 */
+    }
+
+    .neutral {
+      color: #6b7280; /* Gray-500 */
     }
