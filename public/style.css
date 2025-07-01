@@ -87,6 +87,7 @@ body.lock-scroll {
   left: 0;
   right: 0;
   width: 100%;
+  height: auto;
   background: #ffffff;
   padding: 0 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -109,12 +110,11 @@ body.lock-scroll {
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
       overflow: hidden;
+      margin-left: -2.5rem;
     }
     .logo img {
       width: 100px;
-      transform: scale(1.4);
     }
     nav {
       display: flex;
@@ -912,7 +912,7 @@ body {
 }
 
 section:not(#home), .project-block, .article-card, .quotes blockquote, .setting-advanced, #ratings .rating-card, #tools .tool-block, .search-result-item,
- .skill-card, .stack-logos, .partner-logos, #settings-panel, #search-section, header, #about .intro-wrapper, #profile-panel, .search-wrapper, #footer {
+ .skill-card, .stack-logos, .partner-logos, #settings-panel, #search-section, header, #about .intro-wrapper, #profile-panel, .search-wrapper, #footer, #contact-form input{
   background: var(--panel-color);
   color: var(--text-color);
   transition: background 0.3s ease, color 0.3s ease;

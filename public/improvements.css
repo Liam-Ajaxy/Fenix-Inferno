@@ -249,9 +249,11 @@ body.menu-open #hamburger .bottom {
   .mobile-dropdown-content {
     display: none;
     flex-direction: column;
-    gap: 0.4rem;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
+    padding-left: 3rem;
+    background: url('fenixofficalicon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
   }
 
   .mobile-dropdown-content a {
@@ -259,6 +261,9 @@ body.menu-open #hamburger .bottom {
     color: var(--text-color);
     font-size: 1rem;
   }
+    .mobile-dropdown-content a:hover {
+      color: var(--accent-color);
+    }
 
   .mobile-dropdown-content.show {
     display: flex;
@@ -270,7 +275,6 @@ body.menu-open #hamburger .bottom {
     font-size: 1rem;
     width: 100%;
     text-align: left;
-    padding: 0.75rem 1rem;
     color: var(--text-color);
     cursor: pointer;
   }
@@ -358,5 +362,49 @@ body.menu-open #hamburger .bottom {
     vertical-align: middle;
     color: var(--text-color); /* match your theme */
   }
+  nav ul li {
+    background: var(--bg-color);
+    width: 100%;
+    padding: 0.2rem;
+    border-radius: 5px;
+  }
+  nav li:hover {
+    color: var(--accent-color);
+  }
+  body.menu-open nav a {
+  background-image: none !important;
+  transition: none !important;
 }
 
+}
+  svg {
+    height: 20px;
+    width: auto;
+  }
+
+  path, rect {
+    fill: var(--panel-color);
+    stroke: var(--accent-color);
+    stroke-width: 15;
+    paint-order: stroke fill;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+
+    animation: draw 3s ease-in-out infinite alternate;
+  }
+
+  path:nth-of-type(1) { animation-delay: 0s; }
+  path:nth-of-type(2) { animation-delay: 0.2s; }
+  path:nth-of-type(3) { animation-delay: 0.4s; }
+  rect              { animation-delay: 0.6s; }
+  path:nth-of-type(4) { animation-delay: 0.8s; }
+
+  @keyframes draw {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }

@@ -1,8 +1,11 @@
-
 document.getElementById("secureBtn").addEventListener("click", function () {
   // Open 'securereq.html' in a new tab
   window.open("securereq.html", "_blank");
 });
+document.getElementById('secure-request').addEventListener('click', function() {
+  window.open('securereq.html', '_blank');
+});
+
 
  
  //=================Rotating-typing anime===============
@@ -56,7 +59,7 @@ document.getElementById("secureBtn").addEventListener("click", function () {
       const windowHeight = window.innerHeight;
       const elementTop = reveals[i].getBoundingClientRect().top;
 
-      if (elementTop < windowHeight - 5) {
+      if (elementTop < windowHeight - 2) {
         reveals[i].classList.add('visible');
       } else {
         reveals[i].classList.remove('visible'); // remove if you want repeatable animation

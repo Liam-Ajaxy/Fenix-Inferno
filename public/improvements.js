@@ -43,7 +43,7 @@ window.addEventListener("load", () => {
     setTimeout(() => {
       loader.style.display = "none";
     }, 500); // matches fade duration
-  }, 600);
+  }, 500);
 });
 
 // Dropdown Toggle

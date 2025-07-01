@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background: var(--fenix-bg);">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FENIX – Explore & Support</title>
+  <!-- SEO: Title & Description -->
+<title>Fenix</title>
+<meta name="description" content="Explore FENIX: tools for ethical hacking, secure AI, and advanced web projects.">
+<meta name="keywords" content="FENIX, Intelligence, Hacking, AI, Tools, Projects, Security, Developer Portfolio">
+<meta name="author" content="Frank CO7">
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:title" content="Fenix" />
+<meta property="og:description" content="Projects, tools, and skills for secure development." />
+<meta property="og:image" content="https://frankfenix.onrender.com/preview.png" />
+<meta property="og:url" content="https://frankfenix.onrender.com" />
+<meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Fenix">
+<meta name="twitter:description" content="Explore tools and projects for ethical AI and secure development.">
+<meta name="twitter:image" content="https://frankfenix.onrender.com/preview.png">
+
+<!-- Optional: Mobile browser theme -->
+<meta name="theme-color" content="#4f46e5">
+
+
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
   <link rel="stylesheet" href="improvements.css">
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<style>
     /* ====== BASIC RESET ====== */
     * {
       margin: 0;
@@ -194,14 +224,45 @@ nav a:focus {
 
   <!-- HEADER -->
   <header>
-    <div class="logo">FENIX</div>
+    <button id="hamburger" aria-label="Menu" title="Menu">
+    <span class="bar top"></span>
+  <span class="bar middle"></span>
+  <span class="bar bottom"></span>
+</button>
+
+    
+     <div class="logo">
+      <img src="fenixofficalicon.png">
+      <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" aria-label="Fenix Logo Wordmark" role="img" id="frank-loader">
+      <!-- F -->
+      <path d="M10 110 L10 20 L70 20 L70 35 L25 35 L25 60 L60 60 L60 75 L25 75 L25 110 Z" />
+      <!-- E -->
+      <path d="M90 20 L155 20 Q160 20 160 25 L160 30 Q160 35 155 35 L115 35 L115 55 L150 55 Q155 55 155 60 L155 65 Q155 70 150 70 L115 70 L115 95 L155 95 Q160 95 160 100 L160 105 Q160 110 155 110 L90 110 Z" />
+      <!-- N -->
+      <path d="M180 110 L180 20 L200 20 L250 95 L250 20 L270 20 L270 110 L250 110 L200 35 L200 110 Z" />
+      <!-- I -->
+      <rect x="300" y="20" width="20" height="90" rx="2" ry="2" />
+      <!-- X -->
+      <path d="M340 20 L375 65 L410 20 L430 20 L385 75 L430 110 L410 110 L375 75 L340 110 L320 110 L365 65 L320 20 Z" />
+    </svg>
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png" />
+      <!-- Add other icons as needed -->
+    </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="#resources">Resources</a>
-      <a href="#support">Support</a>
-      <a href="#about">About</a>
+    <a href="index.html" class="desktop-only">Home</a>
+    <a href="#resources">Resources</a>
+    <a href="#support">Support</a>
+    <a href="#about">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="feed.html">Feed</a>
     </nav>
   </header>
+
+  <div class="floating-auth-links reveal">
+  <a href="login.html" style="background: #f4f2f2; border: 1px solid #4f46e5; color: #4f46e5;" target="_blank">Login</a>
+  <a href="signup.html" target="_blank">Create Account</a>
+</div>
 
   <!-- RESOURCES -->
   <section id="resources">
@@ -321,6 +382,17 @@ nav a:focus {
     });
   </script>
 
-  <script src="improvements.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+<script src="script.js" defer></script>
+<script src="account.js" defer></script>
+<script src="advanced-tools.js" defer></script>
+<script src="login-popup.js" defer></script>
+<script src="improvements.js"></script>
+
+
+<div id="global-toast-container"></div>
 </body>
 </html>

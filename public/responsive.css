@@ -258,7 +258,7 @@
     display: block !important;
     width: 90% !important;
     max-width: 90% !important;
-    padding: 0.75rem 1rem !important;
+    padding: 1rem 1rem !important;
     font-size: 1rem !important;
     margin: 1rem auto !important;
     text-align: left !important;
@@ -899,7 +899,7 @@
   font-size: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  color: #111;
+  color: var(--accent-color);
   width: 100%;
   box-sizing: border-box;
 }
@@ -1009,7 +1009,7 @@
 }
 
 .footer .logo img {
-  height: 8rem;
+  height: 5rem;
   width: auto;
 }
 
@@ -1069,9 +1069,30 @@
 
   .footer-social a {
     margin: 0.4rem;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
+    
   }
 }
+
+@media (max-width: 768px) {
+  .footer-social-hr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-social {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-developer a {
+    font-size: 1rem;
+  }
+}
+
 
 
 
