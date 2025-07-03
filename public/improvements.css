@@ -478,3 +478,203 @@ body.menu-open #hamburger .bottom {
 .dropdown-content a i {
   margin-right: 0.5rem;
 }
+
+/* Feedback Button */
+.gemini-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+}
+
+/* Main Button */
+#fenix-feedback-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gemini Star (pure CSS) */
+.gemini-star {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #2d00f5, #5f87ff, #ddeff5);
+  clip-path: polygon(
+    50% 0%,   /* top */
+    65% 35%,  /* top-right */
+    100% 50%, /* right */
+    65% 65%,  /* bottom-right */
+    50% 100%, /* bottom */
+    35% 65%,  /* bottom-left */
+    0% 50%,   /* left */
+    35% 35%   /* top-left */
+  );
+  transition: transform 1s ease;
+  transform-origin: center;
+  box-shadow: 0 0 12px rgba(80, 200, 255, 0.3);
+}
+
+/* Rotate on hover */
+#fenix-feedback-btn:hover .gemini-star {
+  transform: rotate(360deg);
+}
+
+/* Feedback label - hidden initially */
+.gemini-label {
+  opacity: 0.5;
+  transform: scale(0.95);
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Reveal on hover */
+#fenix-feedback-btn:hover .gemini-label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .gemini-button-wrapper {
+    justify-content: center;
+  }
+
+  .gemini-star {
+    width: 24px;
+    height: 24px;
+  }
+
+  .gemini-label {
+    font-size: 14px;
+    opacity: 1;
+  }
+}
+
+
+/* Feedback Card */
+    #fenix-feedback-modal {
+      position: fixed; inset: 0; display: none;
+      background: rgba(0, 0, 0, 0); backdrop-filter: blur(5px);
+      justify-content: center; align-items: center; z-index: 9999;
+    }
+
+    #fenix-feedback-card {
+      position: relative; max-width: 550px; width: 95%;
+      background: rgba(0, 0, 0, 0); backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 20px;
+      padding: 30px; color: var(--text-color); box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      animation: fadeIn 0.3s ease;
+    }
+
+    #fenix-close {
+      position: absolute; top: 12px; right: 16px;
+      font-size: 22px; background: rgba(0, 0, 0, 0.116); border: none; color: var(--text-color); cursor: pointer;
+    }
+
+    #fenix-close:hover{
+      color: red;
+    }
+
+    h2 { font-size: 20px; margin-bottom: 20px; font-weight: 600; color: var(--text-color);}
+    .options {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+
+    .option {
+      background: var(--bg-color); padding: 14px;
+      border-radius: 12px; cursor: pointer; border: 2px solid var(--panel-color);
+      display: flex; align-items: center; gap: 10px; transition: 0.3s;
+    }
+
+    .option img {
+      height: 20px; width: 20px; object-fit: contain;
+    }
+
+    .option:hover {
+      background: rgba(0, 0, 0, 0);
+      border: solid rgba(0, 21, 255, 0.135);
+    }
+
+    .option.selected {
+      border-color: var(--accent-color);
+      background: rgba(38, 0, 255, 0.08);
+    }
+
+    .nav {
+      margin-top: 30px; display: flex; justify-content: space-between;
+    }
+
+    .nav button {
+      padding: 10px 18px; border-radius: 10px; border: none;
+      font-weight: 600; cursor: pointer;
+    }
+
+    #fenix-back { background: var(--bg-color); color: var(--text-color); }
+    #fenix-next { background: var(--accent-color); color: white; }
+
+    .progress-dots {
+      text-align: center; margin-bottom: 20px;
+    }
+
+    .dot {
+      display: inline-block; width: 10px; height: 10px; margin: 0 5px;
+      border-radius: 50%; background: #555; transition: 0.3s;
+    }
+
+    .dot.active {
+      background: var(--accent-color); transform: scale(1.3);
+    }
+
+    .error-message {
+      color: #ff6b6b; margin-top: 10px;
+      font-size: 14px; display: none;
+    }
+
+    .custom-input {
+      margin-top: 20px;
+    }
+
+    .custom-input input {
+      width: 100%; padding: 10px 14px;
+      border-radius: 10px; border: 1px solid #ccc;
+      font-size: 15px; background: rgba(255,255,255,0.15);
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.96);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    @media (max-width: 600px) {
+  #fenix-feedback-card {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .options {
+    grid-template-columns: 1fr;
+  }
+
+  .custom-input input {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .nav button {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+}

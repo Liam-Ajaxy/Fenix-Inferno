@@ -617,9 +617,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   } else {
     console.warn('🔒 Not logged in');
-    setTimeout(() => {
-      showToast(toastIcons.info, "You need to login to access some features.", toastColors.info);
-    }, 3000);
   }
 });
 

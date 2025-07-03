@@ -289,10 +289,10 @@ nav li a:not(.dropbtn):focus {
     section {
       padding: 10rem 8rem;
     }
-    h2 {
+    #home h2 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: #333;
+      color: var(--accent-color);
     }
 
     /* INTRO */
@@ -489,10 +489,10 @@ nav li a:not(.dropbtn):focus {
 }
 
 @keyframes phantomText {
-  0%   { content: "🕵️‍♂️ Become Phantom Recon"; }
+  0%   { content: "Become Phantom Recon"; }
   33%  { content: "🎓 Get Trained!"; }
-  66%  { content: "🤝 Meet The Trainer"; }
-  100% { content: "🕵️‍♂️ Become Phantom Recon"; }
+  66%  { content: "Meet The Trainer"; }
+  100% { content: "Become Phantom Recon"; }
 }
 
 .phantom-btn-stack {
@@ -512,13 +512,13 @@ nav li a:not(.dropbtn):focus {
 
 /* Keyframes for cycling through your 5 phrases */
 @keyframes stackText {
-  0%    { content: "🛠️ Leverage Our Technology Stack"; }
-  10%   { content: "🚀 Develop Robust Solutions"; }
-  20%   { content: "📁 Showcase Your Expertise"; }
-  40%   { content: "🌐 Craft Cutting-Edge Websites"; }
-  60%   { content: "⚙️ Streamline Your Workflow"; }
-  80%   { content: "⚡ Achieve More With One Click"; }
-  100%  { content: "🛠️ Leverage Our Technology Stack"; }
+  0%    { content: "Leverage Our Technology Stack"; }
+  10%   { content: "Develop Robust Solutions"; }
+  20%   { content: "Showcase Your Expertise"; }
+  40%   { content: "Craft Cutting-Edge Websites"; }
+  60%   { content: "Streamline Your Workflow"; }
+  80%   { content: "Achieve More With One Click"; }
+  100%  { content: "Leverage Our Technology Stack"; }
 }
 
 /* FEED & ARTICLES */

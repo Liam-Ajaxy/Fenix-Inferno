@@ -876,7 +876,31 @@
     </div>
     <button type="submit" class="button btn-spin">Send</button>
   </form>
+
+<div class="gemini-button-wrapper">
+  <button id="fenix-feedback-btn">
+    <span class="gemini-star"></span>
+    <span class="gemini-label">Feedback</span>
+  </button>
+</div>
+
 </section>
+
+
+
+
+<div id="fenix-feedback-modal">
+  <div id="fenix-feedback-card">
+    <button id="fenix-close" title="Close">×</button>
+    <div class="progress-dots" id="fenix-dots"></div>
+    <div id="fenix-step-content"></div>
+    <div class="error-message" id="fenix-error">Please select an option.</div>
+    <div class="nav">
+      <button id="fenix-back" disabled>Back</button>
+      <button id="fenix-next">Next</button>
+    </div>
+  </div>
+</div>
 
 
   </main>
@@ -994,7 +1018,7 @@
 </div>
 </footer>
 
-<button id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+<button id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Back to top">↑</button>
 
 <!-- <div id="login-required" class="login-popup hidden">
   <div class="login-popup-content">
