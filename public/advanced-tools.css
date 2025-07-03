@@ -53,6 +53,7 @@
 .tool-block textarea {
   resize: vertical;
   min-height: 100px;
+  max-height: 200px; /* adjust as needed */
 }
 
 .tool-block button {
@@ -67,7 +68,7 @@
 }
 
 .tool-block button:hover {
-  background-color: #059669;
+  background-color: #1d00c3;
 }
 
 /* Result paragraph */
@@ -152,3 +153,53 @@
     .neutral {
       color: #6b7280; /* Gray-500 */
     }
+
+    /*Password Strength Icons*/
+    #passwordStrengthResult {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 1.5rem; /* optional, prevents layout shift */
+    }
+
+    #passwordStrengthResult .icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    #passwordStrengthResult .text {
+      line-height: 1.4;
+    }
+
+    /* Cipher results */
+    #cipherResult {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 1.5rem;
+    }
+
+    #cipherResult .spinner {
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid #ccc;
+      border-top: 2px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .neutral {
+      color: #6b7280;
+    }
+
+    .decoded {
+      color: #1e3a8a; /* dark blue */
+    }
+
+

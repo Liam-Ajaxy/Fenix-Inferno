@@ -2,14 +2,19 @@
 function checkPasswordStrength() {
   const password = document.getElementById('passwordInput').value.trim();
   const resultWrapper = document.getElementById('passwordStrengthResult');
+  const icon = resultWrapper.querySelector('.icon');
   const textSpan = resultWrapper.querySelector('.text');
+  const spinner = resultWrapper.querySelector('.spinner');
 
-  // Reset UI
+  // Reset previous state
   textSpan.textContent = 'Analyzing...';
+  icon.textContent = '';
   textSpan.classList.remove('strength-weak', 'strength-medium', 'strength-strong', 'neutral');
+  spinner.classList.remove('hidden');
 
   setTimeout(() => {
     if (password === '') {
+      icon.textContent = '⚠️';
       textSpan.textContent = 'Please enter a password.';
       textSpan.classList.add('neutral');
       spinner.classList.add('hidden');
@@ -17,6 +22,7 @@ function checkPasswordStrength() {
     }
 
     let strength = 'Weak';
+    let iconSymbol = '❌';
     let strengthClass = 'strength-weak';
 
     if (
@@ -27,13 +33,17 @@ function checkPasswordStrength() {
     ) {
       strength = 'Strong';
       strengthClass = 'strength-strong';
+      iconSymbol = '✅';
     } else if (password.length >= 6) {
       strength = 'Medium';
       strengthClass = 'strength-medium';
+      iconSymbol = '⚠️';
     }
 
+    icon.textContent = iconSymbol;
     textSpan.textContent = `Strength: ${strength}`;
     textSpan.classList.add(strengthClass);
+    spinner.classList.add('hidden');
   }, 1000);
 }
 
@@ -44,23 +54,36 @@ function checkPasswordStrength() {
 
 // ============= 2️⃣ Cipher Decoder (ROT13) ====================================
 function decodeCipher() {
-  const input = document.getElementById('cipherInput').value;
+  const input = document.getElementById('cipherInput').value.trim();
   const resultEl = document.getElementById('cipherResult');
   const spinner = resultEl.querySelector('.spinner');
+  const textEl = resultEl.querySelector('.text');
+  const iconEl = resultEl.querySelector('.icon');
 
-  resultEl.textContent = 'Decoding...';
-  resultEl.appendChild(spinner);
+  // Reset previous result
+  textEl.textContent = 'Decoding...';
+  iconEl.textContent = '';
   spinner.classList.remove('hidden');
 
+  // Check for empty input
+  if (input === '') {
+    iconEl.textContent = '⚠️';
+    textEl.textContent = 'Please enter text to decode.';
+    textEl.className = 'text neutral';
+    spinner.classList.add('hidden');
+    return;
+  }
+
   setTimeout(() => {
-    const result = input.replace(/[a-zA-Z]/g, function(c) {
+    const result = input.replace(/[a-zA-Z]/g, function (c) {
       return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
     });
 
-    resultEl.textContent = result;
-    resultEl.appendChild(spinner);
+    iconEl.textContent = '✅';
+    textEl.textContent = result;
+    textEl.className = 'text decoded';
     spinner.classList.add('hidden');
-  }, 2000);
+  }, 1000);
 }
 
 

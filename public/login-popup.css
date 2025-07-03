@@ -68,23 +68,3 @@ body.no-scroll {
   100% { box-shadow: 0 0 0 0 transparent; }
 }
 
-
-
-/* Spinner added to any button */
-    .button-spinner {
-      width: 16px;
-      height: 16px;
-      margin-left: 8px;
-      border: 2px solid white;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }

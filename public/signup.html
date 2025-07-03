@@ -5,86 +5,242 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sign Up | FENIX</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="login-popup.css">
   <style>
-    body {
+    :root {
+      --primary: #6366f1;
+      --accent: #ff4d6d;
+      --background: #0f0c29;
+      --glass: rgba(255,255,255,0.1);
+      --text: #f3f4f6;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
       font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #4f46e5;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      overflow: hidden;
     }
-    .signup-box {
-      background: #fff;
+
+    .container {
+      display: flex;
+      width: 90%;
+      max-width: 1100px;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(30px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .left-panel {
+      flex: 1;
+      background: url('https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      width: 100%;
-      max-width: 400px;
-    }
-    .signup-box h2 {
-      margin-bottom: 1.5rem;
-      color: #4f46e5;
-      font-size: 1.5rem;
-    }
-    .signup-box input {
-      width: 100%;
-      padding: 0.7rem 0.1rem;
-      margin-bottom: 1rem;
-      border: 1px solid #333;
-      border-radius: 0.5rem;
-      background: #ffffff ;
-      color: #4f46e5;
-    }
-    .signup-box button {
-      width: 100%;
-      padding: 0.75rem;
-      background: linear-gradient(135deg, #00f0ff, #4f72ff, #ff4d6d);
-      border: none;
-      border-radius: 0.5rem;
-      font-weight: bold;
       color: white;
+    }
+
+    .left-panel h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .left-panel p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .signup-box {
+      flex: 1;
+      padding: 3rem;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .logo img {
+      width: 60px;
+      border-radius: 1rem;
+    }
+
+    .signup-box h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 1rem;
+      background: var(--glass);
+      border: 1px solid #ccc;
+      border-radius: 0.75rem;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+      pointer-events: none;
+      background: var(--background);
+      padding: 0 0.25rem;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+      top: -0.7rem;
+      left: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .password-strength {
+      height: 6px;
+      border-radius: 4px;
+      background: #ddd;
+      overflow: hidden;
+      margin-top: -0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .password-strength-bar {
+      height: 100%;
+      transition: width 0.3s;
+      background: #22c55e;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
+      color: #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.85rem;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.75rem;
+      color: #fff;
+      background: var(--primary);
       cursor: pointer;
       transition: 0.3s;
     }
-    .signup-box button:hover {
-      background: linear-gradient(135deg, #00eeffcd, #4f72ffc7, #ff4d6ec1);
+
+    button:hover {
+      background: #4f46e5;
     }
+
     .signup-box a {
-      color: #4f46e5;
+      color: #9294fa;
       text-decoration: none;
       font-size: 0.9rem;
       display: block;
       text-align: center;
       margin-top: 1rem;
     }
-    img { 
-      max-width: 20%; 
-      display: block; 
-      border-radius: 0.75rem; 
+
+    @media(max-width: 768px) {
+      .container {
+        flex-direction: column;
+        margin: 1rem;
+      }
+      .left-panel {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="signup-box">
-  <div class="logo">
-    <img src="fenixLogoOfficial.png">
+  <div class="container">
+    <div class="left-panel">
+      <h1>Welcome to FENIX</h1>
+      <p>Join a universe of intelligence and design. Your account unlocks powerful tools built for the elite.</p>
+    </div>
+    <div class="signup-box">
+      <div class="logo">
+        <img src="fenixofficalicon.png" alt="FENIX Logo">
+      </div>
+      <h2>Create Your Account</h2>
+      <form id="signup-form">
+        <div class="form-group">
+          <input type="text" id="signup-name" placeholder=" " required />
+          <label for="signup-name">Full Name</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="signup-email" placeholder=" " required />
+          <label for="signup-email">Email</label>
+        </div>
+        <div class="form-group">
+          <input type="password" id="signup-password" placeholder=" " required />
+          <label for="signup-password">Create Password</label>
+          <span class="toggle-password" onclick="togglePassword('signup-password')">👁️</span>
+        </div>
+        <div class="password-strength">
+          <div class="password-strength-bar" id="strength-bar"></div>
+        </div>
+        <div class="form-group">
+          <input type="password" id="signup-confirm-password" placeholder=" " required />
+          <label for="signup-confirm-password">Confirm Password</label>
+          <span class="toggle-password" onclick="togglePassword('signup-confirm-password')">👁️</span>
+        </div>
+        <button type="submit" class="btn-spin">Sign Up</button>
+        <a href="login.html">Already have an account? Login</a>
+      </form>
+    </div>
   </div>
-  <h2>Create Your Account</h2>
-  <form id="signup-form">
-  <input type="text" id="signup-name" placeholder="Full Name" required />
-  <input type="email" id="signup-email" placeholder="Email" required />
-  <input type="password" id="signup-password" placeholder="Create Password" required />
-  <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required />
-  <button type="submit" class="btn-spin">Sign Up</button>
-  <a href="login.html">Already have an account? Login</a>
-</form>
-</div>
 
+  <script>
+    function togglePassword(id) {
+      const field = document.getElementById(id);
+      field.type = field.type === 'password' ? 'text' : 'password';
+    }
 
+    const passwordInput = document.getElementById('signup-password');
+    const strengthBar = document.getElementById('strength-bar');
+    passwordInput?.addEventListener('input', () => {
+      const val = passwordInput.value;
+      let strength = 0;
+      if (val.length > 5) strength += 1;
+      if (/[A-Z]/.test(val)) strength += 1;
+      if (/[0-9]/.test(val)) strength += 1;
+      if (/[^A-Za-z0-9]/.test(val)) strength += 1;
+      strengthBar.style.width = (strength * 25) + '%';
+      strengthBar.style.background = ['#ef4444', '#f59e0b', '#facc15', '#22c55e'][strength - 1] || '#ddd';
+    });
+  </script>
 <script src="account.js"></script>
 <script src="login-popup.js"></script>
 </body>

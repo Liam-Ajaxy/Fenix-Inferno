@@ -578,9 +578,10 @@
     <input type="password" id="passwordInput" placeholder="Enter password to check" required/>
     <button onclick="checkPasswordStrength()">Check Strength</button>
     <p id="passwordStrengthResult">
+      <span class="icon"></span>
       <span class="text"></span>
+      <span class="spinner hidden"></span>
     </p>
-
   </div>
 
   <!-- Cipher Decoder -->
@@ -588,7 +589,12 @@
     <h3>🗝️ Cipher Decoder (ROT13)</h3>
     <textarea id="cipherInput" placeholder="Enter text to decode"></textarea>
     <button onclick="decodeCipher()">Decode</button>
-    <p id="cipherResult"><span class="spinner hidden"></span></p>
+    <p id="cipherResult">
+      <span class="icon"></span>
+      <span class="text"></span>
+      <span class="spinner hidden"></span>
+    </p>
+
   </div>
 
   <!-- Morse Code Generator -->

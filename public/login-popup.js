@@ -88,8 +88,7 @@ window.fetch = async function (...args) {
     originalHTML = activeBtn.innerHTML;
     activeBtn.disabled = true;
     activeBtn.innerHTML = `
-      <span class="btn-text">Processing</span>
-      <span class="button-spinner"></span>
+      <span class="btn-text">Processing...</span>
     `;
   }
 

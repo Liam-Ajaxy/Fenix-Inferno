@@ -264,16 +264,16 @@ nav li a:not(.dropbtn):focus {
 #close-search-btn {
   margin-left: 1rem;
   font-size: 1rem;
-  background: #e5e7eb;
+  background: var(--bg-color);
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 #close-search-btn:hover {
-  background: #d1d5db;
+  color: red;
 }
 
 @media (max-width: 600px) {
@@ -446,11 +446,11 @@ nav li a:not(.dropbtn):focus {
       text-align: left;
     }
 
-    .phantom-btn {
+  .phantom-btn {
   position: relative;
   display: inline-block;
   margin-top: 6rem;
-  padding: 0.85rem 10rem;
+  padding: 0.85rem 8rem;
   font-size: 1rem;
   background: var(--bg-color);
   color: var(--text-color);
@@ -467,6 +467,7 @@ nav li a:not(.dropbtn):focus {
 
 .phantom-btn:hover {
   background: var(--accent-color);  /* Darker blue on hover */
+  border: solid var(--accent-color);
   cursor: pointer;
   border: none;
   color: white;
@@ -612,6 +613,7 @@ nav li a:not(.dropbtn):focus {
       padding-left: 1.8em;
       position: relative;
       color: rgb(104, 104, 104);
+      border-radius: 5px;
     }
 
 .quote-icon {
