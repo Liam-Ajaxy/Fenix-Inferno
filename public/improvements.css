@@ -1,3 +1,10 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --panel-color: #f3f4f6;
+  --accent-color: #4f46e5;
+}
+
 body, button {
   user-select: none;
   -webkit-user-select: none;
@@ -90,7 +97,7 @@ body.lock-scroll {
 #fenix-loader {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.671);
+  background: var(--bg-color, #0e0e11);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +115,7 @@ body.lock-scroll {
 
 
 .loader-text {
-  color: var(--fenix-text);
+  color: var(--fenix-text, #aaa);
 }
 
 
@@ -124,17 +131,22 @@ body.lock-scroll {
   width: 100%;
   height: 100%;
   animation: spin 1.4s linear infinite;
+  transform-origin: center;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  opacity: 0.9;
 }
+
 
 .fenix-ring circle {
   fill: none;
   stroke: #4f46e5;
-  stroke-width: 4;
+  stroke-width: 3.5;
   stroke-linecap: round;
   stroke-dasharray: 100;
   stroke-dashoffset: 75;
   animation: arc-grow 1.4s ease-in-out infinite;
 }
+
 
 /* Core Pulse Circle */
 .core {
@@ -716,13 +728,13 @@ body.menu-open #hamburger .bottom {
 
 /* Core smaller question mark */
 #fenix-question-btn .core {
-  top: 50%;
-  left: 22px;
-  transform: translateY(-50%);
+  position: relative;
+  top: 0;     /* Reset any old top */
+  left: 0;    /* Reset any old left */
+  transform: none; /* Remove translateY */
   font-size: 18px;
   font-weight: bold;
   color: var(--accent-color);
-  filter: drop-shadow(0 0 4px #00f5a0);
   z-index: 2;
 }
 
@@ -730,10 +742,10 @@ body.menu-open #hamburger .bottom {
 #fenix-question-btn .node {
   width: 6px;
   height: 6px;
-  background: #00f5a0;
+  background: linear-gradient(135deg, #2d00f5, #5f87ff, #ddeff5);
   border-radius: 50%;
-  box-shadow: 0 0 6px #00f5a0;
   z-index: 1;
+  position: absolute;
 }
 
 /* Show core and nodes on hover */
@@ -743,10 +755,6 @@ body.menu-open #hamburger .bottom {
   pointer-events: auto;
 }
 
-/* On hover, core glows brighter */
-#fenix-question-btn:hover .core {
-  filter: drop-shadow(0 0 10px #00f5a0);
-}
 
 /* Node orbit positions and animations */
 #fenix-question-btn .node.one {
@@ -771,6 +779,19 @@ body.menu-open #hamburger .bottom {
   transform-origin: 10px 10px;
   animation: orbit 2.5s linear infinite;
   animation-delay: 0.8s;
+}
+
+.question-label {
+  opacity: 0.2;
+  transform: scale(0.95);
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+#fenix-question-btn:hover .question-label {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Orbit animation */
