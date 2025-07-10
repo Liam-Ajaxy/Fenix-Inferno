@@ -190,7 +190,7 @@
 
 <section id="search-section" class="search-bar-container">
   <div class="search-wrapper">
-    <input type="text" id="search-bar" placeholder="Search intelligence..." />
+    <input type="text" id="search-bar" placeholder="Search or type URL" />
     <button id="search-btn" title="Search"><span>🔍</span></button>
   </div>
   <button id="close-search-btn" class="hidden" title="Close Search">✖</button>
@@ -877,14 +877,39 @@
     <button type="submit" class="button btn-spin">Send</button>
   </form>
 
-<div class="gemini-button-wrapper">
+<div class="fenix-button-row">
   <button id="fenix-feedback-btn">
     <span class="gemini-star"></span>
     <span class="gemini-label">Feedback</span>
   </button>
+
+<button id="fenix-question-btn">  
+  <span class="core">?</span>
+  <span class="node one"></span>
+  <span class="node two"></span>
+  <span class="node three"></span>
+  <span class="question-label">Ask a Question</span>
+</button>
+
 </div>
 
+
 </section>
+
+<div id="fenix-question-modal">
+  <div id="fenix-question-card">
+    <button id="fenix-q-close" title="Close">×</button>
+    <h2>What would you like to ask?</h2>
+    <input type="text" placeholder="Enter your question..." id="question-title" />
+    <textarea placeholder="Optional details (what's confusing, buggy, etc.)" id="question-detail"></textarea>
+    
+    <div id="question-message" class="question-msg"></div>
+    
+    <div class="q-nav">
+      <button id="fenix-submit-question">Submit</button>
+    </div>
+  </div>
+</div>
 
 
 

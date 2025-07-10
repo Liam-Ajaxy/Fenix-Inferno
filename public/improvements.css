@@ -479,6 +479,15 @@ body.menu-open #hamburger .bottom {
   margin-right: 0.5rem;
 }
 
+/* Align User FEEDBACK button horizontally */
+.fenix-button-row {
+  display: flex;
+  justify-content: flex-end; /* Align to right */
+  flex-wrap: wrap;           /* Stack vertically on small screens */
+  gap: 12px;                 /* Space between buttons */
+  margin-top: 20px;
+}
+
 /* Feedback Button */
 .gemini-button-wrapper {
   display: flex;
@@ -527,7 +536,7 @@ body.menu-open #hamburger .bottom {
 
 /* Feedback label - hidden initially */
 .gemini-label {
-  opacity: 0.5;
+  opacity: 0.2;
   transform: scale(0.95);
   color: var(--accent-color);
   font-weight: 500;
@@ -675,6 +684,283 @@ body.menu-open #hamburger .bottom {
 
   .nav button {
     padding: 10px 14px;
+    font-size: 14px;
+  }
+}
+
+/* PHASE 1: Default button state */
+#fenix-question-btn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0);
+  color: var(--accent-color);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Small core question mark and orbit nodes: hidden by default */
+#fenix-question-btn .core,
+#fenix-question-btn .node {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  position: absolute; /* keep positioning */
+}
+
+/* Core smaller question mark */
+#fenix-question-btn .core {
+  top: 50%;
+  left: 22px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 4px #00f5a0);
+  z-index: 2;
+}
+
+/* Orbit nodes styling */
+#fenix-question-btn .node {
+  width: 6px;
+  height: 6px;
+  background: #00f5a0;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #00f5a0;
+  z-index: 1;
+}
+
+/* Show core and nodes on hover */
+#fenix-question-btn:hover .core,
+#fenix-question-btn:hover .node {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* On hover, core glows brighter */
+#fenix-question-btn:hover .core {
+  filter: drop-shadow(0 0 10px #00f5a0);
+}
+
+/* Node orbit positions and animations */
+#fenix-question-btn .node.one {
+  top: -6px;
+  left: 22px;
+  transform-origin: 10px 22px;
+  animation: orbit 2.5s linear infinite;
+  animation-delay: 0s;
+}
+
+#fenix-question-btn .node.two {
+  top: 50%;
+  left: 0px;
+  transform-origin: 22px 10px;
+  animation: orbit 2.5s linear infinite;
+  animation-delay: 0.4s;
+}
+
+#fenix-question-btn .node.three {
+  bottom: -6px;
+  left: 22px;
+  transform-origin: 10px 10px;
+  animation: orbit 2.5s linear infinite;
+  animation-delay: 0.8s;
+}
+
+/* Orbit animation */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(12px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(12px) rotate(-360deg);
+  }
+}
+
+/* Pulse animation for big question mark */
+@keyframes pulseQ {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.2) rotate(5deg);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(0.95) rotate(-3deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Questions card */
+/* QUESTION MODAL OVERLAY */
+#fenix-question-modal {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* MODAL CARD */
+#fenix-question-card {
+  position: relative;
+  max-width: 550px;
+  width: 95%;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 30px;
+  color: var(--text-color);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CLOSE BUTTON */
+#fenix-q-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 22px;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  line-height: 1;
+}
+
+#fenix-q-close:hover {
+  color: red;
+}
+
+/* HEADING */
+#fenix-question-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 0;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* INPUT + TEXTAREA */
+#fenix-question-card input[type="text"],
+#fenix-question-card textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--panel-color);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: white;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+#fenix-question-card input::placeholder,
+#fenix-question-card textarea::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+#fenix-question-card input:focus,
+#fenix-question-card textarea:focus {
+  border-color: var(--accent-color);
+  background: rgba(0, 21, 255, 0.06);
+}
+
+#fenix-question-card textarea {
+  min-height: 100px;
+  max-height: 220px;
+}
+
+/* INTERNAL MESSAGE */
+#question-message {
+  display: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  background: rgba(0, 255, 160, 0.1);
+  border: 1px solid rgba(0, 255, 160, 0.3);
+  color: var(--text-color);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+#question-message.error {
+  background: rgba(255, 0, 80, 0.12);
+  border-color: rgba(255, 0, 80, 0.3);
+  color: #ff6b6b;
+}
+
+/* SUBMIT BUTTON */
+.q-nav {
+  margin-top: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#fenix-submit-question {
+  background: var(--accent-color);
+  color: white;
+  padding: 10px 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#fenix-submit-question:hover {
+  background: rgba(0, 21, 255, 0.8);
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  #fenix-question-card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  #fenix-question-card h2 {
+    font-size: 18px;
+  }
+
+  #fenix-q-close {
+    font-size: 20px;
+  }
+
+  #fenix-submit-question {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+
+  #fenix-question-card input,
+  #fenix-question-card textarea {
     font-size: 14px;
   }
 }

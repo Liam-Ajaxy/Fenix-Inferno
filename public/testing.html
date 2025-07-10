@@ -1,202 +1,140 @@
-<!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ultra Advanced Animated Button</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #111;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      overflow: hidden;
-    }
-
-    /* Container for perspective */
-    .btn-3d-container {
-      perspective: 1000px;
-      width: max-content;
-    }
-
-    #fenix-feedback-btn {
-      position: relative;
-      padding: 16px 48px;
-      font-weight: 600;
-      font-size: 18px;
-      color: #00f5a0;
-      background: linear-gradient(135deg, #002200, #004422);
-      border-radius: 60px;
-      border: none;
-      cursor: pointer;
-      outline: none;
-      user-select: none;
-      box-shadow:
-        0 0 10px #00f5a0,
-        0 0 30px #00f5a0,
-        inset 0 0 15px #00f5a0;
-      filter: drop-shadow(0 0 6px #00f5a0);
-      transform-style: preserve-3d;
-      transition: box-shadow 0.3s ease;
-      overflow: visible;
-    }
-
-    /* Animated Gradient Overlay */
-    #fenix-feedback-btn::before {
-      content: "";
-      position: absolute;
-      top: -5px; left: -5px; right: -5px; bottom: -5px;
-      border-radius: 65px;
-      background: linear-gradient(270deg,
-        #00f5a0,
-        #00fff0,
-        #00f5a0,
-        #00fff0,
-        #00f5a0);
-      background-size: 1000% 1000%;
-      animation: gradientShift 8s linear infinite;
-      filter: blur(12px);
-      opacity: 0.7;
-      z-index: -2;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    /* Morphing clip-path for organic shape */
-    #fenix-feedback-btn::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 60px;
-      background: rgba(0, 255, 160, 0.1);
-      filter: blur(10px);
-      animation: morphShape 6s ease-in-out infinite;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    /* Sparkles Container */
-    .sparkle {
-      position: absolute;
-      background: #00fff0;
-      border-radius: 50%;
-      filter: drop-shadow(0 0 6px #00fff0);
-      opacity: 0.8;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Create multiple sparkles dynamically */
-    /* Using :nth-child for different timings and positions */
-    .sparkle:nth-child(1) {
-      width: 6px;
-      height: 6px;
-      top: 10%;
-      left: 15%;
-      animation: sparklePulse 3s infinite 0s;
-    }
-    .sparkle:nth-child(2) {
-      width: 8px;
-      height: 8px;
-      top: 40%;
-      left: 80%;
-      animation: sparklePulse 3.5s infinite 1.2s;
-    }
-    .sparkle:nth-child(3) {
-      width: 5px;
-      height: 5px;
-      top: 75%;
-      left: 30%;
-      animation: sparklePulse 2.7s infinite 0.7s;
-    }
-    .sparkle:nth-child(4) {
-      width: 7px;
-      height: 7px;
-      top: 25%;
-      left: 50%;
-      animation: sparklePulse 4s infinite 2s;
-    }
-    .sparkle:nth-child(5) {
-      width: 6px;
-      height: 6px;
-      top: 60%;
-      left: 70%;
-      animation: sparklePulse 3.2s infinite 3s;
-    }
-
-    /* Animations */
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    @keyframes morphShape {
-      0%, 100% {
-        clip-path: ellipse(70% 90% at 50% 50%);
-      }
-      50% {
-        clip-path: ellipse(65% 85% at 48% 52%);
-      }
-    }
-
-    @keyframes sparklePulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.8;
-      }
-      50% {
-        transform: scale(1.4);
-        opacity: 0.3;
-      }
-    }
-
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>practical JS</title>
 </head>
+<style>
+  body {
+    background: black;
+    color: rgb(184, 247, 255);
+    height: 100vh;
+    max-height: 120vh;
+    max-width: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cont {
+    background: linear-gradient(to right, rgba(0, 0, 255, 0.05), rgba(3, 40, 45, 0.379), rgba(0, 0, 255, 0.059));
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+  .subcont {
+    background: linear-gradient(90deg, rgba(0, 217, 255, 0.03), rgba(0, 0, 255, 0.066), rgba(179, 245, 255, 0.071));
+    padding: 2rem;
+  }
+  h2 {
+    font-size: 60;
+  }
+  p {
+    font-size: 20;
+  }
+  span {
+    color: orangered;
+  }
+  .inputcont {
+    padding: 1rem;
+  }
+  .inputcont input {
+    background: black;
+    padding: 1rem;
+    border: none;
+    border-radius: 1rem;
+    width: 100%;
+    color: green;
+  }
+  button {
+    width: 100%;
+    background: green;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    color: white;
+    font-size: medium;
+    font-weight: 800;
+  }
+  button:hover {
+    animation: background 3s linear infinite;
+    transition: background 4s ease-in-out;
+    border: solid white;
+  }
+  ::placeholder {
+    color: green;
+    font-size: medium;
+    font-family: monospace;
+  }
+  @keyframes background {
+    from {
+      background: linear-gradient(90deg, rgba(0, 217, 255, 0.03), rgba(0, 0, 255, 0.066), rgba(179, 245, 255, 0.071));
+    }
+    to {
+      background: transparent;
+    }
+  }
+  #message, #error {
+    font-size: smaller;
+    font-family: monospace;
+  }
+  #message {
+    color: orange;
+  }
+  #error {
+    color: red;
+  }
+</style>
 <body>
-  <div class="btn-3d-container">
-    <button id="fenix-feedback-btn" aria-label="Give Feedback">
-      💬 Feedback
-      <span class="sparkle"></span>
-      <span class="sparkle"></span>
-      <span class="sparkle"></span>
-      <span class="sparkle"></span>
-      <span class="sparkle"></span>
-    </button>
+  <div class="cont">
+    <div class="subcont">
+      <h2>Practical JS</h2>
+        <p>Hello, <span id="name"></span> You are Welcome to the JS practice.</p>
+    </div>
+    <h5>Time: <p id="clock1"></p></h5>
+    <div class="inputcont">
+      <input type="text" id="username" placeholder="What's your username?"><br><br>
+      <input type="number" id="age" placeholder="What's your age"><br>
+      <p id="message"></p><br>
+      <p>You are ready to go! Enter your password to confirm.</p>
+      <input type="password" id="password" placeholder="Enter your password"><br><br>
+      <button onclick="submit()">Submit</button>
+      <p id="error"></p>
+    </div>
   </div>
-
   <script>
-    // Add interactive 3D tilt on mouse move
-    const btn = document.getElementById('fenix-feedback-btn');
-    const container = document.querySelector('.btn-3d-container');
+      const hrs = document.getElementById('hrs');
+      const min = document.getElementById('min');
+      const sec = document.getElementById('sec');
 
-    container.addEventListener('mousemove', e => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const midX = rect.width / 2;
-      const midY = rect.height / 2;
-      const maxTilt = 15; // degrees
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0');
+  const mins = now.getMinutes().toString().padStart(2, '0');
+  document.getElementById("clock1").textContent = `${hours}:${mins}`;
 
-      const rotateX = ((y - midY) / midY) * maxTilt * -1; // invert
-      const rotateY = ((x - midX) / midX) * maxTilt;
 
-      btn.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
-    });
+    function submit() {
+      const name = document.getElementById('name');
+      const enteredName = document.getElementById('username').value.trim();
+      const enteredAge = document.getElementById('age').value.trim();
+      const msg = document.getElementById('message');
+      const enteredPassword = document.getElementById('password').value.trim();
+      const error = document.getElementById('error');
 
-    container.addEventListener('mouseleave', () => {
-      btn.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0)';
-    });
+      const password = "1234";
+      const username = "Frank Admin";
+
+      if (enteredName === username && enteredPassword === password) {
+        name.innerHTML = `${enteredName}!`;
+      }
+      if (enteredAge <= 18) {
+        msg.innerHTML = "You are minor!"
+      }
+      else {
+        error.innerHTML = "Invalid username or password!";
+      }
+    }
+
+
   </script>
 </body>
 </html>

@@ -215,42 +215,62 @@ backBtn.onclick = () => {
   }
 };
 
-// Top-btn disappear on footer
- const scrollTopBtn = document.getElementById('scrollTop');
-  const footer = document.getElementById('footer');
 
-  // Show/hide based on scroll position
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY || document.documentElement.scrollTop;
-    const nearTop = scrollY < 3000;
+// Question button logic
+// Get elements
+const qBtn = document.getElementById('fenix-question-btn');
+const qModal = document.getElementById('fenix-question-modal');
+const qClose = document.getElementById('fenix-q-close');
+const qSubmit = document.getElementById('fenix-submit-question');
+const qMessage = document.getElementById('question-message');
 
-    if (!nearTop && !footerVisible) {
-      scrollTopBtn.classList.add('show');
-    } else {
-      scrollTopBtn.classList.remove('show');
-    }
-  });
+// Open the modal
+qBtn.onclick = () => {
+  qModal.style.display = 'flex';
+};
 
-  // Track footer visibility
-  let footerVisible = false;
+// Close the modal and reset form
+qClose.onclick = () => {
+  qModal.style.display = 'none';
+  resetForm();
+};
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      footerVisible = entry.isIntersecting;
+// Submit handler
+qSubmit.onclick = () => {
+  const title = document.getElementById('question-title').value.trim();
+  const detail = document.getElementById('question-detail').value.trim();
 
-      // Hide if footer is visible
-      if (footerVisible) {
-        scrollTopBtn.classList.remove('show');
-      } else {
-        // Recheck scroll position to decide visibility
-        const scrollY = window.scrollY || document.documentElement.scrollTop;
-        if (scrollY >= 200) {
-          scrollTopBtn.classList.add('show');
-        }
-      }
-    });
-  }, {
-    threshold: 0.6
-  });
+  if (!title) {
+    showMessage("⚠️ Please enter your question.", true);
+    return;
+  }
 
-  if (footer) observer.observe(footer);
+  // Log the question
+  console.log("🧠 User Question:", { title, detail });
+
+  showMessage("✅ Your question has been submitted!", false);
+
+  setTimeout(() => {
+    qModal.style.display = 'none';
+    resetForm();
+  }, 1500);
+};
+
+// Show message inside the modal
+function showMessage(msg, isError = false) {
+  qMessage.textContent = msg;
+  qMessage.className = isError ? 'error' : '';
+  qMessage.classList.add('question-msg');
+  qMessage.style.display = 'block';
+
+  setTimeout(() => {
+    qMessage.style.display = 'none';
+  }, 3500);
+}
+
+// Reset form
+function resetForm() {
+  document.getElementById('question-title').value = "";
+  document.getElementById('question-detail').value = "";
+  qMessage.style.display = 'none';
+}

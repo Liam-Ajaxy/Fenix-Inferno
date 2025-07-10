@@ -1155,6 +1155,7 @@ button:hover {
   padding: 1rem;
   border-top: 1px solid #ddd;
   background: inherit;
+  margin-bottom: 1rem;
 }
 
 
@@ -1272,7 +1273,7 @@ button:hover {
 
 /* ----------searches----------------- */
 body.search-mode {
-  background: url('jeremy-bishop-8xznAGy4HcY-unsplash.jpg');
+  background: var(--bg-color);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
