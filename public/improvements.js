@@ -200,7 +200,7 @@ nextBtn.onclick = () => {
     renderStep();
   } else {
     console.log("🧠 Final Feedback Responses:", responses);
-    content.innerHTML = `<h2>✅ Thank you!</h2><p>Your feedback has been received.</p>`;
+    content.innerHTML = `<h2>✅ Thank you!</h2><p>Your insights help us make things better. Have a great day!</p>`;
     dots.innerHTML = '';
     backBtn.style.display = 'none';
     nextBtn.style.display = 'none';
@@ -248,12 +248,14 @@ qSubmit.onclick = () => {
   // Log the question
   console.log("🧠 User Question:", { title, detail });
 
-  showMessage("✅ Your question has been submitted!", false);
+  showMessage("✅ Your question has been submitted! We hope you enjoy what’s coming next!", false);
+
+  qSubmit.style.display = 'none';
 
   setTimeout(() => {
     qModal.style.display = 'none';
     resetForm();
-  }, 1500);
+  }, 4000);
 };
 
 // Show message inside the modal
@@ -265,7 +267,7 @@ function showMessage(msg, isError = false) {
 
   setTimeout(() => {
     qMessage.style.display = 'none';
-  }, 3500);
+  }, 4500);
 }
 
 // Reset form
