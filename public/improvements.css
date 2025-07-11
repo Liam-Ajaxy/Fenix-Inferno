@@ -980,3 +980,11 @@ body.menu-open #hamburger .bottom {
     font-size: 14px;
   }
 }
+/* qSubmit disabled */
+#fenix-submit-question:disabled {
+  background-color: #999 !important;
+  color: #eee !important;
+  border-color: #999 !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}

@@ -299,7 +299,7 @@ nav li a:not(.dropbtn):focus {
     #home {
       background: white;
       padding: 2rem 6rem;
-      padding-top: 4rem;
+      padding-top: 1rem;
     }
     .typing-header {
   font-size: 1.4rem;

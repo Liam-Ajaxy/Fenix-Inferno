@@ -215,7 +215,6 @@ backBtn.onclick = () => {
   }
 };
 
-
 // Question button logic
 // Get elements
 const qBtn = document.getElementById('fenix-question-btn');
@@ -250,8 +249,6 @@ qSubmit.onclick = () => {
 
   showMessage("✅ Your question has been submitted! We hope you enjoy what’s coming next!", false);
 
-  qSubmit.style.display = 'none';
-
   setTimeout(() => {
     qModal.style.display = 'none';
     resetForm();
@@ -266,7 +263,7 @@ function showMessage(msg, isError = false) {
   qMessage.style.display = 'block';
 
   setTimeout(() => {
-    qMessage.style.display = 'none';
+    qMessage.style.opacity = 'none';
   }, 4500);
 }
 
@@ -275,4 +272,22 @@ function resetForm() {
   document.getElementById('question-title').value = "";
   document.getElementById('question-detail').value = "";
   qMessage.style.display = 'none';
+  qSubmit.disabled = false; // ✅ Ensure it's re-enabled
 }
+
+// ✅ Observe qMessage for non-error display and disable qSubmit accordingly
+const observer = new MutationObserver(() => {
+  const isVisible = qMessage.style.display === 'block';
+  const isError = qMessage.classList.contains('error');
+
+  if (isVisible && !isError) {
+    qSubmit.disabled = true;
+  } else {
+    qSubmit.disabled = false;
+  }
+});
+
+observer.observe(qMessage, {
+  attributes: true,
+  attributeFilter: ['style', 'class']
+});
