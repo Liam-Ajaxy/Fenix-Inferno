@@ -11,7 +11,7 @@ const path = require('path');
 
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5500', 'http://127.0.0.1:5500'],
+  origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'https://fenix-inferno-1.onrender.com'],
   credentials: true
 }));
 app.use(express.json());
