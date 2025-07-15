@@ -1094,7 +1094,7 @@
   border: none;
   border-radius: 50%;
   background-color: #00000017;
-  color: #fff;
+  color: var(--text-color);
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 10000;

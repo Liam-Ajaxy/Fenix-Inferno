@@ -291,3 +291,64 @@ observer.observe(qMessage, {
   attributes: true,
   attributeFilter: ['style', 'class']
 });
+
+// Profile panel
+// =====Profile Avatar=====
+document.addEventListener("DOMContentLoaded", function () {
+  const storedUserName = localStorage.getItem("userName") || "Unknown";
+  const storedUserEmail = localStorage.getItem("userEmail") || "user@domain.com";
+
+  const avatarMini = document.getElementById("avatar-mini");
+  const avatarLarge = document.getElementById("avatar-large");
+  const avatarUsername = document.getElementById("avatar-username");
+
+  function getInitials(name) {
+    const parts = name.trim().split(" ");
+    if (parts.length >= 2) {
+      return parts[0][0] + parts[1][0];
+    } else {
+      return name[0];
+    }
+  }
+
+  const initials = getInitials(storedUserName || storedUserEmail).toUpperCase();
+
+  if (avatarMini) avatarMini.textContent = initials;
+  if (avatarLarge) avatarLarge.textContent = initials;
+  if (avatarUsername) avatarUsername.textContent = storedUserName;
+});
+
+// profile-btn Mobile-only logic
+document.addEventListener('DOMContentLoaded', () => {
+const mobileBtn = document.getElementById('profile-button');
+const mobilePanel = document.getElementById('mobile-profile-panel');
+const closeMobileBtn = document.getElementById('close-mobile-profile');
+
+if (mobileBtn && mobilePanel && closeMobileBtn) {
+  mobileBtn.addEventListener('click', () => {
+    mobilePanel.classList.add('show');
+    const burger = document.getElementById('mobile-nav');
+    if (burger) burger.classList.remove('open');
+  });
+
+  closeMobileBtn.addEventListener('click', () => {
+    mobilePanel.classList.remove('show');
+  });
+}
+
+// Sync user info from localStorage
+const syncMobileProfileInfo = () => {
+  const name = localStorage.getItem('userName') || 'Unknown';
+  const email = localStorage.getItem('userEmail') || 'unknown@example.com';
+
+  document.getElementById('avatar-username-mobile').textContent = name;
+  document.getElementById('profile-username-mobile').textContent = name;
+  document.getElementById('profile-email-mobile').textContent = email;
+
+  const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+  document.getElementById('avatar-large-mobile').textContent = initials;
+};
+
+syncMobileProfileInfo();
+
+});

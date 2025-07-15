@@ -161,16 +161,70 @@
 
     <li><a href="javascript:void(0);" id="settings-btn" aria-label="Open Settings" title="Settings"><i class="fas fa-cog"></i></a>
 </li>
+<!-- 🌟 FENIX PROFILE PANEL (UPGRADED WITH REAL ICONS) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 <li>
-    <div class="profile-wrapper desktop-only">
-      <button id="profile-btn" aria-label="Profile">👤</button>
-      <div id="profile-panel" class="profile-panel hidden">
-        <p><strong>User:</strong> <span id="profile-username"></span></p>
-        <p><strong>Email:</strong> <span id="profile-email"></span></p>
-        <button id="logout-btn">Logout</button>
+  <div class="profile-wrapper desktop-only">
+    <button id="profile-btn" aria-label="Open Profile">
+      <div id="avatar-mini" class="avatar mini">👤</div>
+    </button>
+
+    <div id="profile-panel" class="profile-panel hidden">
+      <!-- Avatar Banner -->
+      <div class="profile-avatar-banner">
+        <div id="avatar-large" class="avatar large">👤</div>
+        <div class="username-label" id="avatar-username">User</div>
+      </div>
+
+      <div id="profile-message" class="profile-message"></div>
+
+      <div class="profile-info">
+        <p><strong>Username:</strong> <span id="profile-username">Unknown</span></p>
+        <p><strong>Email:</strong> <span id="profile-email">unknown@example.com</span></p>
+      </div>
+
+    <div class="profile-action-bar">
+      <div class="action-button-wrapper">
+        <button id="toggle-edit-btn" title="Edit your display name."><i class="bi bi-pencil-square"></i> Edit</button>
+        <small class="action-note">Change how your name appears.</small>
+      </div>
+      <div class="action-button-wrapper">
+        <button id="toggle-password-btn" title="Update your password securely."><i class="bi bi-shield-lock"></i> Password</button>
+        <small class="action-note">Ensure your new password is strong.</small>
+      </div>
+      <div class="action-button-wrapper">
+        <button id="toggle-delete-btn" title="Permanently delete your account."><i class="bi bi-trash"></i> Delete</button>
+        <small class="action-note danger">This action is irreversible!</small>
       </div>
     </div>
+
+      <form id="edit-profile-form" class="form-section">
+        <input type="text" id="edit-username" placeholder="Enter New Username" />
+        <button type="submit" class="primary"><i class="bi bi-save"></i> Save Username</button>
+      </form>
+
+      <form id="change-password-form" class="form-section">
+        <input type="password" id="old-password" placeholder="Old Password" />
+        <input type="password" id="new-password" placeholder="New Password" />
+        <input type="password" id="confirm-password" placeholder="Confirm Password" />
+        <button type="submit" class="primary"><i class="bi bi-key"></i> Update Password</button>
+      </form>
+
+      <form id="delete-account-form" class="form-section danger-zone">
+        <p class="delete-instruction">
+          Type <strong>DELETE</strong> and enter your password to confirm.
+        </p>
+        <input type="text" id="delete-confirm-input" placeholder="Type DELETE" />
+        <input type="password" id="delete-confirm-password" placeholder="Enter Password" />
+        <button type="submit" class="danger"><i class="bi bi-x-octagon"></i> Confirm Delete</button>
+      </form>
+
+      <button id="logout-btn" class="logout-button"><i class="bi bi-box-arrow-right"></i> Logout</button>
+    </div>
+  </div>
 </li>
+
 </ul>
 <li class="mobile-only horizontal-buttons">
   <button id="profile-button">
@@ -183,6 +237,77 @@
 
 </nav>
 </header>
+
+<!-- ✅ Mobile Profile Panel (Right Sidebar) -->
+<div id="mobile-profile-panel" class="mobile-profile-panel mobile-only">
+  <div class="mobile-profile-header">
+    <h2>Profile</h2>
+    <button id="close-mobile-profile" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="mobile-profile-content">
+    <div class="profile-avatar-banner">
+      <div id="avatar-large-mobile" class="avatar large">👤</div>
+      <div class="username-label" id="avatar-username-mobile">User</div>
+    </div>
+
+    <div id="profile-message-mobile" class="profile-message"></div>
+
+    <div class="profile-info">
+      <p><strong>Username:</strong> <span id="profile-username-mobile">Unknown</span></p>
+      <p><strong>Email:</strong> <span id="profile-email-mobile">unknown@example.com</span></p>
+    </div>
+
+    <div class="profile-action-bar">
+      <div class="action-button-wrapper">
+        <button id="toggle-edit-btn-mobile">
+          <i class="bi bi-pencil-square"></i> Edit
+        </button>
+        <small class="action-note">Change how your name appears.</small>
+      </div>
+      <div class="action-button-wrapper">
+        <button id="toggle-password-btn-mobile">
+          <i class="bi bi-shield-lock"></i> Password
+        </button>
+        <small class="action-note">Ensure your new password is strong.</small>
+      </div>
+      <div class="action-button-wrapper">
+        <button id="toggle-delete-btn-mobile">
+          <i class="bi bi-trash"></i> Delete
+        </button>
+        <small class="action-note danger">This action is irreversible!</small>
+      </div>
+    </div>
+
+    <form id="edit-profile-form-mobile" class="form-section">
+      <input type="text" id="edit-username-mobile" placeholder="Enter New Username" />
+      <button type="submit" class="primary"><i class="bi bi-save"></i> Save Username</button>
+    </form>
+
+    <form id="change-password-form-mobile" class="form-section">
+      <input type="password" id="old-password-mobile" placeholder="Old Password" />
+      <input type="password" id="new-password-mobile" placeholder="New Password" />
+      <input type="password" id="confirm-password-mobile" placeholder="Confirm Password" />
+      <button type="submit" class="primary"><i class="bi bi-key"></i> Update Password</button>
+    </form>
+
+    <form id="delete-account-form-mobile" class="form-section danger-zone">
+      <p class="delete-instruction">
+        Type <strong>DELETE</strong> and enter your password to confirm.
+      </p>
+      <input type="text" id="delete-confirm-input-mobile" placeholder="Type DELETE" />
+      <input type="password" id="delete-confirm-password-mobile" placeholder="Enter Password" />
+      <button type="submit" class="danger"><i class="bi bi-x-octagon"></i> Confirm Delete</button>
+    </form>
+
+    <button id="logout-btn-mobile" class="logout-button"><i class="bi bi-box-arrow-right"></i> Logout</button>
+  </div>
+</div>
+
+
+
 <div class="floating-auth-links reveal">
   <a href="login.html" style="background: #f4f2f2; border: 1px solid #4f46e5; color: #4f46e5;" target="_blank">Login</a>
   <a href="signup.html" target="_blank">Create Account</a>
@@ -198,7 +323,7 @@
 
 <section id="search-results" class="hidden"></section>
 
-<p id="exit-hint" class="hidden">🔍 Click ESC to exit search.</p>
+<p id="exit-hint" class="hidden desktop-only">🔍 Click ESC to exit search.</p>
 
 <p id="no-results" class="hidden">
   No results found. <br><br>Click <b>Esc</b> to Exit.

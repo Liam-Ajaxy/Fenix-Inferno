@@ -44,7 +44,7 @@ body.lock-scroll {
     position: absolute;
     top: 100px; /* adjust to match your header height */
     right: 0;
-    background-color: var(--panel-color);
+    background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
     flex-direction: column;
@@ -97,7 +97,7 @@ body.lock-scroll {
 }
 
 .header-glass {
-  background-color: rgba(255, 255, 255, 0.3); /* semi-transparent */
+  background-color: rgba(255, 255, 255, 0.247); /* semi-transparent */
   backdrop-filter: blur(5px); /* blur behind */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* subtle shadow for depth */
@@ -159,10 +159,12 @@ nav li a:not(.dropbtn):focus {
   flex-direction: column;
   text-align: left; /* keep text left aligned inside dropdown */
 }
-
+.dropdown #more-content {
+  border-left: 80px solid rgba(25, 0, 255, 0.243);
+}
 
 .dropdown .dropdown-content a {
-  padding: 0.75rem 1rem;
+  padding: 0.25rem 1rem;
   color: var(--text-color);
   text-decoration: none;
   display: block;
@@ -198,7 +200,7 @@ nav li a:not(.dropbtn):focus {
 .search-wrapper {
   display: flex;
   align-items: center;
-  background: white;
+  background: var(--bg-color);
   border: 1px solid #ccc;
   border-radius: 50px;
   padding: 0.1rem 0.5rem;
@@ -265,6 +267,7 @@ nav li a:not(.dropbtn):focus {
   margin-left: 1rem;
   font-size: 1rem;
   background: var(--bg-color);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
   padding: 0.5rem 1rem;
@@ -1034,7 +1037,7 @@ button:hover {
 #settings {
   width: 40%;
   height: 100vh;
-  background: var(--panel-color, #ffffff);
+  background: var(--bg-color, #ffffff);
   color: var(--text-color, #111);
   display: flex;
   flex-direction: column;
@@ -1317,7 +1320,7 @@ body.search-mode #search-section {
   text-align: center;
   font-size: 1.2rem;
   margin-top: 15rem;
-  color: #f0f6fc;
+  color: var(--accent-color);
 }
 
 #no-results.show {
@@ -1337,7 +1340,7 @@ body.search-mode #search-section {
 #exit-hint {
   text-align: center;
   font-size: 1rem;
-  color:#f0f6fc;
+  color: var(--text-color);
   margin: 5rem auto;
   display: none;
 }
