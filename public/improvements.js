@@ -352,3 +352,32 @@ const syncMobileProfileInfo = () => {
 syncMobileProfileInfo();
 
 });
+
+
+// Email app option card
+document.addEventListener('DOMContentLoaded', () => {
+  const openBtn = document.getElementById('open-email-card');
+  const closeBtn = document.getElementById('close-email-card');
+  const card = document.getElementById('email-card');
+
+  openBtn.addEventListener('click', () => {
+    card.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    card.style.display = 'none';
+  });
+})
+
+// Dropdown logic api, res,...
+document.getElementById('explore-trigger').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('explore-panel').classList.toggle('show');
+});
+document.addEventListener('click', function(e) {
+  const trigger = document.getElementById('explore-trigger');
+  const panel = document.getElementById('explore-panel');
+  if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+    panel.classList.remove('show');
+  }
+});

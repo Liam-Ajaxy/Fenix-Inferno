@@ -78,7 +78,6 @@
 
     </div>
   <ul>
-    <li><a href="#home" class="desktop-only">Home</a></li>
       <li><a href="explore.html" id="explore-btn">
         <span class="mobile-icon"><i class="fas fa-compass"></i></span> Explore
       </a></li>
@@ -111,10 +110,62 @@
 <li class="dropdown desktop-only">
   <a href="javascript:void(0);" class="dropbtn" data-target="more-content"> More ▾</a>
   <div class="dropdown-content" id="more-content">
-    <a href="#skills"><i class="fas fa-brain"></i> Skills</a>
     <a href="#contact"><i class="fas fa-phone"></i> Contact</a>
+    <a href="#skills"><i class="fas fa-brain"></i> Skills</a>
     <a href="#partners"><i class="fas fa-handshake"></i> Partners</a>
     <a href="#stacks"><i class="fas fa-laptop-code"></i> Stacks</a>
+  </div>
+</li>
+
+<!-- 🌐 Resources Mega Dropdown (Clean Vertical Layout) -->
+<li class="resources-dropdown desktop-only">
+  <a href="#" class="dropbtn">Resources ▾</a>
+  <div class="resources-panel">
+    
+    <div class="resources-section">
+      <h4>Resources</h4>
+      <a href="#">Documentation</a>
+      <a href="#">API Reference</a>
+      <a href="#">Developer Tools</a>
+    </div>
+
+    <div class="resources-section">
+      <h4>Support</h4>
+      <a href="#">Help Center</a>
+      <a href="#">FAQs</a>
+      <a href="#">Community Forum</a>
+    </div>
+
+    <div class="resources-section">
+      <h4>Community</h4>
+      <a href="#">Contributors</a>
+      <a href="#">Open Source</a>
+      <a href="#">Ambassadors</a>
+    </div>
+
+    <div class="resources-section">
+      <h4>News</h4>
+      <a href="#">Blog</a>
+      <a href="#">Press</a>
+      <a href="#">Announcements</a>
+    </div>
+
+    <div class="resources-section">
+      <h4>Legal</h4>
+      <a href="#">Terms of Use</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+
+    <div class="resources-section">
+      <h4>Languages</h4>
+      <a href="#">English</a>
+      <a href="#">Français</a>
+      <a href="#">Español</a>
+      <a href="#">Deutsch</a>
+      <a href="#">العربية</a>
+    </div>
+
   </div>
 </li>
 
@@ -545,8 +596,11 @@
     <p>
       Phantom Recon was a reconnaissance training module for agents in Kali Linux environments. It focused on passive information gathering using tools like Nmap, DNSenum, and theHarvester. FPI operatives simulated nation-state surveillance, emphasizing stealth and data fidelity. The project trained over 150 operatives.
     </p>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=user74251224.us@gmail.com&su=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well.%20I%27m%20reaching%20out%20to%20express%20my%20keen%20interest%20in%20joining%20the%20Phantom%20Course%20offered%20by%20Fenix%20Training%20Center.%20The%20mission%20of%20FENIX%20and%20its%20approach%20to%20intelligence%2C%20ethical%20systems%2C%20and%20cyber%20operations%20greatly%20aligns%20with%20my%20personal%20goals.%0A%0AI%20would%20be%20grateful%20if%20you%20could%20guide%20me%20through%20the%20enrollment%20process%2C%20schedule%2C%20and%20any%20prerequisites%20needed%20to%20get%20started.%20I%27m%20highly%20motivated%20to%20learn%20from%20your%20expertise%20and%20contribute%20to%20the%20FENIX%20community.%0A%0AThank%20you%20for%20your%20time%20and%20support.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" class="phantom-btn partner-btn btn-spin" target="_blank">        
-    </a>
+
+    <!-- Trigger Button -->
+    <button id="open-email-card" class="email-float-btn">
+      <i class="fas fa-envelope"></i> Apply to Phantom Course
+    </button>
 
     </div>
     <div class="img-wrapper">
@@ -570,8 +624,37 @@
     <i class="fas fa-arrow-circle-right"></i>   View more projects</a>
   </div>
   </div>
-  <a href="#stacks" class="phantom-btn phantom-btn-stack partner-btn"></a>
 </section>
+
+
+<!-- Email app card -->
+<!-- Floating Card -->
+<div id="email-card" class="email-app-card">
+  <h4>Select Your Email App</h4>
+
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=user74251224.us@gmail.com&su=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well.%20I'm%20reaching%20out%20to%20express%20my%20keen%20interest%20in%20joining%20the%20Phantom%20Course%20offered%20by%20Fenix%20Training%20Center.%20The%20mission%20of%20FENIX%20and%20its%20approach%20to%20intelligence%2C%20ethical%20systems%2C%20and%20cyber%20operations%20greatly%20aligns%20with%20my%20personal%20goals.%0A%0AI%20would%20be%20grateful%20if%20you%20could%20guide%20me%20through%20the%20enrollment%20process%2C%20schedule%2C%20and%20any%20prerequisites%20needed%20to%20get%20started.%0A%0AI%27m%20highly%20motivated%20to%20learn%20from%20your%20expertise%20and%20contribute%20to%20the%20FENIX%20community.%0A%0AThank%20you%20for%20your%20time%20and%20support.%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D"
+     target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-google" style="color: #D93025;"></i> Gmail
+  </a>
+
+  <a href="https://outlook.office.com/mail/deeplink/compose?to=user74251224.us@gmail.com&subject=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well..." 
+     target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-microsoft" style="color: #0078D4;"></i> Outlook
+  </a>
+
+  <a href="https://compose.mail.yahoo.com/?to=user74251224.us@gmail.com&subject=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well..." 
+     target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-yahoo" style="color: #720E9E;"></i> Yahoo Mail
+  </a>
+
+  <a href="mailto:user74251224.us@gmail.com?subject=Fenix%20Training%20Center%20-%20Phantom%20Course&body=Dear%20FENIX%20Trainer%2C%0A%0AI%20hope%20this%20message%20finds%20you%20well..."
+     rel="nofollow">
+    <i class="fas fa-envelope-open-text" style="color: #1E1E1E;"></i> Default Mail App
+  </a>
+
+  <button id="close-email-card" class="close-card-btn">Close</button>
+</div>
+
 
 
 <section id="partners" class="requires-login">

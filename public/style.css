@@ -150,17 +150,19 @@ nav li a:not(.dropbtn):focus {
   display: none;
   position: absolute;
   top: 70%; /* show below Tools link */
-  left: 90%; /* center horizontally */
+  left: 76%; /* center horizontally */
   transform: translateX(-50%); /* correct centering */
   background-color: var(--bg-color);
-  min-width: 400px;
+  min-width: 350px;
+  border-radius: 0.75rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   z-index: 999;
   flex-direction: column;
   text-align: left; /* keep text left aligned inside dropdown */
 }
 .dropdown #more-content {
-  border-left: 80px solid rgba(25, 0, 255, 0.243);
+  left: 80%;
+  min-width: 250px;
 }
 
 .dropdown .dropdown-content a {
@@ -442,87 +444,9 @@ nav li a:not(.dropbtn):focus {
       padding: 2rem;
       transition: transform 0.3s ease;
     }
-    .project-block:hover, .project:hover {
-      transform: scale(1.02);
-    }
     .project-block .intro-text {
       text-align: left;
     }
-
-  .phantom-btn {
-  position: relative;
-  display: inline-block;
-  margin-top: 6rem;
-  padding: 0.85rem 8rem;
-  font-size: 1rem;
-  background: var(--bg-color);
-  color: var(--text-color);
-  box-shadow: 0 6px 4px #111827;
-  text-decoration: none;
-  border: solid var(--text-color);
-  border-radius: 5rem;
-  cursor: pointer;
-  text-align: center;
-  overflow: hidden;
-  width: 220px; /* Fixed width to avoid jumpy text */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.phantom-btn:hover {
-  background: var(--accent-color);  /* Darker blue on hover */
-  border: solid var(--accent-color);
-  cursor: pointer;
-  border: none;
-  color: white;
-}
-
-.phantom-btn::before {
-  content: "";
-}
-
-.phantom-btn::after {
-  content: "Become Phantom Recom";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: phantomText 7s steps(3) infinite;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-@keyframes phantomText {
-  0%   { content: "Become Phantom Recon"; }
-  33%  { content: "🎓 Get Trained!"; }
-  66%  { content: "Meet The Trainer"; }
-  100% { content: "Become Phantom Recon"; }
-}
-
-.phantom-btn-stack {
-  padding: 1rem 8rem;
-  margin-left: 13rem;
-}
-.phantom-btn-stack::after {
-  content: "Use Our Stack";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: stackText 15s steps(5) infinite;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-/* Keyframes for cycling through your 5 phrases */
-@keyframes stackText {
-  0%    { content: "Leverage Our Technology Stack"; }
-  10%   { content: "Develop Robust Solutions"; }
-  20%   { content: "Showcase Your Expertise"; }
-  40%   { content: "Craft Cutting-Edge Websites"; }
-  60%   { content: "Streamline Your Workflow"; }
-  80%   { content: "Achieve More With One Click"; }
-  100%  { content: "Leverage Our Technology Stack"; }
-}
 
 /* FEED & ARTICLES */
   .feed-section {
@@ -559,8 +483,7 @@ nav li a:not(.dropbtn):focus {
   transform: translateY(0);
 }
 .article-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.235);
 }
 .article-card .icon {
   font-size: 2rem;
@@ -1386,7 +1309,6 @@ body.search-mode #search-section {
 }
 
 .rating-card:hover {
-  transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
@@ -1530,11 +1452,10 @@ nav ul li:last-child {
 #profile-btn {
   display: inline-block;
   vertical-align: middle;
-  background: var(--bg-color);
+  background: var(--panel-color);
   border: none;
-  font-size: 1rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.1rem;
   border-radius: 50%;
   transition: background-color 0.3s ease;
 }
@@ -1544,55 +1465,15 @@ nav ul li:last-child {
   top: 90%; /* show below the button */
   left: 50%;
   transform: translateX(-50%);
-  background: #f3f4f6;
+  background: var(--panel-color);
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
-  font-size: 0.8rem;
-  color: #333;
+  font-size: 0.6rem;
+  color: var(--text-color);
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   margin-top: 0.25rem;
   z-index: 10000; /* ensure on top */
-}
-
-/* Profile Panel */
-.profile-panel {
-  position: absolute;
-  top: 2.8rem;
-  right: 0;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 220px;
-  z-index: 9999;
-}
-
-.profile-panel p {
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.profile-panel button {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: white;
-  background-color: #ef4444;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.profile-panel button:hover {
-  background-color: #dc2626;
-}
-
-.hidden {
-  display: none;
 }
 
 
